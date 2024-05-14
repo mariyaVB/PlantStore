@@ -15,8 +15,8 @@ class Category(models.Model):
 
 class Flowers(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название')
-    text = models.CharField(max_length=500, verbose_name='Описание')
-    image = models.ImageField(upload_to="products_images", blank=True, null=True, verbose_name='Изображение')
+    text = models.CharField(max_length=1500, verbose_name='Описание')
+    image = models.ImageField(upload_to="flowers_images", blank=True, null=True, verbose_name='Изображение')
     price = models.IntegerField(verbose_name='Цена')
     slug = models.CharField(max_length=50, verbose_name='Слаг')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')

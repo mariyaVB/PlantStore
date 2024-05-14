@@ -5,4 +5,8 @@ from datetime import datetime
 
 
 def show_flowers(request):
-    pass
+    flowers = Flowers.objects.all()
+    data = {
+        'flowers': flowers,
+    }
+    return render(request, 'flowers.html', context=data)

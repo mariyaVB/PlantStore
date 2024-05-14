@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Комнатные растения</title>
+</head>
+<body>
+    {% for el_flowers in flowers %}
+        <div  style="background-color: rgba(45, 35, 89, 0.1)">
+            <img src="{{ el_flowers.image.url }}">
+            <p>Название: {{ el_flowers.title }}</p>
+            <p>Описание: {{ el_flowers.text }}</p>
+            <p>Цена: {{ el_flowers.price }}₽</p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
