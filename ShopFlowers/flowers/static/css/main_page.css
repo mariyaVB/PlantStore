@@ -1,0 +1,35 @@
+body{
+    margin: 0;
+}
+
+nav{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    height: 50px;
+    width: 100%;
+}
+
+.home {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 3fr 1fr 1fr 1fr;
+}
+
+.start {
+    background-image: url(../images/main_page.jpg);
+    background-size: cover;
+	background-repeat: no-repeat;
+	grid-column: 1 / span 2;
+	grid-row: 1 / 1;
+    height: 1080px;
+}
+
+.novelty {
+    background-image: url(../images/novelty.jpg);
+    background-size: cover;
+	background-repeat: no-repeat;
+	grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    height: 500px;
+
+}

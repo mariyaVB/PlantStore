@@ -4,6 +4,10 @@ from .models import Flowers, Category
 from datetime import datetime
 
 
+def show_main_page(request):
+    return render(request, 'main_page.html')
+
+
 def show_flowers(request):
     flowers = Flowers.objects.all()
     data = {
