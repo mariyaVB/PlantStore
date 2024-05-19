@@ -1,35 +1,189 @@
-body{
+body {
     margin: 0;
 }
 
-nav{
+nav {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 20% 50% 15% 15%;
+}
+
+nav .logo {
+    grid-column: 1;
+    padding-left: 30px;
+    justify-self: start;
+    align-self: center;
+}
+
+.logo img {
     height: 50px;
+}
+
+nav .networks {
+    grid-column: 2;
+    display: flex;
+    gap: 20px;
+    justify-self: center;
+    align-self: center;
+}
+
+.networks a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-bottom: 2px solid rgba(67, 102, 205, 0);
+
+}
+
+nav .find {
+    grid-column: 3;
+    justify-self: center;
+    align-self: center;
+}
+
+nav form {
+    position: relative;
+    width: 100px;
+}
+
+.find input {
+    border: none;
+    border-radius: 2px;
+    outline: 1px solid DimGrey;
+    background: transparent;
+}
+
+.find button {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.find input {
     width: 100%;
+    height: 30px;
+    padding-left: 15px;
+}
+
+.find button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.find img {
+    position: relative;
+    top: 5px;
+    height: 20px;
+    width: 20px;
+}
+
+.f button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #F9F0DA;
+}
+
+nav .user{
+    grid-column: 4;
+    justify-self: center;
+    align-self: center;
+}
+
+.user img {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
 }
 
 .home {
     display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 3fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    gap: 0.5%;
+    height: 2250px;
 }
 
 .start {
-    background-image: url(../images/main_page.jpg);
+    background-image: url(../images/hello.jpg);
     background-size: cover;
 	background-repeat: no-repeat;
-	grid-column: 1 / span 2;
-	grid-row: 1 / 1;
-    height: 1080px;
+	grid-column: 1 / span 3;
+	grid-row: 1 / span 5;
+}
+
+.hit {
+    background-image: url(../images/hit.jpg);
+    background-size: cover;
+	background-repeat: no-repeat;
+	grid-column: 1 / span 3;
+	grid-row: 6 / span 2;
 }
 
 .novelty {
     background-image: url(../images/novelty.jpg);
     background-size: cover;
 	background-repeat: no-repeat;
-	grid-column: 2 / 2;
-    grid-row: 2 / 2;
-    height: 500px;
+	grid-column: 1 / 1;
+	grid-row: 8 / span 4;
+}
 
+.catalog {
+    background-image: url(../images/catalog.jpg);
+    background-size: cover;
+	background-repeat: no-repeat;
+	grid-column: 2 / span 2;
+	grid-row: 8 / span 3;
+}
+
+.sale {
+    background-image: url(../images/sale.jpg);
+    background-size: cover;
+	background-repeat: no-repeat;
+	grid-column: 1 / 1;
+	grid-row: 12 / span 4;
+}
+
+.design {
+    background-image: url(../images/design.jpg);
+    background-size: cover;
+	background-repeat: no-repeat;
+	grid-column: 2 / 2;
+	grid-row: 11 / span 5;
+}
+
+.other {
+    background-image: url(../images/other.jpg);
+    background-size: cover;
+	background-repeat: no-repeat;
+	grid-column: 3 / 3;
+	grid-row: 11 / span 5;
+}
+
+.basement {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.basement>.logo_basement {
+    justify-self: end;
+    align-self: center;
+}
+
+.basement>.connection, .basement>.info {
+    justify-self: center;
+    align-self: start;
+}
+
+.logo_basement img{
+    height: 200px;
+}
+
+.connection img{
+    height: 30px;
+    padding-right: 10px;
+}
+
+.author {
+    text-align: center;
 }

@@ -4,35 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/main_page.css' %}" />
-    <title>Комнатные растения Greenscape Gallery</title>
+    <title>Галерея зеленых пейзажей Fresh Company</title>
 </head>
 <body>
     <nav>
-        <div>
-            <a>Каталог</a>
-            <a>О нас</a>
-            <a>Услуги</a>
+        <div class="logo">
+            <img src="{% static 'images/name.jpg' %}">
         </div>
 
-        <div>
-            <a>instagram</a>
-            <a>youtube</a>
-            <a>telegramm</a>
+        <div class="networks">
+            <a href="#">Комнатные растения</a>
+            <a href="#">Горшки для растений</a>
+            <a href="#">Уход за растениями</a>
+            <a href="#">О нас</a>
+            <a href="#">Услуги</a>
         </div>
 
-        <div>
-            <a>Авторизация</a>
+        <div class="find">
+            <form>
+                <input type="text" placeholder="Поиск">
+                <button type="submit"><img src="{% static 'icons/icons_find.jpg' %}"></button>
+            </form>
+        </div>
+
+        <div class="user">
+            <a><img src="{% static 'icons/icons_user.jpg' %}"></a>
+            <a><img src="{% static 'icons/icons_cart.jpg' %}"></a>
         </div>
     </nav>
 
     <section class="home">
-        <div class="start"></div>
+        <div class="start">
 
+        </div>
 
+        <div class="hit">
 
-        <div class="novelty"></div>
+        </div>
 
+        <div class="novelty">
+
+        </div>
+
+        <div class="catalog">
+
+        </div>
+
+        <div class="sale">
+
+        </div>
+
+        <div class="design">
+
+        </div>
+
+        <div class="other">
+
+        </div>
+    </section>
+
+    <section class="line">
 
     </section>
+
+    <section class="basement">
+        <div class="logo_basement">
+            <img src="{% static 'images/logo.jpg' %}">
+        </div>
+
+        <div class="info">
+            <h4>Покупателю</h4>
+            <p>Как сделать заказ</p>
+            <p>Оплата заказов</p>
+            <p>Возврат заказов</p>
+            <p>Доставка заказов</p>
+            <p>Пункты самовывоза</p>
+            <p>Вопросы и ответы</p>
+        </div>
+
+        <div class="connection">
+            <h4>Связаться с нами</h4>
+            <p>О нас</p>
+            <p>По России 8(800)-000-0000</p>
+            <p>По Красноярску 8(999)-000-0000</p>
+            <p>Адрес: г. Красноярск, ул. Чайковского 20 пом.205 Галерея зеленых пейзажей Fresh Company</p>
+            <img src="{% static 'icons/icons_telegram.jpg' %}">
+            <img src="{% static 'icons/icons_instagram.jpg' %}">
+        </div>
+    </section>
+
+    <p class="author">&#169 Авторские права 2024</p>
 </body>
 </html>
