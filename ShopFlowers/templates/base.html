@@ -14,11 +14,11 @@
 <body>
     <nav>
         <div class="logo">
-            <img src="{% static 'images/name.jpg' %}">
+            <a href="{% url 'main' %}"><img src="{% static 'images/name.jpg' %}"></a>
         </div>
 
         <div class="networks">
-            <a href="#">Комнатные растения</a>
+            <a href="{% url 'flowers' %}">Комнатные растения</a>
             <a href="#">Горшки для растений</a>
             <a href="#">Уход за растениями</a>
             <a href="#">О нас</a>

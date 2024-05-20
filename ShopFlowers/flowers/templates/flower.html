@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}
+    <link rel="stylesheet" href="{% static 'css/flower_style.css' %}" />
+    <title>{{ flower.title }}</title>
+{% endblock head_title %}
+
+{% block base_content %}
+<section class="flower-list">
+    <div class="flower-img">
+        <img src="{{ flower.image.url }}">
+    </div>
+
+    <div class="flower-text">
+        <p>{{ flower.title }}</p>
+        <p>{{ flower.text }}</p>
+        <p>от {{ flower.price }}₽</p>
+    </div>
+</section>
+
+
+
+{% endblock base_content %}

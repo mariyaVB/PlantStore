@@ -1,0 +1,21 @@
+.flower-list {
+    display: grid;
+    grid-template-column: 1fr 1fr;
+    gap: 10px;
+    margin: 0 25% 0 25%;
+    width: 50%;
+    padding-top: 20px;
+}
+flower-list>.flower-img{
+    grid-column: 2;
+}
+
+.flower-img img{
+    width: 450px;
+    height: 500px;
+}
+
+.flower-list>.flower-text {
+    grid-column: 3;
+
+}
