@@ -1,0 +1,51 @@
+a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-bottom: 2px solid rgba(67, 102, 205, 0);
+}
+
+.hello {
+    background: rgba(209, 216, 184, 1);
+    height: 300px;
+}
+
+.hello-text {
+    margin: 0 25% 0 25%;
+    width: 50%;
+    padding: 20px;
+}
+
+.hello-text .p1 {
+    text-align: center;
+}
+
+.shop {
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.flowers-list {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.flowers-list img {
+    width: 250px;
+    height: 300px;
+}
+
+.shop>.flowers-list>.flower {
+    outline: 0.5px solid Silver;
+    padding:10px;
+}
+
+.shop>.filters {
+    padding: 20px;
+    justify-self: center;
+    align-self: start;
+}
+
+.shop>.filters p {
+    text-align: center;
+}

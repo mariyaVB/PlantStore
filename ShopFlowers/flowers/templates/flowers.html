@@ -1,18 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}
+    <link rel="stylesheet" href="{% static 'css/flowers_style.css' %}" />
     <title>Комнатные растения</title>
-</head>
-<body>
-    {% for el_flowers in flowers %}
-        <div style="border-color: rgba(45, 35, 89, 0.1)">
-            <img src="{{ el_flowers.image.url }}">
-            <p>Название: {{ el_flowers.title }}</p>
-            <p>Описание: {{ el_flowers.text }}</p>
-            <p>Цена: {{ el_flowers.price }}₽</p>
-        </div>
-    {% endfor %}
+{% endblock head_title %}
 
-</body>
-</html>
+{% block base_content %}
+    <section class="hello">
+        <div class="hello-text">
+            <p class="p1">КОМНАТНЫЕ РАСТЕНИЯ ОТ А ДО Я</p>
+            <p>Рады приветствовать вас в нашем магазине комнатных растений!</p>
+            <p>Мы предлагаем вам широкий выбор красивых и здоровых растений, которые преобразят ваш дом и создадут уютную атмосферу.</p>
+            <p>Здесь вы найдете растения для начинающих и опытных садоводов: от неприхотливых суккулентов до более требовательных орхидей,
+            разнообразие видов и сортов: от классических фикусов до редких и экзотических экземпляров,
+            качественные товары для ухода: удобрения, горшки, инструменты и многое другое.
+            Мы всегда готовы помочь вам с выбором и ответить на любые ваши вопросы.</p>
+            <p>Добро пожаловать в мир зеленой красоты!</p>
+
+    </div>
+    </section>
+
+    <section class="shop">
+
+        <div class="filters">
+            <p>Тип растения</p>
+            {% for flower in flowers %}
+                <ul>
+                    <li><a href="#">{{ flower.category }}</a></li>
+                </ul>
+            {% endfor %}
+        </div>
+
+        <div class="flowers-list">
+            {% for flower in flowers %}
+                <div class="flower" style="border-color: rgba(45, 35, 89, 0.1)">
+                    <img src="{{ flower.image.url }}">
+                    <p>{{ flower.title }}</p>
+                    <p>от {{ flower.price }}₽</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+{% endblock base_content %}

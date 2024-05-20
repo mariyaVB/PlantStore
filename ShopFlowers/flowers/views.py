@@ -2,19 +2,28 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from .models import Flowers, Category
 from datetime import datetime
+from django.views import View
+from django.views.generic import TemplateView, ListView
 
 
-def show_main_page(request):
-    return render(request, 'main_page.html')
+class MainPage(View):
+    def get(self, request):
+        return render(request, 'main_page.html')
+
+    def post(self, request):
+        pass
 
 
-def show_flowers(request):
-    flowers = Flowers.objects.all()
-    data = {
-        'flowers': flowers,
-    }
-    return render(request, 'flowers.html', context=data)
+class FlowersView(ListView):
+    model = Flowers
+    template_name = 'flowers.html'
+    context_object_name = 'flowers'
+
+    def get_queryset(self):
+        return Flowers.objects.all()
 
 
-def qwerty(request):
-    return render(request, '404.html', status=404)
+
+
+
+
