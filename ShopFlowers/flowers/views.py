@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from .models import Flowers, Category
 from datetime import datetime
@@ -6,12 +6,8 @@ from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
 
 
-class MainPage(View):
-    def get(self, request):
-        return render(request, 'main_page.html')
-
-    def post(self, request):
-        pass
+class MainPage(TemplateView):
+    template_name = 'main_page.html'
 
 
 class FlowersView(ListView):
@@ -19,8 +15,14 @@ class FlowersView(ListView):
     template_name = 'flowers.html'
     context_object_name = 'flowers'
 
-    def get_queryset(self):
-        return Flowers.objects.all()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categories = Category.objects.all()
+        flowers = Flowers.objects.all()
+        context['categories'] = categories
+        context['flowers'] = flowers
+
+        return context
 
 
 class FlowerDetailView(DetailView):
@@ -29,8 +31,24 @@ class FlowerDetailView(DetailView):
     context_object_name = 'flower'
     slug_url_kwarg = 'slug'
 
-    def get_queryset(self):
-        return Flowers.objects.all()
+
+class CategoryView(ListView):
+    model = Flowers
+    template_name = 'flowers_category.html'
+    context_object_name = 'flowers_category'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categories = Category.objects.all()
+        category = Category.objects.get(slug=self.kwargs['slug'])
+        flowers = Flowers.objects.filter(category=category.id)
+        context['category'] = category
+        context['categories'] = categories
+        context['flowers'] = flowers
+
+        return context
+
+
 
 
 

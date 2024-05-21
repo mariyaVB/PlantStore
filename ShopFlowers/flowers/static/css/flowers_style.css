@@ -10,8 +10,8 @@ a{
 }
 
 .hello-text {
-    margin: 0 25% 0 25%;
-    width: 50%;
+    margin: 0 20% 0 20%;
+    width: 60%;
     padding: 20px;
 }
 
@@ -35,7 +35,7 @@ a{
     height: 300px;
 }
 
-.shop>.flowers-list>.flower {
+.flower {
     outline: 0.5px solid Silver;
     padding:10px;
 }

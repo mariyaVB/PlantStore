@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}
+    <link rel="stylesheet" href="{% static 'css/flowers_style.css' %}" />
+    <title>{{ category.title }}</title>
+{% endblock head_title %}
+
+{% block base_content %}
+
+
+    <section class="shop">
+
+        <div class="filters">
+            <p>Тип растения</p>
+            {% for category in categories %}
+                <ul>
+                    <li><a href="{% url 'categories' slug=category.slug %}">{{ category.title }}</a></li>
+                </ul>
+            {% endfor %}
+        </div>
+
+        <div class="flowers-list">
+            {% for flower in flowers %}
+                <a href="{% url 'flower' slug=flower.slug %}">
+                    <div class="flower" style="border-color: rgba(45, 35, 89, 0.1)">
+                        <img src="{{ flower.image.url }}">
+                        <p>{{ flower.title }}</p>
+                        <p>от {{ flower.price }}₽</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock base_content %}
