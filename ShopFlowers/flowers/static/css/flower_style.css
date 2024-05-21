@@ -1,10 +1,21 @@
+.back {
+    padding-left: 380px;
+    padding-top: 20px;
+}
+
+.back a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-bottom: 2px solid rgba(67, 102, 205, 0);
+}
+
 .flower-list {
     display: grid;
     grid-template-column: 1fr 1fr;
     gap: 10px;
     margin: 0 25% 0 25%;
     width: 50%;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 flower-list>.flower-img{
     grid-column: 2;

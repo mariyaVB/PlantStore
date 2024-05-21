@@ -6,7 +6,13 @@
 {% endblock head_title %}
 
 {% block base_content %}
+    <div class="category-list">
+        <p>{{ category.title }}</p>
+    </div>
 
+    <div class="back">
+        <a href="{% url 'flowers' %}"><p>&larr; Назад</p></a>
+    </div>
 
     <section class="shop">
 
@@ -17,6 +23,9 @@
                     <li><a href="{% url 'categories' slug=category.slug %}">{{ category.title }}</a></li>
                 </ul>
             {% endfor %}
+                <ul>
+                    <li><a href="{% url 'flowers' %}">Показать все</a></li>
+                </ul>
         </div>
 
         <div class="flowers-list">

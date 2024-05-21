@@ -6,6 +6,7 @@
 {% endblock head_title %}
 
 {% block base_content %}
+
     <section class="hello">
         <div class="hello-text">
             <p class="p1">КОМНАТНЫЕ РАСТЕНИЯ ОТ А ДО Я</p>
@@ -20,6 +21,10 @@
     </div>
     </section>
 
+    <div class="back">
+        <a href="{% url 'main' %}"><p>&larr; Назад</p></a>
+    </div>
+
     <section class="shop">
 
         <div class="filters">
@@ -29,6 +34,9 @@
                     <li><a href="{% url 'categories' slug=category.slug %}">{{ category.title }}</a></li>
                 </ul>
             {% endfor %}
+                <ul>
+                    <li><a href="{% url 'flowers' %}">Показать все</a></li>
+                </ul>
         </div>
 
         <div class="flowers-list">

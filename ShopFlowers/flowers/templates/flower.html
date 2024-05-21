@@ -6,6 +6,10 @@
 {% endblock head_title %}
 
 {% block base_content %}
+<div class="back">
+    <a href="{% url 'flowers' %}"><p>&larr; Назад</p></a>
+</div>
+
 <section class="flower-list">
     <div class="flower-img">
         <img src="{{ flower.image.url }}">

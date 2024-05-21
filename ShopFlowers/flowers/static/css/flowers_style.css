@@ -1,7 +1,36 @@
-a{
+a {
     text-decoration: none;
     color: rgb(0, 0, 0);
     border-bottom: 2px solid rgba(67, 102, 205, 0);
+}
+
+.back {
+    padding-left: 330px;
+    padding-top: 20px;
+}
+
+.back a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-bottom: 2px solid rgba(67, 102, 205, 0);
+}
+
+@font-face {
+  font-family: 'myFont';
+  src: url('../fonts/Mirra.otf');
+}
+
+.category-list {
+    background: rgba(209, 216, 184, 1);
+    height: 100px;
+    font-size: 30pt;
+    text-align: center;
+}
+
+.category-list p {
+    text-color: gray;
+    font-family: 'myFont';
+    padding-top: 25px;
 }
 
 .hello {
