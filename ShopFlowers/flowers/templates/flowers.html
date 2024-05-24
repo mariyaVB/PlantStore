@@ -21,8 +21,11 @@
     </div>
     </section>
 
-    <div class="back">
-        <a href="{% url 'main' %}"><p>&larr; Назад</p></a>
+    <div class="breadcrumb">
+        <ul>
+            <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Комнатные растения /</a></li>
+        </ul>
     </div>
 
     <section class="shop">
@@ -42,7 +45,7 @@
         <div class="flowers-list">
             {% for flower in flowers %}
                 <a href="{% url 'flower' slug=flower.slug %}">
-                    <div class="flower" style="border-color: rgba(45, 35, 89, 0.1)">
+                    <div class="flower">
                         <img src="{{ flower.image.url }}">
                         <p>{{ flower.title }}</p>
                         <p>от {{ flower.price }}₽</p>

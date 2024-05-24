@@ -31,6 +31,15 @@ class FlowerDetailView(DetailView):
     context_object_name = 'flower'
     slug_url_kwarg = 'slug'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        flower = Flowers.objects.get(slug=self.kwargs['slug'])
+        category = Category.objects.get(title=flower.category)
+        context['category'] = category
+        context['flower'] = flower
+
+        return context
+
 
 class CategoryView(ListView):
     model = Flowers

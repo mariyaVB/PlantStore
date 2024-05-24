@@ -7,11 +7,15 @@
 
 {% block base_content %}
     <div class="category-list">
-        <p>{{ category.title }}</p>
+        <span>{{ category.title }}</span>
     </div>
 
-    <div class="back">
-        <a href="{% url 'flowers' %}"><p>&larr; Назад</p></a>
+    <div class="breadcrumb">
+        <ul>
+            <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Комнатные растения /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'categories' slug=category.slug %}">{{ category.title }} /</a></li>
+        </ul>
     </div>
 
     <section class="shop">
