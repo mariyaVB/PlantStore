@@ -81,6 +81,11 @@ a {
     padding:10px;
 }
 
+.flower:hover {
+    box-shadow: 10px 10px 30px rgba(119, 126, 92, 1);
+
+}
+
 .shop>.filters {
     padding: 20px;
     justify-self: center;

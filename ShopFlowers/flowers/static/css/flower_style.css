@@ -62,6 +62,7 @@ flower-list>.flower-img{
     display: inline-block;
     font-size: 12px;
     border-radius: 10px;
+    color: rgba(214, 215, 210, 1)
 }
 
 .cart button:hover {
@@ -74,6 +75,7 @@ flower-list>.flower-img{
     display: inline-block;
     font-size: 12px;
     border-radius: 10px;
+    color: rgba(40, 49, 6, 1);
 }
 
 
