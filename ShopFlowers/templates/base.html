@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base_style.css' %}" />
-    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
-    <script src="{% static 'js/base.js' %}"></script>
+
     {% block head_title %}
 
     {% endblock head_title %}
@@ -36,17 +35,21 @@
 
         <div class="user">
             {% if user.is_authenticated %}
-                <a href="#">{{user.username}}</a> | <a href="{% url 'logout' %}">Выйти</a>
+            <div class="dropdown-user">
+                <button onclick="myFunction()" class="drop-btn">{{user.username}}</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#">Профиль</a>
+                        <a href="{% url 'logout' %}">Выйти</a>
+                    </div>
+            </div>
+
             {% else %}
-                <a href="{% url 'login' %}"><img src="{% static 'icons/icons_user.jpg' %}"></a>
+                <a href="{% url 'login' %}"><img class="auth" src="{% static 'icons/icons_user.jpg' %}"></a>
             {% endif %}
             <a><img src="{% static 'icons/icons_cart.jpg' %}"></a>
         </div>
     </nav>
 
-    <div class="overlay">
-        <h1>Hi</h1>
-    </div>
     {% block base_content %}
 
     {% endblock base_content %}
@@ -80,5 +83,34 @@
 
     <p class="author">&#169 Оформление сайта. ООО «Правообладатель контента», 2024-2025</p>
 
+    <section class="overlay">
+    <div class="popup">
+        <h2>{{ title }}</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {% for form in form_auth %}
+            {% if form.name == 'username' %}
+                <div class="log">
+                    <label class="form-img"><img src="{% static 'icons/icon-user-login.png' %}"></label>
+                    {{ form }}
+                </div>
+            {% endif %}
+            {% if form.name == 'password' %}
+                <div class="pas">
+                    <label class="form-img"><img src="{% static 'icons/icon-password.png' %}"></label>
+                    {{ form }}
+                </div>
+            {% endif %}
+        {% endfor %}
+
+            <button class="entrance">Войти</button><br>
+            <span class="hint">Новый клиент?</span><br>
+            <button class="registration">Регистрация</button>
+        </form>
+    </div>
+    </section>
+
+    <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>

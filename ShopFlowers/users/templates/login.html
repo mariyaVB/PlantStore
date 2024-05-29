@@ -8,7 +8,6 @@
 </head>
 <body>
 <div class="overlay">
-
         <h2>{{ title }}</h2>
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
@@ -31,7 +30,6 @@
             <span class="hint">Новый клиент?</span><br>
             <button class="registration">Регистрация</button>
         </form>
-
 </div>
 
 </body>
