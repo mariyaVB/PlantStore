@@ -1,36 +1,42 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html lang="en">
-<head>
+{% block head_title %}
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/auth_style.css' %}" />
     <title>{{ title }}</title>
-</head>
-<body>
+{% endblock head_title %}
+
+{% block base_content %}
+<section class="popup">
 <div class="overlay">
-        <h2>{{ title }}</h2>
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            {% for form in form_auth %}
+    <h2 class="form-title">{{ title }}</h2>
+    <form method="post" action="{% url 'login' %}" >
+        {% csrf_token %}
+
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        {% for form in form_auth %}
             {% if form.name == 'username' %}
                 <div class="log">
                     <label class="form-img"><img src="{% static 'icons/icon-user-login.png' %}"></label>
                     {{ form }}
                 </div>
+                <div class="form-error">{{ form.errors }}</div>
             {% endif %}
             {% if form.name == 'password' %}
                 <div class="pas">
                     <label class="form-img"><img src="{% static 'icons/icon-password.png' %}"></label>
                     {{ form }}
                 </div>
+                <div class="form-error">{{ form.errors }}</div>
             {% endif %}
         {% endfor %}
 
-            <button class="entrance">Войти</button><br>
-            <span class="hint">Новый клиент?</span><br>
-            <button class="registration">Регистрация</button>
-        </form>
-</div>
+        <button class="entrance">Войти</button><br>
+    </form>
 
-</body>
-</html>
+    <span class="hint">Новый клиент?</span><br>
+    <a href="{% url 'register' %}"><button class="registration">Регистрация</button></a>
+</div>
+</section>
+
+{% endblock base_content %}

@@ -26,7 +26,7 @@ a {
 }
 
 @font-face {
-  font-family: 'myFont';
+  font-family: 'myFontMirra';
   src: url('../fonts/Mirra.otf');
 }
 
@@ -39,7 +39,7 @@ a {
 
 .category-list span {
     text-color: rgba(45, 44, 44, 1);
-    font-family: 'myFont';
+    font-family: 'myFontMirra';
     font-size: 30pt;
     display: inline-block;
     padding-top: 25px;

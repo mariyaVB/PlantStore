@@ -83,32 +83,6 @@
 
     <p class="author">&#169 Оформление сайта. ООО «Правообладатель контента», 2024-2025</p>
 
-    <section class="overlay">
-    <div class="popup">
-        <h2>{{ title }}</h2>
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            {% for form in form_auth %}
-            {% if form.name == 'username' %}
-                <div class="log">
-                    <label class="form-img"><img src="{% static 'icons/icon-user-login.png' %}"></label>
-                    {{ form }}
-                </div>
-            {% endif %}
-            {% if form.name == 'password' %}
-                <div class="pas">
-                    <label class="form-img"><img src="{% static 'icons/icon-password.png' %}"></label>
-                    {{ form }}
-                </div>
-            {% endif %}
-        {% endfor %}
-
-            <button class="entrance">Войти</button><br>
-            <span class="hint">Новый клиент?</span><br>
-            <button class="registration">Регистрация</button>
-        </form>
-    </div>
-    </section>
 
     <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
     <script src="{% static 'js/base.js' %}"></script>

@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'myFontMirra';
+  src: url('../fonts/Mirra.otf');
+}
+
+.form-title{
+    font-family: 'myFontMirra'
+}
+
 .form-img img {
     width: 25px;
     height: 25px;
@@ -12,10 +21,10 @@
 
 .form-input {
 	border: none;
-	width: 160px;
+	width: 180px;
 	height: 25px;
 	border-bottom: 2px solid rgba(114, 121, 88, 1);
-	background-color: white;
+    background: transparent;
 }
 
 .form-input:hover {
@@ -24,36 +33,42 @@
 
 .entrance, .registration {
 	text-align: center;
-	width: 200px;
+	width: 220px;
 	padding: 10px;
 	background-color: rgba(114, 121, 88, 1);
 	border: none;
 	margin-top: 5px;
-	color: white;
+    color: rgba(40, 49, 6, 1);
 }
 
 .entrance:hover, .registration:hover {
 	background-color: rgba(209, 216, 184, 1);
-	color: black;
+    color: rgba(40, 49, 6, 1);
 }
 
 .overlay {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
+    margin: 100px 0 0 450px;
 	width: 500px;
 	padding: 50px;
 	text-align: center;
 	border-radius: 10px;
-	box-shadow: 10px 10px 30px rgb(180, 179, 179);
-    background-image: url(../images/auth.png);
-    background-size: cover;
-	background-repeat: no-repeat;
+	box-shadow: 30px 10px 40px  rgba(114, 121, 88, 0.3);
 }
+
+.popup {
+	width: 1600px;
+	height: 500px;
+	border-top: 1px solid rgba(40, 49, 6, 0);
+	background-image: url(../images/auth_reg_page.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+
+}
+
 
 .hint {
     font-size: 10pt;
     color: rgba(88, 88, 88, 1);
     height: 5px;
 }
+

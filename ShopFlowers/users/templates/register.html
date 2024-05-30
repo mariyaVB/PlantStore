@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}" />
+    <title>{{ title }}</title>
+{% endblock head_title %}
+
+{% block base_content %}
+
+<section class="popup">
+<div class="overlay">
+    <h2 class="form-title">{{ title }}</h2>
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+
+        <div class="form-error">{{ form.non_field_errors }}</div>
+        {% for form in form_register %}
+            {% if form.name == 'username' or form.name == 'password1' or form.name == 'password2' %}
+                {{ form }}
+                <div class="form-error">{{ form.errors }}</div>
+            {% endif %}
+        {% endfor %}
+
+        <button class="registration" type="submit">Регистрация</button><br>
+    </form>
+
+    <span class="hint">Постоянный клиент?</span><br>
+    <a href="{% url 'login' %}"><button class="entrance">Войти</button></a>
+</div>
+</section>
+
+{% endblock base_content %}

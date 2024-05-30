@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Авторизация сделана.">
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Авторизация и выход готовы.">
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/users/authentication.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/static/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/static/js/base.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/static/js/jquery-3.7.1.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/auth_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/auth_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/images/auth.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716911124329</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Авторизация и выход готовы.">
+      <option name="closed" value="true" />
+      <created>1716971247515</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716971247515</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -189,6 +204,7 @@
     <MESSAGE value="Добавлены фото для двух категорий, кнопка назад." />
     <MESSAGE value="Хлебные крошки." />
     <MESSAGE value="Авторизация сделана." />
-    <option name="LAST_COMMIT_MESSAGE" value="Авторизация сделана." />
+    <MESSAGE value="Авторизация и выход готовы." />
+    <option name="LAST_COMMIT_MESSAGE" value="Авторизация и выход готовы." />
   </component>
 </project>
