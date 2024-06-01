@@ -63,7 +63,7 @@ nav form {
 }
 
 .find input {
-    width: 100%;
+    width: 150px;
     height: 30px;
     padding-left: 15px;
 }
@@ -71,7 +71,7 @@ nav form {
 .find button {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -50px;
     cursor: pointer;
 }
 

@@ -1,9 +1,12 @@
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
-from users.forms import LoginUserForm, RegisterUserForm
+from django.views.generic import CreateView, UpdateView
+
+from ShopFlowers import settings
+from users.forms import LoginUserForm, RegisterUserForm, ProfileUserForm, User
 
 
 class LoginUser(LoginView):
@@ -26,4 +29,20 @@ class RegisterUser(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('login')
+
+
+class ProfileUser(LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    form_class = ProfileUserForm
+    template_name = 'profile.html'
+    extra_context = {'title': "Личный кабинет", 'form_profile': form_class,
+                     'default_image': settings.DEFAULT_USER_IMAGE}
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
 

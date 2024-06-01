@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import Flowers, Category
 
-admin.site.index_title = 'Greenscape Gallery'
-admin.site.site_header = 'Управление Greenscape Gallery'
+admin.site.index_title = 'Fresh Company'
+admin.site.site_header = 'Управление Галереей зеленых пейзажей'
 
 
 @admin.register(Flowers)

@@ -38,7 +38,7 @@
             <div class="dropdown-user">
                 <button onclick="myFunction()" class="drop-btn">{{user.username}}</button>
                     <div id="myDropdown" class="dropdown-content">
-                        <a href="#">Профиль</a>
+                        <a href="{% url 'profile' %}">Личный кабинет</a>
                         <a href="{% url 'logout' %}">Выйти</a>
                     </div>
             </div>

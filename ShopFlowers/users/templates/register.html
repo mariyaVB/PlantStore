@@ -2,7 +2,7 @@
 {% load static %}
 {% block head_title %}
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/auth_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login-register_style.css' %}" />
     <title>{{ title }}</title>
 {% endblock head_title %}
 
@@ -16,10 +16,8 @@
 
         <div class="form-error">{{ form.non_field_errors }}</div>
         {% for form in form_register %}
-            {% if form.name == 'username' or form.name == 'password1' or form.name == 'password2' %}
-                {{ form }}
-                <div class="form-error">{{ form.errors }}</div>
-            {% endif %}
+            <div>{{ form }}</div>
+            <div class="form-error">{{ form.errors }}</div>
         {% endfor %}
 
         <button class="registration" type="submit">Регистрация</button><br>

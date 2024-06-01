@@ -1,0 +1,147 @@
+@font-face {
+  font-family: 'myFontMirra';
+  src: url('../fonts/Mirra.otf');
+}
+
+.name-photo {
+    display: flex;
+    gap: 50px;
+}
+
+.user-photo {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 1px solid rgba(40, 49, 6, 1);
+    position: relative;
+    top: 100px; left: 20px;
+}
+
+.user-name {
+    position: relative;
+    top: 210px; left: 0;
+    font-family: 'myFontMirra';
+}
+
+.popup {
+	width: 1600px;
+	height: 700px;
+	display: flex;
+}
+
+.menu-profile {
+    margin: 10px 0 10px 50px;
+    width: 500px;
+    height: 700px;
+    padding: 50px;
+	text-align: center;
+}
+
+.overlay {
+    margin: 10px 0 0 150px;
+	width: 1100px;
+	padding: 50px;
+	text-align: center;
+	background-image: url(../images/profile-hat.jpg);
+	background-size: contain;
+	background-repeat: no-repeat;
+	border-radius: 10px;
+	box-shadow: 30px 10px 40px  rgba(114, 121, 88, 0.3);
+	display: grid;
+    grid-template-rows: 35% 65%;
+}
+
+.form-profile {
+    display: grid;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 350px;
+    justify-content: center;
+    align-content: end;
+}
+
+span {
+    font-size: 10pt;
+    color: rgba(88, 88, 88, 1);
+    height: 5px;
+}
+
+
+.form-input-profile {
+	border: none;
+	width: 300px;
+	height: 30px;
+	border: 2px solid rgba(114, 121, 88, 1);
+	border-radius: 10px;
+    background: transparent;
+}
+
+.form-date-birth {
+	border: none;
+	width: 100px;
+	height: 30px;
+	border: 2px solid rgba(114, 121, 88, 1);
+	border-radius: 10px;
+    background: transparent;
+    text-align: center;
+}
+
+.form-photo {
+	border: none;
+	width: 100px;
+	height: 30px;
+	border: 2px solid rgba(114, 121, 88, 1);
+	border-radius: 10px;
+    background: transparent;
+    text-align: center;
+}
+
+.save-profile {
+	text-align: center;
+	width: 220px;
+	padding: 10px;
+	background-color: rgba(114, 121, 88, 1);
+	border: none;
+	border-radius: 10px;
+	margin-top: 5px;
+    color: rgba(40, 49, 6, 1);
+}
+
+.save-profile:hover {
+	background-color: rgba(209, 216, 184, 1);
+    color: rgba(40, 49, 6, 1);
+    border-radius: 10px;
+}
+
+
+.popup-my-orders {
+    display: none;
+}
+
+.popup-my-feedback {
+    display: none;
+}
+
+.popup-my-like {
+    display: none;
+}
+
+.popup-my-cart {
+    display: none;
+}
+
+li {
+    padding: 5px;
+}
+
+.bt-my-profile:hover, .bt-my-orders:hover, .bt-my-feedback:hover,
+.bt-my-like:hover, .bt-my-cart:hover {
+    border: 1px solid rgba(114, 121, 88, 1);
+    border-radius: 10px;
+    background-color: rgba(114, 121, 88, 1);
+    padding: 5px;
+}

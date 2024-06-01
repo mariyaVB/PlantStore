@@ -19,9 +19,17 @@
     align-items: center;
 }
 
-.form-input {
+.form-input-auth {
 	border: none;
 	width: 180px;
+	height: 25px;
+	border-bottom: 2px solid rgba(114, 121, 88, 1);
+    background: transparent;
+}
+
+.form-input-reg {
+	border: none;
+	width: 215px;
 	height: 25px;
 	border-bottom: 2px solid rgba(114, 121, 88, 1);
     background: transparent;
@@ -62,7 +70,6 @@
 	background-image: url(../images/auth_reg_page.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
-
 }
 
 

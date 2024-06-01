@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}" />
+    <title>{{ title }}</title>
+{% endblock head_title %}
+
+{% block base_content %}
+<section class="popup">
+    <div class="menu_profile">
+        <h2>Личный кабинет</h2>
+            <ul>
+                <li><a class="bt-my-profile">Настройки</a></li>
+                <li><a class="bt-my-orders">Мои заказы</a></li>
+                <li><a class="bt-my-feedback">Мои отзывы</a></li>
+                <li><a class="bt-my-like">Избранное</a></li>
+                <li><a class="bt-my-cart">Корзина</a></li>
+            </ul>
+    </div>
+
+    <div class="overlay">
+
+        {% if user.photo %}
+            <div class="name-photo">
+                <img class="user-photo" src="{{ user.photo.url }}">
+                <h2 class="user-name">{{ user.username }}</h2>
+            </div>
+        {% else %}
+            <div class="name-photo">
+                <img class="user-photo" src="{{ default_image }}">
+                <h2 class="user-name">{{ user.username }}</h2>
+            </div>
+        {% endif %}
+
+        <div class="popup-my-settings">
+        <form method="post" action="{% url 'profile' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-grid">
+                <div class="form-1">
+                    <div class="form-error">{{ form.non_field_errors }}</div>
+                    <span>{{ form_profile.username.label }}:</span><br><p>{{ form_profile.username }}</p>
+                    <span>{{ form.email.label }}:</span><br><p>{{ form_profile.email }}</p>
+                    <span>{{ form.photo.label }}:</span><br><p>{{ form_profile.photo }}</p>
+                </div>
+
+                <div class="form-2">
+                    <div class="form-error">{{ form.non_field_errors }}</div>
+                    <span>{{ form_profile.first_name.label }}:</span><br><p>{{ form_profile.first_name }}</p>
+                    <span>{{ form_profile.last_name.label }}:</span><br><p>{{ form_profile.last_name }}</p>
+                    <span>{{ form_profile.date_birth.label }}:</span><br><p>{{ form_profile.date_birth }}</p>
+                </div>
+            </div>
+            <button class="save-profile" type="submit">Сохранить</button>
+<!--                {% for form in form_profile %}-->
+<!--                    {% if form.name != 'photo' %}-->
+<!--                        <span>{{ form.label }}:</span><br>-->
+<!--                        <div>{{ form }}</div>-->
+<!--                        <div class="form-error">{{ form.errors }}</div>-->
+<!--                    {% endif %}-->
+<!--                {% endfor %}-->
+        </form>
+        </div>
+
+        <div class="popup-my-orders">
+            <h2>Orders</h2>
+        </div>
+
+        <div class="popup-my-feedback">
+            <h2>Feedback</h2>
+        </div>
+
+        <div class="popup-my-like">
+            <h2>Like</h2>
+        </div>
+
+        <div class="popup-my-cart">
+            <h2>Cart</h2>
+        </div>
+    </div>
+</section>
+
+{% endblock base_content %}
