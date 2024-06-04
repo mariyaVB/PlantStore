@@ -17,20 +17,20 @@
         <input type="hidden" name="next" value="{{ next }}"/>
 
         <div class="form-error">{{ form.non_field_errors }}</div>
-        {% for form in form_auth %}
-            {% if form.name == 'username' %}
+        {% for form_auth in form %}
+            {% if form_auth.name == 'username' %}
                 <div class="log">
                     <label class="form-img"><img src="{% static 'icons/icon-user-login.png' %}"></label>
-                    {{ form }}
+                    {{ form_auth }}
                 </div>
-                <div class="form-error">{{ form.errors }}</div>
+                <div class="form-error">{{ form_auth.errors }}</div>
             {% endif %}
-            {% if form.name == 'password' %}
+            {% if form_auth.name == 'password' %}
                 <div class="pas">
                     <label class="form-img"><img src="{% static 'icons/icon-password.png' %}"></label>
-                    {{ form }}
+                    {{ form_auth }}
                 </div>
-                <div class="form-error">{{ form.errors }}</div>
+                <div class="form-error">{{ form_auth.errors }}</div>
             {% endif %}
         {% endfor %}
 
@@ -39,6 +39,8 @@
 
     <span class="hint">Новый клиент?</span><br>
     <a href="{% url 'register' %}"><button class="registration">Регистрация</button></a>
+    <br><span class="hint">Забыли пароль?</span><br>
+    <a href="{% url 'password_reset' %}"><button class="registration">Восстановление пароля</button></a>
 </div>
 </section>
 

@@ -3,8 +3,12 @@
   src: url('../fonts/Mirra.otf');
 }
 
-.form-title{
+.form-title {
     font-family: 'myFontMirra'
+}
+
+a {
+    color: rgba(114, 121, 88, 1);
 }
 
 .form-img img {
@@ -21,42 +25,47 @@
 
 .form-input-auth {
 	border: none;
-	width: 180px;
+	width: 175px;
 	height: 25px;
 	border-bottom: 2px solid rgba(114, 121, 88, 1);
     background: transparent;
 }
 
-.form-input-reg {
+.form-input-reg, .form-input-set-password {
 	border: none;
-	width: 215px;
+	width: 210px;
 	height: 25px;
 	border-bottom: 2px solid rgba(114, 121, 88, 1);
     background: transparent;
 }
 
-.form-input:hover {
+.form-input-reg:hover, .form-input-auth:hover, .form-input-set-password:hover {
 	border: 2px solid rgba(114, 121, 88, 1);
+	border-radius: 10px;
 }
 
-.entrance, .registration {
+.entrance, .registration, .save {
 	text-align: center;
 	width: 220px;
 	padding: 10px;
 	background-color: rgba(114, 121, 88, 1);
 	border: none;
+	border-radius: 10px;
 	margin-top: 5px;
-    color: rgba(40, 49, 6, 1);
+    color: rgba(202, 208, 183, 1);
 }
 
-.entrance:hover, .registration:hover {
+.entrance:hover, .registration:hover, .save:hover {
 	background-color: rgba(209, 216, 184, 1);
     color: rgba(40, 49, 6, 1);
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .overlay {
-    margin: 100px 0 0 450px;
+    margin: 80px 0 0 450px;
 	width: 500px;
+	height: 270px;
 	padding: 50px;
 	text-align: center;
 	border-radius: 10px;

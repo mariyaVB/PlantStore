@@ -15,9 +15,9 @@
         {% csrf_token %}
 
         <div class="form-error">{{ form.non_field_errors }}</div>
-        {% for form in form_register %}
-            <div>{{ form }}</div>
-            <div class="form-error">{{ form.errors }}</div>
+        {% for form_register in form %}
+            <div>{{ form_register }}</div>
+            <div class="form-error">{{ form_register.errors }}</div>
         {% endfor %}
 
         <button class="registration" type="submit">Регистрация</button><br>

@@ -21,47 +21,49 @@
     </div>
 
     <div class="overlay">
+        <form method="post" action="{% url 'profile' %}" enctype="multipart/form-data">
+        {% csrf_token %}
 
-        {% if user.photo %}
+            {% if user.photo %}
             <div class="name-photo">
-                <img class="user-photo" src="{{ user.photo.url }}">
+                <div class="bt-user-change">
+                    <img class="user-photo" src="{{ user.photo.url }}">
+                    <p class="photo-change">{{ form.photo }}</p>
+                </div>
                 <h2 class="user-name">{{ user.username }}</h2>
             </div>
-        {% else %}
+            {% else %}
             <div class="name-photo">
-                <img class="user-photo" src="{{ default_image }}">
+                <div class="bt-user-change">
+                    <img class="user-photo" src="{{ default_image }}">
+                    <p class="photo-change">{{ form.photo }}</p>
+                </div>
                 <h2 class="user-name">{{ user.username }}</h2>
             </div>
-        {% endif %}
+            {% endif %}
 
         <div class="popup-my-settings">
-        <form method="post" action="{% url 'profile' %}" enctype="multipart/form-data">
-            {% csrf_token %}
             <div class="form-grid">
                 <div class="form-1">
                     <div class="form-error">{{ form.non_field_errors }}</div>
-                    <span>{{ form_profile.username.label }}:</span><br><p>{{ form_profile.username }}</p>
-                    <span>{{ form.email.label }}:</span><br><p>{{ form_profile.email }}</p>
-                    <span>{{ form.photo.label }}:</span><br><p>{{ form_profile.photo }}</p>
+                    <span>{{ form.username.label }}:</span><br><p>{{ form.username }}</p>
+                    <span>{{ form.email.label }}:</span><br><p>{{ form.email }}</p>
+                    <span><label>Изменить пароль:</label></span><br><br>
+                    <a href="{% url 'password-change' %}"><button type="button" class="p">********</button></a>
+                    <div class="form-error">{{ form.errors }}</div>
                 </div>
 
                 <div class="form-2">
                     <div class="form-error">{{ form.non_field_errors }}</div>
-                    <span>{{ form_profile.first_name.label }}:</span><br><p>{{ form_profile.first_name }}</p>
-                    <span>{{ form_profile.last_name.label }}:</span><br><p>{{ form_profile.last_name }}</p>
-                    <span>{{ form_profile.date_birth.label }}:</span><br><p>{{ form_profile.date_birth }}</p>
+                    <span>{{ form.first_name.label }}:</span><br><p>{{ form.first_name }}</p>
+                    <span>{{ form.last_name.label }}:</span><br><p>{{ form.last_name }}</p>
+                    <span>{{ form.date_birth.label }}:</span><br><p>{{ form.date_birth }}</p>
+                    <div class="form-error">{{ form.errors }}</div>
                 </div>
             </div>
             <button class="save-profile" type="submit">Сохранить</button>
-<!--                {% for form in form_profile %}-->
-<!--                    {% if form.name != 'photo' %}-->
-<!--                        <span>{{ form.label }}:</span><br>-->
-<!--                        <div>{{ form }}</div>-->
-<!--                        <div class="form-error">{{ form.errors }}</div>-->
-<!--                    {% endif %}-->
-<!--                {% endfor %}-->
-        </form>
         </div>
+        </form>
 
         <div class="popup-my-orders">
             <h2>Orders</h2>
@@ -78,7 +80,12 @@
         <div class="popup-my-cart">
             <h2>Cart</h2>
         </div>
+
     </div>
 </section>
+
+
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="{% static 'js/user.js' %}"></script>
 
 {% endblock base_content %}

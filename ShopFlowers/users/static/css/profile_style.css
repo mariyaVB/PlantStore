@@ -15,7 +15,7 @@
     border-radius: 100px;
     border: 1px solid rgba(40, 49, 6, 1);
     position: relative;
-    top: 100px; left: 20px;
+    top: 60px; left: 20px;
 }
 
 .user-name {
@@ -83,11 +83,24 @@ span {
 .form-date-birth {
 	border: none;
 	width: 100px;
-	height: 30px;
+	height: 35px;
 	border: 2px solid rgba(114, 121, 88, 1);
 	border-radius: 10px;
     background: transparent;
     text-align: center;
+}
+
+.p {
+	border: none;
+	width: 310px;
+	height: 36px;
+	border: 2px solid rgba(114, 121, 88, 1);
+	border-radius: 10px;
+    background: transparent;
+}
+
+.p:hover {
+    cursor: pointer;
 }
 
 .form-photo {
@@ -100,7 +113,7 @@ span {
     text-align: center;
 }
 
-.save-profile {
+.save-profile, .password-change {
 	text-align: center;
 	width: 220px;
 	padding: 10px;
@@ -111,10 +124,11 @@ span {
     color: rgba(40, 49, 6, 1);
 }
 
-.save-profile:hover {
+.save-profile:hover, .password-change:hover {
 	background-color: rgba(209, 216, 184, 1);
     color: rgba(40, 49, 6, 1);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 
@@ -144,4 +158,49 @@ li {
     border-radius: 10px;
     background-color: rgba(114, 121, 88, 1);
     padding: 5px;
+    cursor: pointer;
 }
+
+li:nth-child(1)::marker {
+    content: url(../icons/icon-profile-setting.png);
+}
+
+li:nth-child(2)::marker {
+    width: 20px;
+    height: 20px;
+    content: url(../icons/icon-others.png);
+}
+
+li:nth-child(3)::marker {
+    width: 20px;
+    height: 20px;
+    content: url(../icons/icon-feedback.png);
+}
+
+li:nth-child(4)::marker {
+    width: 20px;
+    height: 20px;
+    content: url(../icons/icon-favorite.png);
+}
+
+li:nth-child(5)::marker {
+    width: 20px;
+    height: 20px;
+    content: url(../icons/icon-cart.png);
+}
+
+.photo-change {
+    display: none;
+    position: absolute;
+}
+
+.form-profile-photo {
+    margin-left: 63px;
+    width: 115px;
+    border-radius: 45px;
+    background-color: rgba(114, 121, 88, 1);
+}
+
+
+
+

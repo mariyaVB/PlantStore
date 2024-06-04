@@ -1,8 +1,8 @@
 import datetime
-
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm, PasswordResetForm, \
+    SetPasswordForm
 from users.models import User
 
 
@@ -54,12 +54,45 @@ class ProfileUserForm(forms.ModelForm):
         labels = {
             'first_name': 'Имя',
             'last_name': 'Фамилия',
-            'photo': 'Изменить изображение',
+
         }
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-input-profile'}),
             'last_name': forms.TextInput(attrs={'class': 'form-input-profile'}),
-
+            'photo': forms.ClearableFileInput(attrs={'class': 'form-profile-photo'})
         }
+
+
+class PasswordChangeUserForm(PasswordChangeForm):
+    old_password = forms.CharField(label='Старый пароль',
+                                   widget=forms.PasswordInput(attrs={'class': 'form-input-change-password',
+                                                                     'placeholder': 'Старый пароль'}))
+    new_password1 = forms.CharField(label='Новый пароль',
+                                   widget=forms.PasswordInput(attrs={'class': 'form-input-change-password',
+                                                                     'placeholder': 'Новый пароль'}))
+    new_password2 = forms.CharField(label='Повтор нового пароля',
+                                   widget=forms.PasswordInput(attrs={'class': 'form-input-change-password',
+                                                                     'placeholder': 'Повтор нового пароля'}))
+
+
+class PasswordResetUserForm(PasswordResetForm):
+    email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-input-reset-password',
+                                                                            'placeholder': 'Введите Email',
+                                                                            'autocomplete': 'email'}))
+
+
+class SetPasswordUserForm(SetPasswordForm):
+    new_password1 = forms.CharField(label='Новый пароль',
+                                    widget=forms.PasswordInput(attrs={'class': 'form-input-set-password',
+                                                                      'placeholder': 'Введите новый пароль',
+                                                                      'autocomplete': 'new-password'}))
+
+    new_password2 = forms.CharField(label='Подтверждение нового пароля',
+                                    widget=forms.PasswordInput(attrs={'class': 'form-input-set-password',
+                                                                      'placeholder': 'Подтвердите новый пароль',
+                                                                      'autocomplete': 'new-password'}))
+
+
+
 
 
