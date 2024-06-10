@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 from ShopFlowers import settings
 from users.forms import LoginUserForm, RegisterUserForm, ProfileUserForm, PasswordChangeUserForm
+from django.http import Http404
 
 
 class LoginUser(LoginView):
@@ -22,9 +23,12 @@ class LogoutUser(LogoutView):
 
 
 class RegisterUser(CreateView):
-    form_class = RegisterUserForm
-    template_name = 'register.html'
-    extra_context = {'title': 'Регистрация', 'form_register': form_class}
+    try:
+        form_class = RegisterUserForm
+        template_name = 'register.html'
+        extra_context = {'title': 'Регистрация', 'form_register': form_class}
+    except:
+        raise Http404('Not Found')
 
     def get_success_url(self):
         return reverse_lazy('login')

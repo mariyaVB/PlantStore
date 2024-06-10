@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Flowers, Category
+from .models import Flowers, Category, FlowersCare, FlowerPots
 
 admin.site.index_title = 'Fresh Company'
 admin.site.site_header = 'Управление Галереей зеленых пейзажей'
@@ -7,7 +7,19 @@ admin.site.site_header = 'Управление Галереей зеленых �
 
 @admin.register(Flowers)
 class FlowersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'text', 'image', 'price', 'category', 'slug')
+    list_display = ('id', 'title', 'text', 'image', 'quantity', 'price', 'category', 'slug')
+    list_display_links = ('id', 'title')
+
+
+@admin.register(FlowersCare)
+class FlowersCareAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'text', 'image', 'quantity', 'price', 'category', 'slug')
+    list_display_links = ('id', 'title')
+
+
+@admin.register(FlowerPots)
+class FlowerPotsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'text', 'image', 'quantity', 'price', 'category', 'slug')
     list_display_links = ('id', 'title')
 
 

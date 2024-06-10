@@ -1,0 +1,37 @@
+.about-start, .about-end {
+    /*background-image: url(../images/about_one.png);
+    background-size: cover;*/
+    background: rgba(202, 208, 183, 1);
+    padding: 10px;
+    p {
+    color: color: rgba(40, 49, 6, 1);;
+
+    font-size: 12pt;
+    text-align: center;
+    padding-top: 7px;
+    }
+}
+
+.about-div {
+    display: flex;
+    width: 1500px;
+    padding-left: 15px;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 450px;
+        height: 450px;
+    }
+
+    .about-text {
+        width: 1000px;
+        padding: 25px;
+        font-size: 12pt;
+        color: rgba(40, 49, 6, 1);
+    }
+}
+
+ul {
+	list-style-type: '🌿';
+}
+

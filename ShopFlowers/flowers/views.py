@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.shortcuts import render
+from django.http import Http404
 from .models import Flowers, Category
-from datetime import datetime
-from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView
+
+
+# def error_404(request, exception):
+#     return render(request, '404.html', status=404)
 
 
 class MainPage(TemplateView):
@@ -17,12 +19,14 @@ class FlowersView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        categories = Category.objects.all()
-        flowers = Flowers.objects.all()
-        context['categories'] = categories
-        context['flowers'] = flowers
-
-        return context
+        try:
+            categories = Category.objects.all()
+            flowers = Flowers.objects.all()
+            context['categories'] = categories
+            context['flowers'] = flowers
+            return context
+        except:
+            raise Http404('Not Found')
 
 
 class FlowerDetailView(DetailView):
@@ -37,7 +41,6 @@ class FlowerDetailView(DetailView):
         category = Category.objects.get(title=flower.category)
         context['category'] = category
         context['flower'] = flower
-
         return context
 
 

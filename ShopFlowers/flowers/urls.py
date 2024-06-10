@@ -1,5 +1,7 @@
 from django.urls import path, re_path
+from django.shortcuts import render
 import flowers.views as flowers
+
 
 urlpatterns = [
     path('', flowers.MainPage.as_view(), name='main'),
@@ -7,3 +9,4 @@ urlpatterns = [
     path('flowers/<slug:slug>/', flowers.FlowerDetailView.as_view(), name='flower'),
     path('flowers/categories/<slug:slug>/', flowers.CategoryView.as_view(), name='categories'),
 ]
+

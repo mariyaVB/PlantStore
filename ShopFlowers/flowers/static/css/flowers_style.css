@@ -68,6 +68,7 @@ a {
 .flowers-list {
     padding: 20px;
     display: grid;
+    grid-gap: 10px;
     grid-template-columns: repeat(4, 1fr);
 }
 
