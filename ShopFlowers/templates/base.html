@@ -15,7 +15,7 @@
 <body>
     <nav class="nav_main">
         <div class="logo">
-            <a href="{% url 'main' %}"><img src="{% static 'images/name.jpg' %}"></a>
+            <a href="{% url 'main' %}">FRESH COMPANY</a>
         </div>
 
         <div class="networks">
@@ -37,16 +37,26 @@
             {% if user.is_authenticated %}
             <div class="dropdown-user">
                 <button onclick="myFunction()" class="drop-btn">{{user.username}}</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="{% url 'profile' %}">Личный кабинет</a>
-                        <a href="{% url 'logout' %}">Выйти</a>
-                    </div>
+
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="{% url 'profile' %}">Личный кабинет</a>
+                    <a href="{% url 'logout' %}">Выйти</a>
+                </div>
             </div>
 
             {% else %}
                 <a href="{% url 'login' %}"><img class="auth" src="{% static 'icons/icons_user.jpg' %}"></a>
             {% endif %}
-            <a><img src="{% static 'icons/icons_cart.jpg' %}"></a>
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'cart' %}" class="base-total-quantity">
+                <img src="{% static 'icons/icons_cart.jpg' %}">
+            </a>
+<!--            <span class="p-base-total-quantity">{{ carts.total_quantity }}</span>-->
+
+            {% else %}
+                <a href="{% url 'login' %}"><img src="{% static 'icons/icons_cart.jpg' %}"></a>
+            {% endif %}
         </div>
     </nav>
 

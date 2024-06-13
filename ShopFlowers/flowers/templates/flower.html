@@ -23,6 +23,11 @@
     <div class="flower-property">
         <p class="flower-title">{{ flower.title }}</p>
         <p>{{ flower.price }}₽</p>
+        {% if flower.quantity > 0 %}
+            <p>В наличии</p>
+        {% else %}
+            <p>Нет в наличии</p>
+        {% endif %}
         <div class="cart">
             <button type="submit">Добавить в корзину</button>
         </div>

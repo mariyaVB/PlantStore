@@ -10,6 +10,7 @@ urlpatterns = [
     path('services/', TemplateView.as_view(template_name='services.html'), name='services'),
     path('', include('flowers.urls')),
     path('users/', include('users.urls')),
+    path('cart/', include('cart.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

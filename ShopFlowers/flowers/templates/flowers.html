@@ -31,31 +31,61 @@
     <section class="shop">
 
         <div class="filters">
-            <p>Тип растения</p>
-            {% for category in categories %}
-                <ul>
-                    <li><a href="{% url 'categories' slug=category.slug %}">{{ category.title }}</a></li>
-                </ul>
-            {% endfor %}
-                <ul>
-                    <li><a href="{% url 'flowers' %}">Показать все</a></li>
-                </ul>
+            <p>Фильтры</p>
+            <form action="{% url 'filter' %}" method="get">
+                {% for category in view.get_category %}
+<!--                <input type="checkbox" class="filter-checkbox" data-filter="genre" value="2">-->
+                <li>
+                    <input type="checkbox" name="category" value="{{ category.id }}">
+                    <label>{{ category.title }}</label>
+                </li>
+
+                {% endfor %}
+                <button type="submit">Найти</button>
+            </form>
+<!--            {% for category in categories %}-->
+<!--                <ul>-->
+<!--                    <li><a href="{% url 'categories' slug=category.slug %}">{{ category.title }}</a></li>-->
+<!--                </ul>-->
+<!--            {% endfor %}-->
+<!--                <ul>-->
+<!--                    <li><a href="{% url 'flowers' %}">Показать все</a></li>-->
+<!--                </ul>-->
         </div>
 
         <div class="flowers-list">
             {% for flower in flowers %}
-                <a href="{% url 'flower' slug=flower.slug %}">
-                    <div class="flower">
+                {% if flower.product == 'Комнатные растения' %}
+                <div class="flower">
+                    <a href="{% url 'flower' slug=flower.slug %}">
                         <img src="{{ flower.image.url }}">
-                        <p>{{ flower.title }}</p>
-                        <p>от {{ flower.price }}₽</p>
+                    </a>
+
+                    <div class="flower-detail">
+                        <p class="p-text">{{ flower.title }}</p>
+                        <p class="p-text">от {{ flower.price }}₽</p>
+                        {% if flower.quantity > 0 %}
+                            <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+                        {% else %}
+                            <p>Нет в наличии</p>
+                        {% endif %}
                     </div>
-                </a>
-            {% endfor %}
+                </div>
+
+            {% endif %}
+        {% endfor %}
         </div>
+
+        <nav class="list-pages">
+            <ul>
+                {% for page in paginator.page_range %}
+                <li class="page-num">
+                    <a href="?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
     </section>
-
-
-
 
 {% endblock base_content %}

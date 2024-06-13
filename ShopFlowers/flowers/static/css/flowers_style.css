@@ -5,8 +5,8 @@ a {
 }
 
 .breadcrumb {
-    margin-left: 285px;
-    padding-top: 20px;
+    background-image: url(../images/fon-flowers2.png);
+    padding: 5px 0 5px 295px;
 }
 
 .breadcrumb ul {
@@ -46,7 +46,8 @@ a {
 }
 
 .hello {
-    background: rgba(209, 216, 184, 1);
+    background-image: url(../images/fon-flowers1.png);
+    background-size: contain;
     height: 300px;
 }
 
@@ -61,6 +62,8 @@ a {
 }
 
 .shop {
+    background-image: url(../images/fon-flowers3.png);
+    background-size: cover;
     display:grid;
     grid-template-columns: 1fr 4fr;
 }
@@ -70,6 +73,8 @@ a {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(4, 1fr);
+    justify-self: center;
+    align-self: center;
 }
 
 .flowers-list img {
@@ -78,13 +83,54 @@ a {
 }
 
 .flower {
-    outline: 0.5px solid Silver;
-    padding:10px;
+    border-radius: 20px;
+    outline: 0.5px solid rgba(119, 126, 92, 1);
+    background: rgba(247, 247, 247, 0.5);
+}
+
+.flower-detail {
+    border-radius: 0 0 20px 20px;
+    background: rgba(255, 255, 255, 1);
+    padding: 10px;
+    text-align: center;
+}
+
+.p-text {
+    font-family: 'myFontMirra';
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cart-button {
+
+    border-style: none;
+    background-color: rgba(114, 121, 88, 1);
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 25px;
+    color: rgba(214, 215, 210, 1);
+    cursor: pointer;
+}
+
+.cart-button:hover {
+    border-style: none;
+    background-color: rgba(209, 216, 184, 1);
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 25px;
+    color: rgba(40, 49, 6, 1);
+    cursor: pointer;
 }
 
 .flower:hover {
     box-shadow: 10px 10px 30px rgba(119, 126, 92, 1);
-
 }
 
 .shop>.filters {
@@ -95,4 +141,17 @@ a {
 
 .shop>.filters p {
     text-align: center;
+}
+
+.list-pages {
+    text-align: center;
+    grid-column: 2 / 2;
+}
+
+.page-num {
+    display: inline;
+    padding: 0 15px 0 15px;
+    color: rgba(40, 49, 6, 1);
+    font-family: 'myFontMirra';
+    font-weight: bold;
 }

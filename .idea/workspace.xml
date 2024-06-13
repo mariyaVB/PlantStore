@@ -4,29 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail.">
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/static/css/about_us.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/templates/about_us.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/templates/services.html" afterDir="false" />
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots.">
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/cart/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/cart/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/flowers/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/templates/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/password_change_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/password_change_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/password_reset_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/forms.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717520900525</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots.">
+      <option name="closed" value="true" />
+      <created>1718012035616</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1718012035616</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -240,7 +245,8 @@
     <MESSAGE value="Готова регистрация и добавлен вход по логину и E-mail." />
     <MESSAGE value="Оформлен профиль пользователя." />
     <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail." />
+    <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

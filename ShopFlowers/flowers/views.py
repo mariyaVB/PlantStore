@@ -1,7 +1,11 @@
+from django.db.models import Q
 from django.shortcuts import render
-from django.http import Http404
+from django.http import Http404, JsonResponse
+from django.urls import reverse_lazy
+
 from .models import Flowers, Category
 from django.views.generic import TemplateView, ListView, DetailView
+from cart.models import Cart
 
 
 # def error_404(request, exception):
@@ -9,6 +13,8 @@ from django.views.generic import TemplateView, ListView, DetailView
 
 
 class MainPage(TemplateView):
+    model = Cart
+    context_object_name = 'carts'
     template_name = 'main_page.html'
 
 
@@ -16,17 +22,25 @@ class FlowersView(ListView):
     model = Flowers
     template_name = 'flowers.html'
     context_object_name = 'flowers'
+    paginate_by = 12
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        try:
-            categories = Category.objects.all()
-            flowers = Flowers.objects.all()
-            context['categories'] = categories
-            context['flowers'] = flowers
-            return context
-        except:
-            raise Http404('Not Found')
+    def get_category(self):
+        return Category.objects.all()
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     try:
+    #         categories = Category.objects.all()
+    #         context['categories'] = categories
+    #         return context
+    #     except:
+    #         raise Http404('Not Found')
+
+
+class FilterFlowersView(FlowersView, ListView):
+    def get_queryset(self):
+        flowers = Flowers.objects.filter(category__in=self.request.GET.getlist('category.id'))
+        return flowers
 
 
 class FlowerDetailView(DetailView):

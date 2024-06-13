@@ -78,19 +78,19 @@ class PasswordChangeUserForm(PasswordChangeForm):
 class PasswordResetUserForm(PasswordResetForm):
     email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-input-reset-password',
                                                                             'placeholder': 'Введите Email',
-                                                                            'autocomplete': 'email'}))
+                                                                            }))
 
 
 class SetPasswordUserForm(SetPasswordForm):
     new_password1 = forms.CharField(label='Новый пароль',
                                     widget=forms.PasswordInput(attrs={'class': 'form-input-set-password',
                                                                       'placeholder': 'Введите новый пароль',
-                                                                      'autocomplete': 'new-password'}))
+                                                                      }))
 
     new_password2 = forms.CharField(label='Подтверждение нового пароля',
                                     widget=forms.PasswordInput(attrs={'class': 'form-input-set-password',
                                                                       'placeholder': 'Подтвердите новый пароль',
-                                                                      'autocomplete': 'new-password'}))
+                                                                      }))
 
 
 

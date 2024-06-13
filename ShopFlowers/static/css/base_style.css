@@ -2,9 +2,18 @@ body {
     margin: 0;
 }
 
+@font-face {
+    font-family: 'myFontMirra';
+    src: url('../fonts/Mirra.otf');
+}
+
 .nav_main {
     display: grid;
     grid-template-columns: 20% 50% 15% 15%;
+    height: 50px;
+   /* position: fixed;
+    transition: top 0.3s;*/
+
 }
 
 nav .logo {
@@ -12,6 +21,12 @@ nav .logo {
     padding-left: 30px;
     justify-self: start;
     align-self: center;
+    font-family: 'myFontMirra';
+    font-size: 26pt;
+    a {
+        text-decoration: none;
+        color: black;
+    }
 }
 
 .logo img {
@@ -101,6 +116,13 @@ nav .user{
     width: 20px;
     height: 20px;
     padding-right: 10px;
+}
+
+.p-base-total-quantity {
+    text-decoration: none;
+    color: rgba(40, 49, 6, 1);
+    font-size: 10pt;
+    position: absolute;
 }
 
 .basement {

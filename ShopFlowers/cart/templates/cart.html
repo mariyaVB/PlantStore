@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}
+    <link rel="stylesheet" href="{% static 'css/cart_style.css' %}" />
+    <title>Корзина</title>
+{% endblock head_title %}
+
+{% block base_content %}
+<input type="hidden" name="next" value="{{ next }}" />
+    <div class="breadcrumb">
+        <ul>
+            <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'cart' %}">Корзина /</a></li>
+        </ul>
+    </div>
+
+<section class="cart">
+    <div class="cart-product">
+        {% if carts %}
+            <h2 style="font-family: 'myFontMirra'; text-align: center; color: rgba(40, 49, 6, 1);">Корзина</h2>
+            {% for cart in carts %}
+                <div class="cart-product-frame">
+                    <div class="cart-img">
+                        <img src="{{ cart.flowers.image.url }}" width="100px" height="120px">
+                    </div>
+
+                    <div class="cart-title">
+                        <a href="{% url 'flower' slug=cart.flowers.slug %}">{{ cart.flowers }}</a>
+                    </div>
+
+                    <div class="cart-quantity">
+                        <div class="quantity_inner">
+                            <form method="post" action="{% url 'change-cart' cart.id %}">
+                                {% csrf_token %}
+<!--                            {{ cart.flowers.id}}-->
+                            <button type="submit" class="bt_minus">-</button>
+                            <input type="text" class="quantity" value="{{ cart.quantity }}" data-max-count="{{ cart.flowers.quantity }}" name="quantity">
+                            <button type="submit" class="bt_plus">+</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="cart-summa-price">
+                        <span class="summa">{{ cart.sum_cart }}₽</span><br>
+                        <span class="price">{{ cart.flowers.price }}₽ за 1шт.</span><span></span>
+                    </div>
+
+                    <div class="cart-remove">
+                        <a href="{% url 'remove-cart' cart.id %}"><img src="{% static 'icons/icon-delete.png' %}" width="20px" height="20px"></a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1 style="font-family: 'myFontMirra'">В корзине пока нет товаров</h1>
+            <a href="{% url 'flowers' %}" style="color: rgba(40, 49, 6, 1);">Перейти в каталог</a>
+        {% endif %}
+    </div>
+
+    <div class="cart-total">
+        <div class="cart-total-frame">
+            <h1  style="font-family: 'myFontMirra'; text-align: start; color: rgba(40, 49, 6, 1);">Оформление заказа</h1>
+
+            <div class="select-cart">
+                <p>Выберите способ получения</p>
+                <input type="checkbox" class="input-delivery">
+                <label>Доставка</label>
+                <input type="checkbox">
+
+                <label>Самовывоз</label><br>
+                <input class="input-address" placeholder="Район доставки" type="text">
+                <input class="input-address" placeholder="Адрес доставки" type="text">
+            </div><hr>
+
+            <div class="select-cart">
+                <p>Выберите способ оплаты</p>
+                <input type="checkbox">
+                <label>Картой онлайн</label>
+                <input type="checkbox">
+                <label>В магазине на кассе</label>
+            </div><hr>
+
+            <div>
+                <p>Количество товаров: {{ carts.total_quantity }} шт.</p>
+                <p class="d">Доставка: </p>
+            </div>
+
+            <div>
+                <p>Общая сумма: {{ carts.total_summ }} ₽</p>
+            </div>
+
+            <button class="cart-pay">Оформить</button>
+
+            
+
+        </div>
+    </div>
+</section>
+
+
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock base_content %}

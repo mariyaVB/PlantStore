@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'flowers.apps.FlowersConfig',
     'users.apps.UsersConfig',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 LOGIN_REDIRECT_URL = 'main'
 LOGOUT_REDIRECT_URL = 'main'
-LOGIN_URL = 'login'
+LOGIN_URL = 'login/'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -137,4 +138,6 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
+
+CART_SESSION_ID = 'cart'
 

@@ -1,0 +1,160 @@
+@font-face {
+    font-family: 'myFontMirra';
+    src: url('../fonts/Mirra.otf');
+}
+
+/* Хлебные крошки */
+.breadcrumb {
+    background-color: rgba(214, 215, 210, 1);
+    padding: 5px;
+}
+
+.breadcrumb ul {
+    display: flex;
+    list-style: none;
+}
+
+.breadcrumb li {
+    font-size: 10pt;
+    padding-left: 2px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: rgba(88, 88, 88, 1);
+    border-bottom: 2px solid rgba(67, 102, 205, 0);
+}
+
+/* Страница общая */
+.cart {
+    background-color: rgba(214, 215, 210, 1);
+    padding: 0 20px 0 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 60% 40%;
+    align-items: start;
+}
+
+/* Список товаров в корзине */
+.cart-product-frame {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 15% 10%;
+    border-bottom: 1px solid rgba(119, 126, 92, 0.3);
+    align-items: center;
+    justify-items: center;
+    color: rgba(40, 49, 6, 1);
+    height: 130px;
+        input{
+            border: none;
+            width: 100px;
+            background: transparent;
+        }
+}
+
+.cart-title a {
+    text-decoration: none;
+    color: rgba(40, 49, 6, 1);
+}
+
+/* Стоимость  */
+.price {
+    font-size: 9pt;
+    color: rgba(119, 126, 92, 1);
+}
+
+.summa {
+    font-size: 12pt;
+    color: rgba(40, 49, 6, 1);
+}
+
+/* Кнопка +- */
+.quantity_inner * {
+    box-sizing: border-box;
+}
+
+.quantity_inner {
+    display: inline-flex;
+    border-radius: 25px;
+    border: 2px solid rgba(119, 126, 92, 1);
+}
+
+.quantity_inner .bt_minus,
+.quantity_inner .bt_plus,
+.quantity_inner .quantity {
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.quantity_inner .quantity {
+    width: 20px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(40, 49, 6, 1);
+}
+
+/* Кнопка оплатить */
+.cart-pay {
+    width: 350px;
+    border-style: none;
+    background-color: rgba(114, 121, 88, 1);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 25px;
+    color: rgba(214, 215, 210, 1)
+}
+
+.cart-pay:hover {
+    width: 350px;
+    border-style: none;
+    background-color: rgba(209, 216, 184, 1);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 25px;
+    color: rgba(40, 49, 6, 1);
+}
+
+.cart-total {
+    background-image: url(../images/fon-cart-total.png);
+    background-size: cover;
+    height: 720px;
+    padding-left: 150px;
+    position: sticky;
+    top: 0;
+}
+
+.cart-total-frame {
+    width: 350px;
+}
+/* Кнопка адреса и выбор доставки и оплаты */
+.input-address{
+    display: none;
+}
+
+.select-cart {
+    padding-bottom: 10px;
+
+}
+.select {
+    width: 300px;
+    height: 30px;
+    background: transparent;
+    border-radius: 15px;
+    border-color: rgba(114, 121, 88, 1);
+    color: rgba(40, 49, 6, 1);
+}
+
+.select option {
+     color: rgba(40, 49, 6, 1);
+    background: transparent;
+}
