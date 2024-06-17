@@ -26,20 +26,3 @@ $('.quantity_inner .quantity').bind("change keyup input click", function() {
 });
 
 
-$(document).ready(function() {
-
-$(".input-delivery").change(function() {
-    if(this.checked) {
-       $(".input-address").show();
-    }
-
-    else
-    {
-       $(".input-address").hide();
-    }
-})
-});
-
-// let list_delivery = ["Центральный": 300,
-
-// ];

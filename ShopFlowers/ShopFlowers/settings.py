@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'flowers.apps.FlowersConfig',
     'users.apps.UsersConfig',
     'cart.apps.CartConfig',
+    'order.apps.OrderConfig',
 ]
 
 MIDDLEWARE = [

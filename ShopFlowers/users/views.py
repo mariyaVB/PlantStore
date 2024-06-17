@@ -8,6 +8,7 @@ from django.views.generic import CreateView, UpdateView
 from ShopFlowers import settings
 from users.forms import LoginUserForm, RegisterUserForm, ProfileUserForm, PasswordChangeUserForm
 from django.http import Http404
+from order.models import Customer
 
 
 class LoginUser(LoginView):

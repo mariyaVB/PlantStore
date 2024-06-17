@@ -1,47 +1,85 @@
-function ajaxSend(url, params) {
-    fetch(`${url}?${params}`, {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    })
-    .then(response => response.json())
-    .then(json => render(json))
-    .catch(error => console.error(error))
-}
+//document.addEventListener('DOMContentLoaded', function() {
+//    const form = document.querySelector('form[name=filter]');
+//    const flowersList = document.getElementById('flowers-list-id');
+//
+//    form.addEventListener('submit', (event) => {
+//    event.preventDefault();
+//    const formData = new FormData(form);
+//    const urlParams = new URLSearchParams(formData);
+//    const url = form.action + '?' + urlParams.toString();
+//
+//    fetch(url)
+//        .then(response => response.json())
+//        .then(data => {
+//            renderProducts(data);
+//        })
+//        .catch(error => {
+//            console.error('Ошибка при отправке запроса:', error);
+//        });
+//    });
+//
+//        function renderProducts(products) {
+//            flowersList.innerHTML = '';
+//            products.forEach(product => {
+//                flowersList.innerHTML = `
+//                    <div class="flower">
+//                         <a href="/flower/${product.slug}/">
+//                             <img src="${product.image}" alt="${product.name}">
+//                         </a>
+//                         <div class="flower-detail">
+//                             <p class="p-text">${product.name}</p>
+//                             <p class="p-text">от ${product.price}₽</p>
+//                             ${product.quantity > 0 ?
+//                                 `<a href="/add-cart/${product.id}/" class="cart-button">Добавить в корзину</a>` :
+//                                 '<p style="margin: 5px;">Нет в наличии</p>'
+//                             }
+//                         </div>
+//                    </div>
+//                `;
+//            });
+//        }
 
-const forms = document.querySelector('form[name=filter]');
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('input[name=category]');
+    const flowersListContainer = document.getElementById('flowers-list-id');
 
-forms.addEventListener('submit', function (e) {
-    e.preventDefault();
-    let url = this.action;
-    let params = new URLSearchParams(new FormData(this)).toString();
-    ajaxSend(url, params);
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const urlParams = new URLSearchParams(formData);
+        const url = form.action + '?' + urlParams.toString();
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                renderProducts(data);
+            })
+            .catch(error => {
+                console.error('Ошибка при отправке запроса:', error);
+            });
+    });
+
+    function renderProducts(products) {
+        flowersListContainer.innerHTML = ''; // Очищаем контейнер
+
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.innerHTML = `
+                <div class="flower">
+                <a href="/flower/${product.slug}/">
+                    <img src="${product.image}" alt="${product.name}">
+                </a>
+                <div class="flower-detail">
+                    <p class="p-text">${product.name}</p>
+                    <p class="p-text">от ${product.price}₽</p>
+                    ${product.quantity > 0 ?
+                        `<a href="/add-cart/${product.id}/" class="cart-button">Добавить в корзину</a>` :
+                        '<p style="margin: 5px;">Нет в наличии</p>'
+                    }
+                </div>
+                </div>
+            `;
+            flowersListContainer.appendChild(productDiv);
+        });
+    }
 });
-
-function render(data) {
-    let template = Hogan.compile(html);
-    let output = template.render(data);
-    const div = document.querySelector('.flowers-list');
-    div.innerHTML = output;
-}
-
-let html = '\
-
-{{#flowers}}\
-    <a href="{% url 'flower' slug=flower.slug %}">\
-    <div class="flower">\
-        <img src="{{ flower.image.url }}">\
-        <div class="flower-detail">\
-            <p class="p-text">{{ flower.title }}</p>\
-            <p class="p-text">от {{ flower.price }}₽</p>\
-            {% if flower.quantity > 0 %}\
-                <button class="cart-button" type="submit">Добавить в корзину</button>\
-            {% else %}\
-                <p>Нет в наличии</p>\
-            {% endif %}\
-        </div>\
-    </div>\
-    </a>\
-{{/flowers}}'
-

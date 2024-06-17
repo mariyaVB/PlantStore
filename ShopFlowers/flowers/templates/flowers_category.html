@@ -32,16 +32,29 @@
                 </ul>
         </div>
 
-        <div class="flowers-list">
+<div class="flowers-list" id="flowers-list-id">
             {% for flower in flowers %}
-                <a href="{% url 'flower' slug=flower.slug %}">
-                    <div class="flower" style="border-color: rgba(45, 35, 89, 0.1)">
+                {% if flower.product == 'Комнатные растения' %}
+
+                <div class="flower">
+                    <a href="{% url 'flower' slug=flower.slug %}">
                         <img src="{{ flower.image.url }}">
-                        <p>{{ flower.title }}</p>
-                        <p>от {{ flower.price }}₽</p>
+                    </a>
+
+                    <div class="flower-detail">
+                        <p class="p-text">{{ flower.title }}</p>
+                        <p class="p-text">от {{ flower.price }}₽</p>
+                        {% if flower.quantity > 0 %}
+                            <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+                        {% else %}
+
+                            <p style="margin: 5px;">Нет в наличии</p>
+                        {% endif %}
                     </div>
-                </a>
-            {% endfor %}
+                </div>
+
+            {% endif %}
+        {% endfor %}
         </div>
     </section>
 

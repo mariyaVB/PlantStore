@@ -4,26 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots.">
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/cart/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/cart/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/flowers/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Создана модель корзины, написаны методы добавления товара в корзину, удаления товара из корзины, редактирование количества товаров в корзине.">
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers_category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -227,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718012035616</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Создана модель корзины, написаны методы добавления товара в корзину, удаления товара из корзины, редактирование количества товаров в корзине.">
+      <option name="closed" value="true" />
+      <created>1718292026435</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1718292026435</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -246,13 +251,14 @@
     <MESSAGE value="Оформлен профиль пользователя." />
     <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail." />
     <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots." />
+    <MESSAGE value="Создана модель корзины, написаны методы добавления товара в корзину, удаления товара из корзины, редактирование количества товаров в корзине." />
+    <option name="LAST_COMMIT_MESSAGE" value="Создана модель корзины, написаны методы добавления товара в корзину, удаления товара из корзины, редактирование количества товаров в корзине." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ShopFlowers/users/urls.py</url>
+          <url>file://$PROJECT_DIR$/ShopFlowers/users/forms.py</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

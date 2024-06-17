@@ -59,37 +59,21 @@
     <div class="cart-total">
         <div class="cart-total-frame">
             <h1  style="font-family: 'myFontMirra'; text-align: start; color: rgba(40, 49, 6, 1);">Оформление заказа</h1>
+            <form action="{% url 'make-order' %}" method="post">
+                {% csrf_token %}
+                {{ form.first_name }}
+                {{ form.last_name }}
+                {{ form.phone }}
+                {{ form.taking }}
+                {{ form.address }}
 
-            <div class="select-cart">
-                <p>Выберите способ получения</p>
-                <input type="checkbox" class="input-delivery">
-                <label>Доставка</label>
-                <input type="checkbox">
+                <div>
+                    <p>Количество товаров: {{ carts.total_quantity }} шт.</p>
+                    <p>Общая сумма: {{ carts.total_summ }} ₽</p>
+                </div>
 
-                <label>Самовывоз</label><br>
-                <input class="input-address" placeholder="Район доставки" type="text">
-                <input class="input-address" placeholder="Адрес доставки" type="text">
-            </div><hr>
-
-            <div class="select-cart">
-                <p>Выберите способ оплаты</p>
-                <input type="checkbox">
-                <label>Картой онлайн</label>
-                <input type="checkbox">
-                <label>В магазине на кассе</label>
-            </div><hr>
-
-            <div>
-                <p>Количество товаров: {{ carts.total_quantity }} шт.</p>
-                <p class="d">Доставка: </p>
-            </div>
-
-            <div>
-                <p>Общая сумма: {{ carts.total_summ }} ₽</p>
-            </div>
-
-            <button class="cart-pay">Оформить</button>
-
+                <button class="cart-pay">Оформить</button>
+            </form>
             
 
         </div>
