@@ -10,13 +10,27 @@ class CartQuerySet(models.QuerySet):
     def total_quantity(self):
         return sum(cart.quantity for cart in self)
 
+    def filter_status_cart(self):
+        return self.filter(status='in_cart')
+
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    flowers = models.ManyToManyField('Flowers', verbose_name='Растение')
-    # flowers = models.ForeignKey(Flowers, on_delete=models.CASCADE, verbose_name='Растение')
-    quantity = models.PositiveIntegerField(default=0)
+    STATUS_IN_CART = 'in_cart'
+    STATUS_ORDERED = 'ordered'
 
+    STATUS_CHOICES = (
+        (STATUS_IN_CART, 'В корзине'),
+        (STATUS_ORDERED, 'Заказано'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    flowers = models.ForeignKey(Flowers, on_delete=models.CASCADE, verbose_name='Растение', null=True)
+    quantity = models.PositiveIntegerField(default=0, verbose_name='Количество')
+    status = models.CharField(max_length=20,
+                              verbose_name='Статус корзины',
+                              choices=STATUS_CHOICES,
+                              default=STATUS_IN_CART
+                              )
     objects = CartQuerySet.as_manager()
 
     class Meta:

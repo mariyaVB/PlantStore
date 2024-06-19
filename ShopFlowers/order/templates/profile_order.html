@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}" />
+    <title>Мои покупки</title>
+{% endblock head_title %}
+
+{% block base_content %}
+<section class="popup">
+    <div class="menu_profile">
+        <div class="menu">
+            <ul>
+                <li><a href="{% url 'profile' %}" class="bt-my-profile">Настройки</a></li>
+                <li>
+                    <a class="bt-my-orders" style="background-color: rgba(202, 208, 183, 0.6); border: 1px solid rgba(114, 121, 88, 1);">
+                        Мои покупки
+                    </a>
+                </li>
+                <li><a class="bt-my-feedback">Мои отзывы</a></li>
+                <li><a class="bt-my-like">Избранное</a></li>
+                <li><a class="bt-my-cart">Корзина</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="overlay">
+            {% if user.photo %}
+            <div class="name-photo">
+                <div class="bt-user-change">
+                    <img class="user-photo" src="{{ user.photo.url }}">
+                    <p class="photo-change">{{ form.photo }}</p>
+                </div>
+                <h2 class="user-name">{{ user.username }}</h2>
+            </div>
+            {% else %}
+            <div class="name-photo">
+                <div class="bt-user-change">
+                    <img class="user-photo" src="{{ default_image.url }}">
+                    <p class="photo-change">{{ form.photo }}</p>
+                </div>
+                <h2 class="user-name">{{ user.username }}</h2>
+            </div>
+            {% endif %}
+
+        <div class="orders">
+            <table class="list-orders">
+                <thead class="order">
+                    <tr>
+                        <th>Номер заказа</th>
+                        <th>Дата заказа</th>
+                        <th>Количество товаров</th>
+                        <th>Сумма заказа</th>
+                        <th>Товары</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.create_order }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>{{ order.summa }}₽</td>
+                        {% for cart in order.cart.all %}
+                        <td><img src="{{ cart.flowers.image.url }}" width="60px" height="70px"></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <nav class="list-pages">
+            <ul>
+                {% for page in paginator.page_range %}
+                <li class="page-num">
+                    <a href="?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+    </div>
+</section>
+
+{% endblock base_content %}

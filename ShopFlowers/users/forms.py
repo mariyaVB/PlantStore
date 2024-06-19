@@ -54,7 +54,6 @@ class ProfileUserForm(forms.ModelForm):
         labels = {
             'first_name': 'Имя',
             'last_name': 'Фамилия',
-
         }
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-input-profile'}),

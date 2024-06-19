@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, request
 from django.shortcuts import render, redirect
 from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import ListView
 from .models import Cart
 from users.models import User
 from flowers.models import Flowers
@@ -12,13 +12,12 @@ from order.forms import OrderForm
 class CartShow(ListView):
     model = Cart
     template_name = 'cart.html'
-    context_object_name = 'carts'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         cart = Cart.objects.filter(user=self.request.user)
         form = OrderForm
-        context['carts'] = cart
+        context['carts'] = cart.filter_status_cart()
         context['form'] = form
         return context
 

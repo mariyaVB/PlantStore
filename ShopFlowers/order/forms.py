@@ -1,9 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.http import request
-
 from order.models import Customer, Order
-from users.models import User
 
 
 class OrderForm(forms.ModelForm):

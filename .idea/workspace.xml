@@ -4,22 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Создана модель корзины, написаны методы добавления товара в корзину, удаления товара из корзины, редактирование количества товаров в корзине.">
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Создано приложение order, модель заказов и форма, написаны функции представления.">
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers_category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,12 +29,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -53,7 +57,7 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Study/Комнатные_растения/ShopFlowers/flowers/static/images&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
@@ -232,8 +236,35 @@
       <option name="project" value="LOCAL" />
       <updated>1718292026435</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Создано приложение order, модель заказов и форма, написаны функции представления.">
+      <option name="closed" value="true" />
+      <created>1718645045915</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1718645045915</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Создано приложение order, модель заказов и форма, написаны функции представления.">
+      <option name="closed" value="true" />
+      <created>1718645096524</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1718645096524</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Начало проекта. Создана приложение flowers отвечающее за отображение товаров на странице и все взаимодействия с ними. Зарегистрирована модель Цветы и Категория." />
@@ -252,7 +283,8 @@
     <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail." />
     <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots." />
     <MESSAGE value="Создана модель корзины, написаны методы добавления товара в корзину, удаления товара из корзины, редактирование количества товаров в корзине." />
-    <option name="LAST_COMMIT_MESSAGE" value="Создана модель корзины, написаны методы добавления товара в корзину, удаления товара из корзины, редактирование количества товаров в корзине." />
+    <MESSAGE value="Создано приложение order, модель заказов и форма, написаны функции представления." />
+    <option name="LAST_COMMIT_MESSAGE" value="Создано приложение order, модель заказов и форма, написаны функции представления." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

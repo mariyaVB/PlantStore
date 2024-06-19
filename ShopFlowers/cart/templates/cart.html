@@ -60,13 +60,14 @@
         <div class="cart-total-frame">
             <h1  style="font-family: 'myFontMirra'; text-align: start; color: rgba(40, 49, 6, 1);">Оформление заказа</h1>
             <form action="{% url 'make-order' %}" method="post">
+                {{ form.non_field_errors }}
                 {% csrf_token %}
                 {{ form.first_name }}
                 {{ form.last_name }}
                 {{ form.phone }}
                 {{ form.taking }}
                 {{ form.address }}
-
+                {{ form.errors }}
                 <div>
                     <p>Количество товаров: {{ carts.total_quantity }} шт.</p>
                     <p>Общая сумма: {{ carts.total_summ }} ₽</p>

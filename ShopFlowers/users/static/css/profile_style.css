@@ -37,10 +37,14 @@
 
 .menu-profile {
     margin: 10px 0 10px 50px;
-    width: 500px;
+
     height: 700px;
     padding: 50px;
 	text-align: center;
+}
+
+.menu {
+    width: 165px;
 }
 
 .overlay {
@@ -135,34 +139,24 @@ span {
     cursor: pointer;
 }
 
-
-.popup-my-orders {
-    display: none;
-}
-
-.popup-my-feedback {
-    display: none;
-}
-
-.popup-my-like {
-    display: none;
-}
-
-.popup-my-cart {
-    display: none;
-}
-
-li {
+.bt-my-profile, .bt-my-orders, .bt-my-feedback,
+.bt-my-like, .bt-my-cart {
+    border-radius: 10px;
     padding: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(40, 49, 6, 1);
 }
 
 .bt-my-profile:hover, .bt-my-orders:hover, .bt-my-feedback:hover,
 .bt-my-like:hover, .bt-my-cart:hover {
     border: 1px solid rgba(114, 121, 88, 1);
     border-radius: 10px;
-    background-color: rgba(114, 121, 88, 1);
-    padding: 5px;
     cursor: pointer;
+}
+
+li {
+    padding: 10px;
 }
 
 li:nth-child(1)::marker {
@@ -206,5 +200,17 @@ li:nth-child(5)::marker {
 }
 
 
+
+
+/* ORDER */
+.list-orders {
+    margin-top: 50px;
+}
+
+.order {
+    
+    border: 2px solid rgba(114, 121, 88, 1);
+    border-radius: 5px;
+}
 
 

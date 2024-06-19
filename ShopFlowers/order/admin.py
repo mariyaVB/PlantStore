@@ -11,6 +11,6 @@ class CustomerAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'cart', 'phone', 'address', 'status', 'taking', 'create_order', 'ending_order')
-    list_display_links = ('id', 'cart', 'user')
+    list_display = ('id', 'user', 'phone', 'address', 'status', 'quantity', 'summa', 'taking', 'create_order', 'ending_order')
+    list_display_links = ('id', 'user')
     verbose_name = 'Заказы'
