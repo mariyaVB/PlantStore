@@ -36,20 +36,19 @@
 }
 
 .menu-profile {
-    margin: 10px 0 10px 50px;
-
-    height: 700px;
-    padding: 50px;
-	text-align: center;
+    margin: 10px 0 0 20px;
+	text-align: start;
+    border-radius: 10px;
+    box-shadow: 30px 10px 40px  rgba(114, 121, 88, 0.3);
 }
 
 .menu {
-    width: 165px;
+    width: 200px;
 }
 
 .overlay {
-    margin: 10px 0 0 150px;
-	width: 1100px;
+    margin: 10px 0 0 50px;
+	width: 1150px;
 	padding: 50px;
 	text-align: center;
 	background-image: url(../images/profile-hat.jpg);
@@ -73,7 +72,7 @@
     align-content: end;
 }
 
-span {
+.label-form {
     font-size: 10pt;
     color: rgba(88, 88, 88, 1);
     height: 5px;
@@ -153,6 +152,7 @@ span {
     border: 1px solid rgba(114, 121, 88, 1);
     border-radius: 10px;
     cursor: pointer;
+    color: rgba(40, 49, 6, 1);
 }
 
 li {
@@ -181,12 +181,6 @@ li:nth-child(4)::marker {
     content: url(../icons/icon-favorite.png);
 }
 
-li:nth-child(5)::marker {
-    width: 20px;
-    height: 20px;
-    content: url(../icons/icon-cart.png);
-}
-
 .photo-change {
     display: none;
     position: absolute;
@@ -203,14 +197,121 @@ li:nth-child(5)::marker {
 
 
 /* ORDER */
-.list-orders {
-    margin-top: 50px;
+.orders {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 50px;
 }
 
 .order {
-    
-    border: 2px solid rgba(114, 121, 88, 1);
-    border-radius: 5px;
+    height: 310px;
+    background: rgba(234, 233, 229, 1);
+    border-radius: 10px;
+    box-shadow: 20px 10px 20px  rgba(114, 121, 88, 0.1);
 }
 
+.order-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 10px 0 10px 0;
+}
 
+.info-left {
+    margin: 0 0 0 10px;
+    justify-self: start;
+}
+
+.info-right {
+    margin: 0 10px 0 0;
+    justify-self: end;
+}
+
+.date-p, .id-p, .summa-p {
+    margin: 0;
+    font-size: 10pt;
+    color: rgba(88, 88, 88, 1);
+}
+
+.status-p {
+    margin: 0;
+    font-size: 10pt;
+    color: rgba(88, 88, 88, 1);
+    border-radius: 25px;
+    border: 1px solid rgba(114, 121, 88, 1);
+    background: rgba(209, 216, 184, 1);
+    padding: 0 15px 0 15px;
+}
+
+.order-img {
+    height: 210px;
+}
+.order-img-6, .order-img-7-12-slice-one, .order-img-7-12-slice-two {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    height: 190px;
+}
+
+.more, .many {
+    border: none;
+    background: transparent;
+    color: rgba(88, 88, 88, 1);
+    font-size: 6pt;
+}
+
+.order-cart {
+    position: relative; 
+    display: inline;
+}
+  
+.order-cart-quantity {
+    position: absolute;
+    right: 10px;
+    border: 1px solid rgba(114, 121, 88, 1);
+    background: rgba(209, 216, 184, 1);
+    color: rgba(88, 88, 88, 1);
+    border-radius: 50%; 
+    padding: 5px 8px;
+    font-size: 8px;
+}
+
+.bt-rating, .bt-cancel {
+    width: 150px;
+    border: 1px solid rgba(114, 121, 88, 1);
+    border-radius: 10px;
+    cursor: pointer;
+    background: rgba(209, 216, 184, 1);
+    a {
+        text-decoration: none;
+        color: rgba(40, 49, 6, 1);
+    }
+}
+
+.bt-rating:hover, .bt-cancel:hover {
+    width: 150px;
+    border: 1px solid rgba(209, 216, 184, 1);
+    border-radius: 10px;
+    cursor: pointer;
+    background: rgba(114, 121, 88, 1);
+    a {
+        text-decoration: none;
+        color: rgba(209, 216, 184, 1);
+    }
+}
+
+/* Пагинация */
+
+.list-pages {
+    display: inline;
+    padding: 0 15px 0 15px;
+    color: rgba(40, 49, 6, 1);
+    font-family: 'myFontMirra';
+    font-weight: bold;
+}
+
+.list-pages a {
+    text-decoration: none;
+    color: rgba(40, 49, 6, 1);
+    font-size: 10pt;
+}

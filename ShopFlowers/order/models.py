@@ -16,19 +16,19 @@ class Customer(models.Model):
 
 
 class Order(models.Model):
-    STATUS_NEW = 'new'
-    STATUS_IN_PROGRESS = 'in_progress'
-    STATUS_IS_READY = 'is_ready'
-    STATUS_COMPLETED = 'completed'
+    STATUS_NEW = 'Создан'
+    STATUS_IN_PROGRESS = 'В обработке'
+    STATUS_IS_READY = 'Готов'
+    STATUS_COMPLETED = 'Выполнен'
 
-    TAKING_TYPE_SELF = 'self'
-    TAKING_TYPE_DELIVERY = 'delivery'
+    TAKING_TYPE_SELF = 'Самовывоз'
+    TAKING_TYPE_DELIVERY = 'Доставка'
 
     STATUS_CHOICES = (
-        (STATUS_NEW, 'Новый заказ'),
-        (STATUS_IN_PROGRESS, 'Заказ в обработке'),
-        (STATUS_IS_READY, 'Заказ готов'),
-        (STATUS_COMPLETED, 'Заказ выполнен')
+        (STATUS_NEW, 'Создан'),
+        (STATUS_IN_PROGRESS, 'В обработке'),
+        (STATUS_IS_READY, 'Готов'),
+        (STATUS_COMPLETED, 'Выполнен')
     )
 
     TAKING_TYPE_CHOICES = (

@@ -9,7 +9,7 @@
 
 {% block base_content %}
 <section class="popup">
-    <div class="menu_profile">
+    <div class="menu-profile">
         <div class="menu">
             <ul>
                 <li><a href="{% url 'profile' %}" class="bt-my-profile">Настройки</a></li>
@@ -20,7 +20,6 @@
                 </li>
                 <li><a class="bt-my-feedback">Мои отзывы</a></li>
                 <li><a class="bt-my-like">Избранное</a></li>
-                <li><a class="bt-my-cart">Корзина</a></li>
             </ul>
         </div>
     </div>
@@ -45,44 +44,74 @@
             {% endif %}
 
         <div class="orders">
-            <table class="list-orders">
-                <thead class="order">
-                    <tr>
-                        <th>Номер заказа</th>
-                        <th>Дата заказа</th>
-                        <th>Количество товаров</th>
-                        <th>Сумма заказа</th>
-                        <th>Товары</th>
-                    </tr>
-                </thead>
+            {% for order in orders %}
+                <div class="order">
+                    <div class="order-info">
+                        <div class="info-left">
+                            <p  class="date-p">{{ order.create_order|date:"d M" }}</p>
+                            <p class="id-p"> Заказ {{ order.id }}</p>
+                        </div>
+                        
+                         <div class="info-right">
+                            <p class="status-p"> {{ order.status }}</p>
+                            <p class="summa-p">{{ order.summa }}₽</p>
+                         </div>
+                    </div>
+                    
+                    <div class="order-img">
+                        {% if order.cart.count <= 6 %}
+                        <div class="order-img-6">
+                            {% for cart in order.cart.all %}
+                                <div class="order-cart">
+                                    <span class="order-cart-quantity">{{ cart.quantity }}</span>
+                                    <img src="{{ cart.flowers.image.url }}" width="70px" height="90px">
+                                </div>
+                            {% endfor %}
+                        </div>
 
-                <tbody>
-                {% for order in orders %}
-                    <tr>
-                        <td>{{ order.id }}</td>
-                        <td>{{ order.create_order }}</td>
-                        <td>{{ order.quantity }}</td>
-                        <td>{{ order.summa }}₽</td>
-                        {% for cart in order.cart.all %}
-                        <td><img src="{{ cart.flowers.image.url }}" width="60px" height="70px"></td>
-                        {% endfor %}
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                        {% else %}
+                        <div class="order-img-7-12-slice-one">
+                            {% for cart in order.cart.all|slice:"0:6" %}
+                                <div class="order-cart">
+                                    <span class="order-cart-quantity">{{ cart.quantity }}</span>
+                                    <img src="{{ cart.flowers.image.url }}" width="70px" height="90px">
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="order-img-7-12-slice-two" style="display: none;">
+                            {% for cart in order.cart.all|slice:"7:" %}
+                                <div class="order-cart">
+                                    <span class="order-cart-quantity">{{ cart.quantity }}</span>
+                                    <img src="{{ cart.flowers.image.url }}" width="70px" height="90px">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <button class="many" style="display: none;">&#9668;</button>
+                        <button class="more">&#9658;</button><br>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="order-bt">
+                        <button class="bt-rating"><a href="#">Оценить товары</a></button><br>
+                        {% if order.status != Выполнен %}
+                            <button class="bt-cancel"><a href="#">Отменить заказ</a></button>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
         </div>
 
         <nav class="list-pages">
-            <ul>
                 {% for page in paginator.page_range %}
-                <li class="page-num">
                     <a href="?page={{ page }}">{{ page }}</a>
-                </li>
                 {% endfor %}
-            </ul>
+
         </nav>
 
     </div>
 </section>
 
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="{% static 'js/user.js' %}"></script>
 {% endblock base_content %}

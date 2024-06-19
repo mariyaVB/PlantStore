@@ -37,7 +37,7 @@ class MakeOrderView(View):
                 flowers.save()
 
             for el_cart in cart:
-                el_cart.status = 'ordered'
+                el_cart.status = 'Оформлен'
                 el_cart.save()
 
             return HttpResponseRedirect(reverse_lazy('main'))

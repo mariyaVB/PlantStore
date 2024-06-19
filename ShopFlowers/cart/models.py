@@ -11,16 +11,16 @@ class CartQuerySet(models.QuerySet):
         return sum(cart.quantity for cart in self)
 
     def filter_status_cart(self):
-        return self.filter(status='in_cart')
+        return self.filter(status='В корзине')
 
 
 class Cart(models.Model):
-    STATUS_IN_CART = 'in_cart'
-    STATUS_ORDERED = 'ordered'
+    STATUS_IN_CART = 'В корзине'
+    STATUS_ORDERED = 'Оформлен'
 
     STATUS_CHOICES = (
         (STATUS_IN_CART, 'В корзине'),
-        (STATUS_ORDERED, 'Заказано'),
+        (STATUS_ORDERED, 'Оформлен'),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')

@@ -9,7 +9,7 @@
 
 {% block base_content %}
 <section class="popup">
-    <div class="menu_profile">
+    <div class="menu-profile">
         <div class="menu">
             <ul>
                 <li>
@@ -20,7 +20,6 @@
                 <li><a href="{% url 'order-profile' %}" class="bt-my-orders">Мои покупки</a></li>
                 <li><a class="bt-my-feedback">Мои отзывы</a></li>
                 <li><a class="bt-my-like">Избранное</a></li>
-                <li><a class="bt-my-cart">Корзина</a></li>
             </ul>
         </div>
     </div>
@@ -50,18 +49,18 @@
             <div class="form-grid">
                 <div class="form-1">
                     <div class="form-error">{{ form.non_field_errors }}</div>
-                    <span>{{ form.username.label }}:</span><br><p>{{ form.username }}</p>
-                    <span>{{ form.email.label }}:</span><br><p>{{ form.email }}</p>
-                    <span><label>Изменить пароль:</label></span><br><br>
+                    <span class="label-form">{{ form.username.label }}:</span><br><p>{{ form.username }}</p>
+                    <span class="label-form">{{ form.email.label }}:</span><br><p>{{ form.email }}</p>
+                    <span class="label-form"><label>Изменить пароль:</label></span><br><br>
                     <a href="{% url 'password-change' %}"><button type="button" class="btn-p">********</button></a>
                     <div class="form-error">{{ form.errors }}</div>
                 </div>
 
                 <div class="form-2">
                     <div class="form-error">{{ form.non_field_errors }}</div>
-                    <span>{{ form.first_name.label }}:</span><br><p>{{ form.first_name }}</p>
-                    <span>{{ form.last_name.label }}:</span><br><p>{{ form.last_name }}</p>
-                    <span>{{ form.date_birth.label }}:</span><br><p>{{ form.date_birth }}</p>
+                    <span class="label-form">{{ form.first_name.label }}:</span><br><p>{{ form.first_name }}</p>
+                    <span class="label-form">{{ form.last_name.label }}:</span><br><p>{{ form.last_name }}</p>
+                    <span class="label-form">{{ form.date_birth.label }}:</span><br><p>{{ form.date_birth }}</p>
                     <div class="form-error">{{ form.errors }}</div>
                 </div>
             </div>
