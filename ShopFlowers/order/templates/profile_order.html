@@ -95,18 +95,25 @@
                     <div class="order-bt">
                         <button class="bt-rating"><a href="#">Оценить товары</a></button><br>
                         {% if order.status != Выполнен %}
-                            <button class="bt-cancel"><a href="#">Отменить заказ</a></button>
+                            <button class="bt-cancel"><a href="{% url 'cancel-order' order.id %}">Отменить заказ</a></button>
                         {% endif %}
                     </div>
                 </div>
             {% endfor %}
         </div>
 
-        <nav class="list-pages">
-                {% for page in paginator.page_range %}
-                    <a href="?page={{ page }}">{{ page }}</a>
+        {% if messages %}
+           <div class="messages">
+               {% for message in messages %}
+                    <span class="massages-text">{{ message }}</span>
                 {% endfor %}
+           </div>
+        {% endif %}
 
+        <nav class="list-pages">
+            {% for page in paginator.page_range %}
+                <a href="?page={{ page }}">{{ page }}</a>
+            {% endfor %}
         </nav>
 
     </div>

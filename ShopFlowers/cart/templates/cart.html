@@ -15,7 +15,15 @@
     </div>
 
 <section class="cart">
+
     <div class="cart-product">
+            {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <span class="massages-text">{{ message }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
         {% if carts %}
             <h2 style="font-family: 'myFontMirra'; text-align: center; color: rgba(40, 49, 6, 1);">Корзина</h2>
             {% for cart in carts %}
@@ -59,7 +67,7 @@
     <div class="cart-total">
         <div class="cart-total-frame">
             <h1  style="font-family: 'myFontMirra'; text-align: start; color: rgba(40, 49, 6, 1);">Оформление заказа</h1>
-            <form action="{% url 'make-order' %}" method="post">
+            <form action="{% url 'add-order' %}" method="post">
                 {{ form.non_field_errors }}
                 {% csrf_token %}
                 {{ form.first_name }}

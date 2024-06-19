@@ -187,3 +187,14 @@
     color: rgba(40, 49, 6, 1);
     background: rgba(40, 49, 6, 0.3);
 }
+
+
+/* Сообщение об отмене */
+.messages {
+    background: rgba(209, 216, 184, 0.3);
+    border-radius: 15px;
+}
+
+.messages-text {
+    color: rgba(40, 49, 6, 1);
+}

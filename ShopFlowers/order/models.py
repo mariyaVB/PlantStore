@@ -20,6 +20,7 @@ class Order(models.Model):
     STATUS_IN_PROGRESS = 'В обработке'
     STATUS_IS_READY = 'Готов'
     STATUS_COMPLETED = 'Выполнен'
+    STATUS_CANCEL = 'Отменен'
 
     TAKING_TYPE_SELF = 'Самовывоз'
     TAKING_TYPE_DELIVERY = 'Доставка'
@@ -28,7 +29,8 @@ class Order(models.Model):
         (STATUS_NEW, 'Создан'),
         (STATUS_IN_PROGRESS, 'В обработке'),
         (STATUS_IS_READY, 'Готов'),
-        (STATUS_COMPLETED, 'Выполнен')
+        (STATUS_COMPLETED, 'Выполнен'),
+        (STATUS_CANCEL, 'Отменен')
     )
 
     TAKING_TYPE_CHOICES = (
