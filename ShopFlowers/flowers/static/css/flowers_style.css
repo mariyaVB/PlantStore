@@ -6,7 +6,7 @@ a {
 
 .breadcrumb {
     background-image: url(../images/fon-flowers2.png);
-    padding: 5px 0 5px 295px;
+    padding: 5px 0 5px 365px;
 }
 
 .breadcrumb ul {
@@ -38,7 +38,7 @@ a {
 }
 
 .category-list span {
-    text-color: rgba(45, 44, 44, 1);
+    color: rgba(45, 44, 44, 1);
     font-family: 'myFontMirra';
     font-size: 30pt;
     display: inline-block;
@@ -59,6 +59,8 @@ a {
 
 .hello-text .p1 {
     text-align: center;
+    font-family: 'myFontMirra';
+    font-size: 60pt;
 }
 
 .shop {
@@ -154,4 +156,31 @@ a {
     color: rgba(40, 49, 6, 1);
     font-family: 'myFontMirra';
     font-weight: bold;
+}
+
+.list-cat {
+    margin-left: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+/* .cat-plant { */
+    /* width: 340px;
+    height: 20px; */
+    /* border: 1px solid rgba(114, 121, 88, 1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: none;
+    padding-top: 5px;
+    text-align: center;
+    color: rgba(40, 49, 6, 1); */
+/* } */
+
+.cat-plant, .cat-pots, .cat-care {
+    width: 340px;
+    height: 20px;
+    padding-top: 5px;
+    text-align: center;
+    color: rgba(40, 49, 6, 1);
 }

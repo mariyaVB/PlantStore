@@ -68,8 +68,17 @@
         <div class="cart-total-frame">
             <h1  style="font-family: 'myFontMirra'; text-align: start; color: rgba(40, 49, 6, 1);">Оформление заказа</h1>
             <form action="{% url 'add-order' %}" method="post">
-                {{ form.non_field_errors }}
                 {% csrf_token %}
+                {% if form.errors %}
+                    <div class="errors">
+                        {% for form_order in form %}
+                            {% for error in form_order.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
                 {{ form.first_name }}
                 {{ form.last_name }}
                 {{ form.phone }}
@@ -83,8 +92,6 @@
 
                 <button class="cart-pay">Оформить</button>
             </form>
-            
-
         </div>
     </div>
 </section>

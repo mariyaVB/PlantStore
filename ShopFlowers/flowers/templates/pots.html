@@ -2,7 +2,7 @@
 {% load static %}
 {% block head_title %}
     <link rel="stylesheet" href="{% static 'css/flowers_style.css' %}" />
-    <title>Комнатные растения</title>
+    <title>Горшки и кашпо</title>
 {% endblock head_title %}
 
 {% block base_content %}
@@ -11,13 +11,12 @@
         <div class="hello-text">
             <p class="p1">Каталог</p>
             <div class="list-cat">
-                <div class="cat-plant" style="
-                    border: 1px solid rgba(114, 121, 88, 1);
-                    border-top-left-radius: 20px;
-                    border-top-right-radius: 20px;
-                    border-bottom: none;"><a href="{% url 'flowers' %}">Комнатные растения</a></div>
+                <div class="cat-plant" style="border-bottom: 1px solid rgba(114, 121, 88, 1);"><a href="{% url 'flowers' %}">Комнатные растения</a></div>
 
-                <div class="cat-pots" style="border-bottom: 1px solid rgba(114, 121, 88, 1);"><a href="{% url 'pots' %}">Горшки и кашпо</a></div>
+                <div class="cat-pots" style="border: 1px solid rgba(114, 121, 88, 1);border-top-left-radius: 20px;
+                                            border-top-right-radius: 20px;border-bottom: none;">
+                    <a href="{% url 'pots' %}">Горшки и кашпо</a>
+                </div>
 
                 <div class="cat-care" style="border-bottom: 1px solid rgba(114, 121, 88, 1);"><a href=#>Уход за растениями</a></div>
             </div>
@@ -27,7 +26,7 @@
     <div class="breadcrumb">
         <ul>
             <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
-            <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Комнатные растения /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Горшки и кашпо /</a></li>
         </ul>
     </div>
 
@@ -64,24 +63,25 @@
         </div>
 
         <div class="flowers-list" id="flowers-list-id">
-            {% for flower in flowers %}
-                <div class="flower">
-                    <a href="{% url 'flower' slug=flower.slug %}">
-                        <img src="{{ flower.image.url }}">
-                    </a>
+            {% for pot in pots %}
 
-                    <div class="flower-detail">
-                        <p class="p-text">{{ flower.title }}</p>
-                        <p class="p-text">от {{ flower.price }}₽</p>
-                        {% if flower.quantity > 0 %}
-                            <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
-                        {% else %}
+                    <div class="flower">
+                        <a href="{% url 'flower' slug=pot.slug %}">
+                            <img src="{{ pot.image.url }}">
+                        </a>
 
-                            <p style="margin: 5px;">Нет в наличии</p>
-                        {% endif %}
+                        <div class="flower-detail">
+                            <p class="p-text">{{ pot.title }}</p>
+                            <p class="p-text">от {{ pot.price }}₽</p>
+                            {% if pot.quantity > 0 %}
+                                <a href="{% url 'add-cart' pot.id %}" class="cart-button">Добавить в корзину</a>
+                            {% else %}
+                                <p style="margin: 5px;">Нет в наличии</p>
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-        {% endfor %}
+
+            {% endfor %}
         </div>
 
         <nav class="list-pages">
@@ -93,7 +93,6 @@
                 {% endfor %}
             </ul>
         </nav>
-
     </section>
 
 

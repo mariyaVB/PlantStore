@@ -1,14 +1,11 @@
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 from ShopFlowers import settings
 from users.forms import LoginUserForm, RegisterUserForm, ProfileUserForm, PasswordChangeUserForm
 from django.http import Http404
-from order.models import Order
 
 
 class LoginUser(LoginView):
@@ -36,7 +33,6 @@ class RegisterUser(CreateView):
         return reverse_lazy('login')
 
 
-# @login_required
 class ProfileUser(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = ProfileUserForm

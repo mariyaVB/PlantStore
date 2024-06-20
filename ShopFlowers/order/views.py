@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, Http404, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.db import transaction
-from django.template.context_processors import request
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView
@@ -39,15 +38,14 @@ class AddOrderView(View):
                 for el_cart in cart:
                     flowers = el_cart.flowers
                     flowers.quantity -= el_cart.quantity
-                    flowers.save()
-
-                for el_cart in cart:
                     el_cart.status = 'Оформлен'
-                    el_cart.save()
+                    flowers.save()
 
                 return HttpResponseRedirect(reverse_lazy('order-profile'))
         except:
-            raise Http404('Not Found')
+            raise Http404('Ошибка при создании заказа')
+
+        messages.add_message(request, messages.SUCCESS, 'Ваша корзина пуста или форма заполнена неправильно.')
         return HttpResponseRedirect(reverse_lazy('cart'))
 
 

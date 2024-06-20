@@ -1,16 +1,15 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.http import Http404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView
 from .models import Cart
-from users.models import User
 from flowers.models import Flowers
 from order.forms import OrderForm
 
 
-class CartShow(ListView):
+class CartShow(LoginRequiredMixin, ListView):
     model = Cart
     template_name = 'cart.html'
 
@@ -24,14 +23,14 @@ class CartShow(ListView):
 
             return context
         except:
-            raise Http404('Not Found')
+            raise Http404('Корзины не найдены')
 
 
 class AddCartView(View):
     def get(self, request, product_id):
-        product = Flowers.objects.get(id=product_id)
-        cart = Cart.objects.filter(user=self.request.user, flowers=product)
         try:
+            product = Flowers.objects.get(id=product_id)
+            cart = Cart.objects.filter(user=self.request.user, flowers=product)
             if not cart.exists():
                 Cart.objects.create(user=self.request.user, flowers=product, quantity=1)
             else:
@@ -40,8 +39,8 @@ class AddCartView(View):
                 cart.save()
 
             return redirect(request.META['HTTP_REFERER'])
-        except:
-            raise Http404('Not Found')
+        except product.DoesNotExist:
+            raise Http404('Товар не найден')
 
 
 class RemoveCartView(View):
@@ -52,8 +51,8 @@ class RemoveCartView(View):
             messages.add_message(request, messages.SUCCESS, 'Товар удален из корзины.')
 
             return redirect(request.META['HTTP_REFERER'])
-        except:
-            raise Http404('Not Found')
+        except cart.DoesNotExist:
+            raise Http404('Ошибка при удалении корзины')
 
 
 class ChangeCartView(View):
@@ -66,8 +65,8 @@ class ChangeCartView(View):
             self.object.sum_cart()
 
             return redirect(request.META['HTTP_REFERER'])
-        except:
-            raise Http404('Not Found')
+        except self.object.DoesNotExist:
+            raise Http404('Ошибка при изменении количества товара в корзине')
 
 
 

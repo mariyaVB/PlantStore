@@ -18,6 +18,7 @@ class MainPage(TemplateView):
 
 class FlowersView(ListView):
     model = Flowers
+    queryset = Flowers.objects.filter(product='Комнатные растения')
     template_name = 'flowers.html'
     context_object_name = 'flowers'
     paginate_by = 12
@@ -25,7 +26,6 @@ class FlowersView(ListView):
     def get_category(self):
         try:
             return Category.objects.all()
-
         except:
             raise Http404('Not Found')
     # def get_context_data(self, **kwargs):
@@ -35,6 +35,16 @@ class FlowersView(ListView):
     #         context['categories'] = categories
     #         return context
 
+
+class PotsView(ListView):
+    model = Flowers
+    queryset = Flowers.objects.filter(product='Горшки')
+    template_name = 'pots.html'
+    context_object_name = 'pots'
+    paginate_by = 12
+
+    def get_category(self):
+        return Category.objects.all()
 
 
 class FilterFlowersView(FlowersView, ListView):
