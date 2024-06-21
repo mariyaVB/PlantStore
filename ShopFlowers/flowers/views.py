@@ -1,3 +1,5 @@
+import random
+
 from django.db.models import Q
 from django.shortcuts import render
 from django.http import Http404, JsonResponse
@@ -47,6 +49,17 @@ class PotsView(ListView):
         return Category.objects.all()
 
 
+class CareView(ListView):
+    model = Flowers
+    queryset = Flowers.objects.filter(product='Уход')
+    template_name = 'care.html'
+    context_object_name = 'cares'
+    paginate_by = 12
+
+    def get_category(self):
+        return Category.objects.all()
+
+
 class FilterFlowersView(FlowersView, ListView):
     def get_queryset(self):
         flowers = Flowers.objects.filter(
@@ -64,11 +77,14 @@ class FlowerDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        flower = Flowers.objects.get(slug=self.kwargs['slug'])
         try:
+            flower = Flowers.objects.get(slug=self.kwargs['slug'])
+            assortments = Flowers.objects.all()
+            random_assortments = random.sample(list(assortments), len(assortments))
             category = Category.objects.get(title=flower.category)
             context['category'] = category
             context['flower'] = flower
+            context['assortments'] = random_assortments
 
             return context
         except:

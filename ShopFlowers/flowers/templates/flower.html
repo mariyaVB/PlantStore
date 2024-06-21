@@ -2,10 +2,13 @@
 {% load static %}
 {% block head_title %}
     <link rel="stylesheet" href="{% static 'css/flower_style.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <title>{{ flower.title }}</title>
 {% endblock head_title %}
 
 {% block base_content %}
+<section class="fon">
 <div class="breadcrumb">
     <ul>
         <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
@@ -22,7 +25,8 @@
 
     <div class="flower-property">
         <p class="flower-title">{{ flower.title }}</p>
-        <p>{{ flower.price }}₽</p>
+        <p class="flower-text">{{ flower.text }}</p>        
+        <p style="font-family: 'myFontMirra';">{{ flower.price }}₽</p>
         {% if flower.quantity > 0 %}
             <p>В наличии</p>
         {% else %}
@@ -33,14 +37,33 @@
         </div>
     </div>
 
-    <p class="flower-text">{{ flower.text }}</p>
+
 </section>
 
-<section class="trade">
-    <h1>Вам может понравиться:</h1>
-    <h1>Тут будет подборка сопутствующий товаров</h1>
+<section>ОТЗЫВЫ</section>
+<section class="carousel">
+    <h1 style="font-family:'myFontMirra'; text-align: center;">Вам может понадобиться:</h1>
+    <div class="list-assortment">
+        {% for assortment in assortments %}
+            {% if assortment.product != flower.product %}
+                {% if assortment.category.title == 'Универсальный' or assortment.category == flower.category %}
+                    <a  href="{% url 'flower' slug=assortment.slug %}">
+                        <div class="assortment">
+                            <img src="{{ assortment.image.url }}" width="150px" height="150px">
+                        </div>
+                    </a>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <div class="assortment-control">
+        <button class="prev">&#60;</button>
+        <button class="next">&#62;</button>
+    </div>
+</section>
 </section>
 
-
-
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="{% static 'js/flowers.js' %}"></script>
 {% endblock base_content %}

@@ -2,7 +2,7 @@
 {% load static %}
 {% block head_title %}
     <link rel="stylesheet" href="{% static 'css/flowers_style.css' %}" />
-    <title>Горшки и кашпо</title>
+    <title>Уход за растениями</title>
 {% endblock head_title %}
 
 {% block base_content %}
@@ -13,12 +13,13 @@
             <div class="list-cat">
                 <div class="cat-plant" style="border-bottom: 1px solid rgba(114, 121, 88, 1);"><a href="{% url 'flowers' %}">Комнатные растения</a></div>
 
-                <div class="cat-pots" style="border: 1px solid rgba(114, 121, 88, 1);border-top-left-radius: 20px;
-                                            border-top-right-radius: 20px;border-bottom: none;">
+                <div class="cat-pots" style="border-bottom: 1px solid rgba(114, 121, 88, 1);">
                     <a href="{% url 'pots' %}">Горшки и кашпо</a>
                 </div>
 
-                <div class="cat-care" style="border-bottom: 1px solid rgba(114, 121, 88, 1);"><a href="{% url 'care' %}">Уход за растениями</a></div>
+                <div class="cat-care" style="border: 1px solid rgba(114, 121, 88, 1);border-top-left-radius: 20px;
+                                            border-top-right-radius: 20px;border-bottom: none;">
+                    <a href="{% url 'care' %}">Уход за растениями</a></div>
             </div>
         </div>
     </section>
@@ -26,7 +27,7 @@
     <div class="breadcrumb">
         <ul>
             <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
-            <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Горшки и кашпо /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Уход за растениями /</a></li>
         </ul>
     </div>
 
@@ -63,18 +64,18 @@
         </div>
 
         <div class="flowers-list" id="flowers-list-id">
-            {% for pot in pots %}
+            {% for care in cares %}
 
                     <div class="flower">
-                        <a href="{% url 'flower' slug=pot.slug %}">
-                            <img src="{{ pot.image.url }}">
+                        <a href="{% url 'flower' slug=care.slug %}">
+                            <img src="{{ care.image.url }}">
                         </a>
 
                         <div class="flower-detail">
-                            <p class="p-text">{{ pot.title }}</p>
-                            <p class="p-text">от {{ pot.price }}₽</p>
-                            {% if pot.quantity > 0 %}
-                                <a href="{% url 'add-cart' pot.id %}" class="cart-button">Добавить в корзину</a>
+                            <p class="p-text">{{ care.title }}</p>
+                            <p class="p-text">от {{ care.price }}₽</p>
+                            {% if care.quantity > 0 %}
+                                <a href="{% url 'add-cart' care.id %}" class="cart-button">Добавить в корзину</a>
                             {% else %}
                                 <p style="margin: 5px;">Нет в наличии</p>
                             {% endif %}

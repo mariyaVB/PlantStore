@@ -85,3 +85,30 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+var assortment = $('.assortment'),
+    list_assortment = $('.list-assortment'),
+    countAssortment = assortment.length,
+    position = 0,
+    step = 150;
+    max = (countAssortment * 150) - 900;
+
+$(list_assortment).width(150 * countAssortment);
+$('.next').click(function () {
+    if (position == -max) {
+        position = 0;
+        list_assortment.css("left", position + "px");
+    }else{
+        position = position - step;
+        list_assortment.css("left", position + "px");
+    }
+});
+
+$('.prev').click(function () {
+    if (position == 0) {
+        position = -max;
+        list_assortment.css("left", position + "px");
+    }else{
+        position = position + step;
+        list_assortment.css("left", position + "px");
+    }
+});
