@@ -26,3 +26,47 @@ $('.quantity_inner .quantity').bind("change keyup input click", function() {
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const delivery = document.getElementById('inputDelivery');
+    const address = document.getElementById('address'); 
+    const takingSumm = document.getElementById('takingSumm'); 
+    const totalSumm = document.getElementById('totalSumm'); 
+    const initialTotalSumm = parseInt(totalSumm.textContent.replace(' ₽', ''));
+    const DELIVERY_COST = 500;
+    const SELF_COST = 0;
+
+
+
+    function toggleAddress() {
+        if (delivery.value === 'Доставка') {
+            address.style.display = 'block';
+            takingSumm.textContent = 'Стоимость доставки: ' + DELIVERY_COST + '₽';
+
+            } else {
+                address.style.display = 'none';
+                takingSumm.textContent = 'Стоимость доставки: ' + SELF_COST + '₽';
+            }
+        }
+
+        function updateTotalSum() {
+            let newTotalSumm = initialTotalSumm;
+            let takingSummValue = 0;
+            if (delivery.value === 'Доставка') {
+                newTotalSumm += DELIVERY_COST;
+                takingSummValue = DELIVERY_COST;
+            }
+            totalSumm.textContent = 'Итого: ' + newTotalSumm + ' ₽';
+            document.getElementById('hiddenTakingSumm').value = takingSummValue;
+            document.getElementById('hiddenTotalSumm').value = newTotalSumm;
+        }
+
+        toggleAddress();
+        updateTotalSum(); // Вызываем при загрузке страницы
+        delivery.addEventListener('change', function() {
+            toggleAddress();
+            updateTotalSum(); // Вызываем при изменении типа доставки
+        });
+});
+
+
+

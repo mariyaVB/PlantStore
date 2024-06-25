@@ -78,16 +78,16 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-
-                {{ form.first_name }}
-                {{ form.last_name }}
-                {{ form.phone }}
                 {{ form.taking }}
-                {{ form.address }}
+                <span id="address" style="display: none;">{{ form.address }}</span>
                 {{ form.errors }}
                 <div>
                     <p>Количество товаров: {{ carts.total_quantity }} шт.</p>
-                    <p>Общая сумма: {{ carts.total_summ }} ₽</p>
+                    <p>Стоимость товаров: {{ carts.total_summ }}₽</p>
+                    <p id="takingSumm">Стоимость доставки: 0₽</p>
+                    <input type="hidden" id="hiddenTakingSumm" name="taking_summa" value="0">
+                    <hr><p id="totalSumm">{{ carts.total_summ }}₽</p>
+                    <input type="hidden" id="hiddenTotalSumm" name="summa" value="{{ carts.total_summ }}">
                 </div>
 
                 <button class="cart-pay">Оформить</button>

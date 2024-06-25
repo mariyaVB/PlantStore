@@ -48,8 +48,8 @@
                 <div class="order">
                     <div class="order-info">
                         <div class="info-left">
-                            <p  class="date-p">{{ order.create_order|date:"d M" }}</p>
-                            <p class="id-p"> Заказ {{ order.id }}</p>
+                            <p  class="date-p">{{ order.create_order|date:"d M Y" }}</p>
+                            <p class="id-p"> Заказ {{ order.id }} {{order.taking }}</p>
                         </div>
                         
                          <div class="info-right">

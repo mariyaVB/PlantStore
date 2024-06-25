@@ -37,12 +37,10 @@ class Order(models.Model):
         (TAKING_TYPE_SELF, 'Самовывоз'),
         (TAKING_TYPE_DELIVERY, 'Доставка'),
     )
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', null=True)
-    cart = models.ManyToManyField(Cart, verbose_name='Заказ')
-    first_name = models.CharField(max_length=250, verbose_name='Имя', blank=True, null=True)
-    last_name = models.CharField(max_length=250, verbose_name='Фамилия', blank=True, null=True)
-    phone = models.CharField(max_length=11, verbose_name='Номер телефона', blank=True, null=True)
-    address = models.CharField(max_length=250, verbose_name='Адрес', blank=True, null=True)
+    cart = models.ManyToManyField(Cart, verbose_name='Корзина для заказа')
+    address = models.CharField(max_length=100, verbose_name='Адрес', blank=True, null=True)
     quantity = models.PositiveIntegerField(verbose_name='Количество', null=True)
     summa = models.PositiveIntegerField(verbose_name='Сумма заказа', null=True)
     create_order = models.DateTimeField(auto_now=True, verbose_name='Дата создания заказа')
@@ -52,11 +50,12 @@ class Order(models.Model):
                               choices=STATUS_CHOICES,
                               default=STATUS_NEW
                               )
-    taking = models.CharField(max_length=100,
+    taking = models.CharField(max_length=150,
                               verbose_name='Тип получения',
                               choices=TAKING_TYPE_CHOICES,
-                              default=TAKING_TYPE_DELIVERY
+                              default=TAKING_TYPE_SELF
                               )
+    taking_summa = models.CharField(max_length=10, verbose_name='Сумма доставки', default=0)
 
     class Meta:
         verbose_name = 'Заказ'

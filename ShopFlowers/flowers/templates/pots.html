@@ -64,23 +64,21 @@
 
         <div class="flowers-list" id="flowers-list-id">
             {% for pot in pots %}
+                <div class="flower">
+                    <a href="{% url 'flower' slug=pot.slug %}">
+                        <img src="{{ pot.image.url }}">
+                    </a>
 
-                    <div class="flower">
-                        <a href="{% url 'flower' slug=pot.slug %}">
-                            <img src="{{ pot.image.url }}">
-                        </a>
-
-                        <div class="flower-detail">
-                            <p class="p-text">{{ pot.title }}</p>
-                            <p class="p-text">от {{ pot.price }}₽</p>
-                            {% if pot.quantity > 0 %}
-                                <a href="{% url 'add-cart' pot.id %}" class="cart-button">Добавить в корзину</a>
-                            {% else %}
-                                <p style="margin: 5px;">Нет в наличии</p>
-                            {% endif %}
-                        </div>
+                    <div class="flower-detail">
+                        <p class="p-text">{{ pot.title }}</p>
+                        <p class="p-text">от {{ pot.price }}₽</p>
+                        {% if pot.quantity > 0 %}
+                            <a href="{% url 'add-cart' pot.id %}" class="cart-button">Добавить в корзину</a>
+                        {% else %}
+                            <p style="margin: 5px;">Нет в наличии</p>
+                        {% endif %}
                     </div>
-
+                </div>
             {% endfor %}
         </div>
 

@@ -8,10 +8,6 @@ from django.views.generic import TemplateView, ListView, DetailView
 from cart.models import Cart
 
 
-def error_404(request, exception):
-    return render(request, '404.html', status=404)
-
-
 class MainPage(TemplateView):
     model = Cart
     context_object_name = 'carts'
@@ -26,16 +22,7 @@ class FlowersView(ListView):
     paginate_by = 12
 
     def get_category(self):
-        try:
-            return Category.objects.all()
-        except:
-            raise Http404('Not Found')
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     try:
-    #         categories = Category.objects.all()
-    #         context['categories'] = categories
-    #         return context
+        return Category.objects.all()
 
 
 class PotsView(ListView):
@@ -77,18 +64,15 @@ class FlowerDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        try:
-            flower = Flowers.objects.get(slug=self.kwargs['slug'])
-            assortments = Flowers.objects.all()
-            random_assortments = random.sample(list(assortments), len(assortments))
-            category = Category.objects.get(title=flower.category)
-            context['category'] = category
-            context['flower'] = flower
-            context['assortments'] = random_assortments
+        flower = Flowers.objects.get(slug=self.kwargs['slug'])
+        assortments = Flowers.objects.all()
+        random_assortments = random.sample(list(assortments), len(assortments))
+        category = Category.objects.get(title=flower.category)
+        context['category'] = category
+        context['flower'] = flower
+        context['assortments'] = random_assortments
 
-            return context
-        except:
-            raise Http404('Not Found')
+        return context
 
 
 class CategoryView(ListView):
@@ -101,14 +85,11 @@ class CategoryView(ListView):
         categories = Category.objects.all()
         category = Category.objects.get(slug=self.kwargs['slug'])
         flowers = Flowers.objects.filter(category=category.id)
-        try:
-            context['category'] = category
-            context['categories'] = categories
-            context['flowers'] = flowers
+        context['category'] = category
+        context['categories'] = categories
+        context['flowers'] = flowers
 
-            return context
-        except:
-            raise Http404('Not Found')
+        return context
 
 
 # class JsonFilterFlowersView(ListView):

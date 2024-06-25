@@ -76,12 +76,11 @@
                         {% if flower.quantity > 0 %}
                             <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
                         {% else %}
-
                             <p style="margin: 5px;">Нет в наличии</p>
                         {% endif %}
                     </div>
                 </div>
-        {% endfor %}
+            {% endfor %}
         </div>
 
         <nav class="list-pages">

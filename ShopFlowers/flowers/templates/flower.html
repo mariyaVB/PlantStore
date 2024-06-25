@@ -12,8 +12,14 @@
 <div class="breadcrumb">
     <ul>
         <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
-        <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Комнатные растения /</a></li>
-        <li class="breadcrumb_item"><a href="{% url 'categories' slug=category.slug %}">{{ category.title }} /</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Каталог /</a></li>
+        {% if flower.product == 'Уход' %}
+            <li class="breadcrumb_item"><a href="{% url 'care' %}">{{ flower.product }} /</a></li>
+        {% elif flower.product == 'Комнатные растения' %}
+            <li class="breadcrumb_item"><a href="{% url 'flowers' %}">{{ flower.product }} /</a></li>
+        {% elif flower.product == 'Горшки' %}
+            <li class="breadcrumb_item"><a href="{% url 'pots' %}">{{ flower.product }} /</a></li>
+        {% endif %}
         <li class="breadcrumb_item"><a href="{% url 'flower' slug=flower.slug %}">{{ flower.title }}</a></li>
     </ul>
 </div>
@@ -26,7 +32,7 @@
     <div class="flower-property">
         <p class="flower-title">{{ flower.title }}</p>
         <p class="flower-text">{{ flower.text }}</p>        
-        <p style="font-family: 'myFontMirra';">{{ flower.price }}₽</p>
+        <p style="font-family: 'myFontMirra'; font-weight: bold;">{{ flower.price }}₽</p>
         {% if flower.quantity > 0 %}
             <p>В наличии</p>
         {% else %}

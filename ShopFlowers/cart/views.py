@@ -17,30 +17,24 @@ class CartShow(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         cart = Cart.objects.filter(user=self.request.user)
         form = OrderForm
-        try:
-            context['carts'] = cart.filter_status_cart()
-            context['form'] = form
+        context['carts'] = cart.filter_status_cart()
+        context['form'] = form
 
-            return context
-        except:
-            raise Http404('Корзины не найдены')
+        return context
 
 
 class AddCartView(View):
     def get(self, request, product_id):
-        try:
-            product = Flowers.objects.get(id=product_id)
-            cart = Cart.objects.filter(user=self.request.user, flowers=product)
-            if not cart.exists():
-                Cart.objects.create(user=self.request.user, flowers=product, quantity=1)
-            else:
-                cart = cart.first()
-                cart.quantity += 1
-                cart.save()
+        product = Flowers.objects.get(id=product_id)
+        cart = Cart.objects.filter(user=self.request.user, flowers=product)
+        if not cart.exists():
+            Cart.objects.create(user=self.request.user, flowers=product, quantity=1)
+        else:
+            cart = cart.first()
+            cart.quantity += 1
+            cart.save()
 
-            return redirect(request.META['HTTP_REFERER'])
-        except product.DoesNotExist:
-            raise Http404('Товар не найден')
+        return redirect(request.META['HTTP_REFERER'])
 
 
 class RemoveCartView(View):
@@ -59,14 +53,12 @@ class ChangeCartView(View):
     def post(self, request, cart_id):
         self.object = Cart.objects.get(id=cart_id)
         quantity = int(request.POST.get('quantity'))
-        try:
-            self.object.quantity = quantity
-            self.object.save()
-            self.object.sum_cart()
+        self.object.quantity = quantity
+        self.object.save()
+        self.object.sum_cart()
 
-            return redirect(request.META['HTTP_REFERER'])
-        except self.object.DoesNotExist:
-            raise Http404('Ошибка при изменении количества товара в корзине')
+        return redirect(request.META['HTTP_REFERER'])
+
 
 
 

@@ -4,18 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Отмена заказа. Добавлены горшки и сделана для них страница">
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" afterDir="false" />
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Отмена заказа. Добавлены горшки и уход за растениями, сделаны для них страницы. Реализована карусель товаров для доп покупок на странице с выбранным товаром.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flower_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flower_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +56,16 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Study/Комнатные_растения/ShopFlowers/flowers/templates",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Study/Комнатные_растения/ShopFlowers/flowers/templates&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Study\Комнатные_растения\ShopFlowers\flowers\templates" />
@@ -281,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718895557115</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Отмена заказа. Добавлены горшки и уход за растениями, сделаны для них страницы. Реализована карусель товаров для доп покупок на странице с выбранным товаром.">
+      <option name="closed" value="true" />
+      <created>1718974860695</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1718974860695</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -317,16 +333,7 @@
     <MESSAGE value="В приложении order реализован класс представления заказа, после заказа удаляется количество из БД товаров, меняется статус корзины на заказан и больше эта корзина не отображается в корзине покупателя. В профиле отображаются заказы." />
     <MESSAGE value="Отмена заказа." />
     <MESSAGE value="Отмена заказа. Добавлены горшки и сделана для них страница" />
-    <option name="LAST_COMMIT_MESSAGE" value="Отмена заказа. Добавлены горшки и сделана для них страница" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/ShopFlowers/users/forms.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Отмена заказа. Добавлены горшки и уход за растениями, сделаны для них страницы. Реализована карусель товаров для доп покупок на странице с выбранным товаром." />
+    <option name="LAST_COMMIT_MESSAGE" value="Отмена заказа. Добавлены горшки и уход за растениями, сделаны для них страницы. Реализована карусель товаров для доп покупок на странице с выбранным товаром." />
   </component>
 </project>

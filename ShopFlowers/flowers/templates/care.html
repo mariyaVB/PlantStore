@@ -65,23 +65,21 @@
 
         <div class="flowers-list" id="flowers-list-id">
             {% for care in cares %}
+            <div class="flower">
+                <a href="{% url 'flower' slug=care.slug %}">
+                    <img src="{{ care.image.url }}">
+                </a>
 
-                    <div class="flower">
-                        <a href="{% url 'flower' slug=care.slug %}">
-                            <img src="{{ care.image.url }}">
-                        </a>
-
-                        <div class="flower-detail">
-                            <p class="p-text">{{ care.title }}</p>
-                            <p class="p-text">от {{ care.price }}₽</p>
-                            {% if care.quantity > 0 %}
-                                <a href="{% url 'add-cart' care.id %}" class="cart-button">Добавить в корзину</a>
-                            {% else %}
-                                <p style="margin: 5px;">Нет в наличии</p>
-                            {% endif %}
-                        </div>
-                    </div>
-
+                <div class="flower-detail">
+                    <p class="p-text">{{ care.title }}</p>
+                    <p class="p-text">от {{ care.price }}₽</p>
+                    {% if care.quantity > 0 %}
+                        <a href="{% url 'add-cart' care.id %}" class="cart-button">Добавить в корзину</a>
+                    {% else %}
+                        <p style="margin: 5px;">Нет в наличии</p>
+                    {% endif %}
+                </div>
+            </div>
             {% endfor %}
         </div>
 

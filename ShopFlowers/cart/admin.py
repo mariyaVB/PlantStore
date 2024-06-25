@@ -6,3 +6,4 @@ from .models import Cart
 class CartAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'flowers', 'quantity')
     list_display_links = ('id', 'user')
+
