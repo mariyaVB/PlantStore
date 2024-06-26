@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}" />
+    <title>Мои покупки</title>
+{% endblock head_title %}
+
+{% block base_content %}
+<section class="popup">
+    <div class="menu-profile">
+        <div class="menu">
+            <ul>
+                <li><a href="{% url 'profile' %}" class="bt-my-profile">Настройки</a></li>
+                <li>
+                    <a href="{% url 'order-profile' %}" class="bt-my-orders">
+                        Мои покупки
+                    </a>
+                </li>
+                <li><a class="bt-my-feedback"  style="background-color: rgba(202, 208, 183, 0.6);border: 1px solid rgba(114, 121, 88, 1);">Мои отзывы</a></li>
+                <li><a class="bt-my-like">Избранное</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="overlay">
+        {% if user.photo %}
+        <div class="name-photo">
+            <div class="bt-user-change">
+                <img class="user-photo" src="{{ user.photo.url }}">
+                <p class="photo-change">{{ form.photo }}</p>
+            </div>
+            <h2 class="user-name">{{ user.username }}</h2>
+        </div>
+        {% else %}
+        <div class="name-photo">
+            <div class="bt-user-change">
+                <img class="user-photo" src="{{ default_image.url }}">
+                <p class="photo-change">{{ form.photo }}</p>
+            </div>
+            <h2 class="user-name">{{ user.username }}</h2>
+        </div>
+        {% endif %}
+
+        <div class="feedbacks">
+            {% for feedback in feedbacks %}
+            <div class="feedback">
+                <div class="feedback-product-img">
+                    <a href="{% url 'flower' slug=feedback.flowers.slug %}"><img src="{{ feedback.flowers.image.url }}" width="50px" height="70px"></a>
+                </div>
+
+                <div class="feedback-product-title">
+                    <a href="{% url 'flower' slug=feedback.flowers.slug %}"><p class="title-p">{{ feedback.flowers.title }}</p></a>   
+                </div>
+
+                <div class="feedback-date-rating">
+                    <p class="date-p">{{ feedback.date_created|date:"d M Y" }}</p>
+                    <p class="rating-p">{{ feedback.rating_stars }}</p>                            
+                </div>
+
+                <div class="feedback-delete-redaction">
+                    <button class="bt-redaction"><a href="#">Редактировать</a></button>
+                    <button class="bt-delete"><a href="#">Удалить</a></button>
+                </div>
+
+                <div class="feedback-text">
+                    <p class="text-p">{{ feedback.text }}</p>
+                </div>
+
+                <div class="feedback-user-img">
+                    {% if feedback.images_feedback.image1 %}
+                        <img src="{{ feedback.images_feedback.image1.url }}" width="70px" height="90px">
+                    {% endif %}
+
+                    {% if feedback.images_feedback.image2 %}
+                        <img src="{{ feedback.images_feedback.image2.url }}" width="70px" height="90px">
+                    {% endif %}
+
+                    {% if feedback.images_feedback.image3 %}
+                        <img src="{{ feedback.images_feedback.image3.url }}" width="70px" height="90px">
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if messages %}
+           <div class="messages">
+               {% for message in messages %}
+                    <span class="massages-text">{{ message }}</span>
+                {% endfor %}
+           </div>
+        {% endif %}
+
+        <nav class="list-pages">
+            {% for page in paginator.page_range %}
+                <a href="?page={{ page }}">{{ page }}</a>
+            {% endfor %}
+        </nav>
+
+    </div>
+</section>
+
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="{% static 'js/user.js' %}"></script>
+{% endblock base_content %}
