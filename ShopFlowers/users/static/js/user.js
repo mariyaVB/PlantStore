@@ -59,6 +59,7 @@ $('.bt-reset').click(function () {
 });
 
 
+// Заказы в профиле
 $('.more').click(function () {
     $('.order-img-7-12-slice-two').show();
     $('.order-img-7-12-slice-one').hide();

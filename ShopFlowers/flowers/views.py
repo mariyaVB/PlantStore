@@ -6,6 +6,7 @@ from django.http import Http404, JsonResponse
 from .models import Flowers, Category
 from django.views.generic import TemplateView, ListView, DetailView
 from cart.models import Cart
+from feedback.models import Feedback, ImagesFeedback
 
 
 class MainPage(TemplateView):
@@ -68,9 +69,11 @@ class FlowerDetailView(DetailView):
         assortments = Flowers.objects.all()
         random_assortments = random.sample(list(assortments), len(assortments))
         category = Category.objects.get(title=flower.category)
+        feedbacks = Feedback.objects.filter(flowers=flower.id)
         context['category'] = category
         context['flower'] = flower
         context['assortments'] = random_assortments
+        context['feedbacks'] = feedbacks
 
         return context
 

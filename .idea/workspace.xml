@@ -4,26 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Отмена заказа. Добавлены горшки и уход за растениями, сделаны для них страницы. Реализована карусель товаров для доп покупок на странице с выбранным товаром.">
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Добавлен js, когда пользователь выбирает доставку, появляется поле с адресом, так же меняется сумма доставки и итоговая сумма, все это прередается в скрытые инпуты и которые обрабатывает форма. Форма с адресом обрабатывается на длину вводимой информации, если самовывоз то поле скрывается и добавляется пустым, а если доставка то появляется и нужно ввести не менее 5 символов">
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/feedback/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flower_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flower_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -56,18 +56,19 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Study/Комнатные_растения/ShopFlowers/flowers/templates&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Study/Комнатные_растения/ShopFlowers/feedback",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Study\Комнатные_растения\ShopFlowers\feedback" />
       <recent name="D:\Study\Комнатные_растения\ShopFlowers\flowers\templates" />
       <recent name="D:\Study\Комнатные_растения\ShopFlowers\flowers\static\images" />
       <recent name="D:\Study\Комнатные растения\ShopFlowers\flowers" />
@@ -297,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718974860695</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Добавлен js, когда пользователь выбирает доставку, появляется поле с адресом, так же меняется сумма доставки и итоговая сумма, все это прередается в скрытые инпуты и которые обрабатывает форма. Форма с адресом обрабатывается на длину вводимой информации, если самовывоз то поле скрывается и добавляется пустым, а если доставка то появляется и нужно ввести не менее 5 символов">
+      <option name="closed" value="true" />
+      <created>1719316747644</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1719316747644</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -334,6 +343,7 @@
     <MESSAGE value="Отмена заказа." />
     <MESSAGE value="Отмена заказа. Добавлены горшки и сделана для них страница" />
     <MESSAGE value="Отмена заказа. Добавлены горшки и уход за растениями, сделаны для них страницы. Реализована карусель товаров для доп покупок на странице с выбранным товаром." />
-    <option name="LAST_COMMIT_MESSAGE" value="Отмена заказа. Добавлены горшки и уход за растениями, сделаны для них страницы. Реализована карусель товаров для доп покупок на странице с выбранным товаром." />
+    <MESSAGE value="Добавлен js, когда пользователь выбирает доставку, появляется поле с адресом, так же меняется сумма доставки и итоговая сумма, все это прередается в скрытые инпуты и которые обрабатывает форма. Форма с адресом обрабатывается на длину вводимой информации, если самовывоз то поле скрывается и добавляется пустым, а если доставка то появляется и нужно ввести не менее 5 символов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен js, когда пользователь выбирает доставку, появляется поле с адресом, так же меняется сумма доставки и итоговая сумма, все это прередается в скрытые инпуты и которые обрабатывает форма. Форма с адресом обрабатывается на длину вводимой информации, если самовывоз то поле скрывается и добавляется пустым, а если доставка то появляется и нужно ввести не менее 5 символов" />
   </component>
 </project>

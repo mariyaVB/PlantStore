@@ -39,53 +39,53 @@
 //            });
 //        }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('input[name=category]');
-    const flowersListContainer = document.getElementById('flowers-list-id');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const form = document.querySelector('input[name=category]');
+//     const flowersListContainer = document.getElementById('flowers-list-id');
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const formData = new FormData(form);
-        const urlParams = new URLSearchParams(formData);
-        const url = form.action + '?' + urlParams.toString();
+//     form.addEventListener('submit', (event) => {
+//         event.preventDefault();
+//         const formData = new FormData(form);
+//         const urlParams = new URLSearchParams(formData);
+//         const url = form.action + '?' + urlParams.toString();
 
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                renderProducts(data);
-            })
-            .catch(error => {
-                console.error('Ошибка при отправке запроса:', error);
-            });
-    });
+//         fetch(url)
+//             .then(response => response.json())
+//             .then(data => {
+//                 renderProducts(data);
+//             })
+//             .catch(error => {
+//                 console.error('Ошибка при отправке запроса:', error);
+//             });
+//     });
 
-    function renderProducts(products) {
-        flowersListContainer.innerHTML = ''; // Очищаем контейнер
+//     function renderProducts(products) {
+//         flowersListContainer.innerHTML = ''; // Очищаем контейнер
 
-        products.forEach(product => {
-            const productDiv = document.createElement('div');
-            productDiv.innerHTML = `
-                <div class="flower">
-                <a href="/flower/${product.slug}/">
-                    <img src="${product.image}" alt="${product.name}">
-                </a>
-                <div class="flower-detail">
-                    <p class="p-text">${product.name}</p>
-                    <p class="p-text">от ${product.price}₽</p>
-                    ${product.quantity > 0 ?
-                        `<a href="/add-cart/${product.id}/" class="cart-button">Добавить в корзину</a>` :
-                        '<p style="margin: 5px;">Нет в наличии</p>'
-                    }
-                </div>
-                </div>
-            `;
-            flowersListContainer.appendChild(productDiv);
-        });
-    }
-});
+//         products.forEach(product => {
+//             const productDiv = document.createElement('div');
+//             productDiv.innerHTML = `
+//                 <div class="flower">
+//                 <a href="/flower/${product.slug}/">
+//                     <img src="${product.image}" alt="${product.name}">
+//                 </a>
+//                 <div class="flower-detail">
+//                     <p class="p-text">${product.name}</p>
+//                     <p class="p-text">от ${product.price}₽</p>
+//                     ${product.quantity > 0 ?
+//                         `<a href="/add-cart/${product.id}/" class="cart-button">Добавить в корзину</a>` :
+//                         '<p style="margin: 5px;">Нет в наличии</p>'
+//                     }
+//                 </div>
+//                 </div>
+//             `;
+//             flowersListContainer.appendChild(productDiv);
+//         });
+//     }
+// });
 
 
-var assortment = $('.assortment'),
+let assortment = $('.assortment'),
     list_assortment = $('.list-assortment'),
     countAssortment = assortment.length,
     position = 0,
@@ -111,4 +111,20 @@ $('.prev').click(function () {
         position = position + step;
         list_assortment.css("left", position + "px");
     }
+});
+
+
+// Показать скрыть отзывы 
+let alreadyScrolled = false; // Флаг для отслеживания прокрутки
+
+$('.feedback-count-rating-mean').click(function() {
+  $('.feedback-list').toggle(); 
+
+  // Прокрутка только если ещё не прокручивали
+  if (!alreadyScrolled) {
+    $('html, body').animate({
+      scrollTop: $('.feedback-list').offset().top
+    }, 500);
+    alreadyScrolled = true; // Меняем флаг после прокрутки
+  }
 });

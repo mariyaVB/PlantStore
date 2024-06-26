@@ -18,7 +18,7 @@
                         Мои покупки
                     </a>
                 </li>
-                <li><a class="bt-my-feedback">Мои отзывы</a></li>
+                <li><a href="{% url 'feedback-profile' %}" class="bt-my-feedback">Мои отзывы</a></li>
                 <li><a class="bt-my-like">Избранное</a></li>
             </ul>
         </div>
@@ -48,7 +48,7 @@
                 <div class="order">
                     <div class="order-info">
                         <div class="info-left">
-                            <p  class="date-p">{{ order.create_order|date:"d M Y" }}</p>
+                            <p class="date-p">{{ order.create_order|date:"d M Y" }}</p>
                             <p class="id-p"> Заказ {{ order.id }} {{order.taking }}</p>
                         </div>
                         

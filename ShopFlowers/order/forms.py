@@ -1,8 +1,6 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-from django.http import request
-from order.models import Customer, Order
+from order.models import Order
 
 
 class OrderForm(forms.ModelForm):

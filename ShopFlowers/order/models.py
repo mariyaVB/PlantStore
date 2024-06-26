@@ -3,16 +3,7 @@ from users.models import User
 from cart.models import Cart
 
 
-class Customer(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    order = models.ManyToManyField('Order', verbose_name='Заказ', related_name='related_orders')
 
-    class Meta:
-        verbose_name = 'Покупатель'
-        verbose_name_plural = 'Покупатели'
-
-    def __str__(self):
-        return f'Покупатель {self.user.first_name} {self.user.last_name}'
 
 
 class Order(models.Model):

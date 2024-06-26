@@ -31,7 +31,7 @@
 
 .popup {
 	width: 1600px;
-	height: 700px;
+	height: 900px;
 	display: flex;
 }
 
@@ -196,7 +196,7 @@ li:nth-child(4)::marker {
 
 
 
-/* ORDER */
+/* Страница заказов в профайле */
 .orders {
     margin-top: 70px;
     display: grid;
@@ -227,7 +227,11 @@ li:nth-child(4)::marker {
     justify-self: end;
 }
 
-.date-p, .id-p, .summa-p {
+.info-center {
+    grid-column: span 2;
+}
+
+.date-p, .id-p, .summa-p, .rating-p, .text-p, .title-p {
     margin: 0;
     font-size: 10pt;
     color: rgba(88, 88, 88, 1);
@@ -246,6 +250,7 @@ li:nth-child(4)::marker {
 .order-img {
     height: 210px;
 }
+
 .order-img-6, .order-img-7-12-slice-one, .order-img-7-12-slice-two {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -299,6 +304,112 @@ li:nth-child(4)::marker {
         color: rgba(209, 216, 184, 1);
     }
 }
+
+
+
+/* Страница отзывов в профайле */
+.feedbacks {
+
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 10px;
+}
+
+.feedback {
+    height: 200px;
+    background: rgba(234, 233, 229, 1);
+    border-radius: 10px;
+    box-shadow: 20px 10px 20px  rgba(114, 121, 88, 0.1);
+    display: grid;
+    grid-template-columns: 5% 70% 25%;
+    grid-template-rows: 20% 20% 60%;
+    padding: 5px 15px 5px 15px;
+}
+
+.feedback-product-img {
+    grid-column: 1;
+    grid-row: span 2;
+    justify-self: start;
+    align-self: center;
+}
+
+.feedback-date-rating {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    gap: 10px;
+    justify-self: start;
+    align-items: center;
+    p {
+        margin-bottom: -10px;
+    }
+}
+
+.feedback-product-title {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: start;
+    align-content: center;
+    p {
+        margin-top: -10px;
+    }
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline rgba(114, 121, 88, 1);
+    }
+}
+
+.feedback-delete-redaction {
+    grid-column: 3;
+    grid-row: span 2;
+    display: flex;
+    gap: 10px;
+    align-self: center;
+    justify-content: center;
+}
+
+.bt-delete, .bt-redaction {
+    width: 150px;
+    border: 1px solid rgba(114, 121, 88, 1);
+    border-radius: 10px;
+    cursor: pointer;
+    background: rgba(209, 216, 184, 1);
+    a {
+        text-decoration: none;
+        color: rgba(40, 49, 6, 1);
+    }
+}
+
+.bt-delete:hover, .bt-redaction:hover {
+    width: 150px;
+    border: 1px solid rgba(209, 216, 184, 1);
+    border-radius: 10px;
+    cursor: pointer;
+    background: rgba(114, 121, 88, 1);
+    a {
+        text-decoration: none;
+        color: rgba(209, 216, 184, 1);
+    }
+}
+
+.feedback-text {
+    grid-column: span 2;
+    grid-row: 3;
+    justify-self: start;
+    align-self: center;
+}
+
+.feedback-user-img {
+    grid-column: 3;
+    grid-row: 3;
+    display: flex;
+    gap: 10px;
+    justify-self: center;
+    align-self: center;
+}
+
 
 /* Пагинация */
 

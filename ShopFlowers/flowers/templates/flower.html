@@ -31,6 +31,12 @@
 
     <div class="flower-property">
         <p class="flower-title">{{ flower.title }}</p>
+
+        <div class="feedback-count-rating-mean">
+            <span>{{ feedbacks.rating_mean }}</span>
+            &#8226; <span>{{ feedbacks.feedback_count }}</span>
+        </div>
+
         <p class="flower-text">{{ flower.text }}</p>        
         <p style="font-family: 'myFontMirra'; font-weight: bold;">{{ flower.price }}₽</p>
         {% if flower.quantity > 0 %}
@@ -38,15 +44,10 @@
         {% else %}
             <p>Нет в наличии</p>
         {% endif %}
-        <div class="cart">
-            <button type="submit">Добавить в корзину</button>
-        </div>
+        <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
     </div>
-
-
 </section>
 
-<section>ОТЗЫВЫ</section>
 <section class="carousel">
     <h1 style="font-family:'myFontMirra'; text-align: center;">Вам может понадобиться:</h1>
     <div class="list-assortment">
@@ -69,6 +70,50 @@
     </div>
 </section>
 </section>
+
+<section class="feedback-list" style="display: none;">
+    <h1 style="font-family:'myFontMirra'; text-align: center;">Отзывы:</h1>
+    {% if feedbacks %}
+        {% for feedback in feedbacks %}
+            <div class="feedback">
+                <div class="feedback-info">
+                    <div class="info-left">
+                        {% if feedback.user.first_name %}
+                            <p style="font-size: 12pt;">{{ feedback.user.first_name }}</p>
+                        {% else %}
+                            <p style="font-size: 12pt;">{{ feedback.user.username }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="info-right">
+                        <p>{{ feedback.date_created|date:"d M Y" }}</p>
+                        <p>{{ feedback.rating_stars }}</p>
+                    </div>
+                    <div class="info-center">
+                        <p style="margin-top: -10px;">{{ feedback.text }}</p>
+                    </div>
+                </div>
+
+                <div class="feedback-img">
+                    {% if feedback.images_feedback.image1 %}
+                        <img src="{{ feedback.images_feedback.image1.url }}" width="100px" height="120px">
+                    {% endif %}
+
+                    {% if feedback.images_feedback.image2 %}
+                        <img src="{{ feedback.images_feedback.image2.url }}" width="100px" height="120px">
+                    {% endif %}
+
+                    {% if feedback.images_feedback.image3 %}
+                        <img src="{{ feedback.images_feedback.image3.url }}" width="100px" height="120px">
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1>Еще нет отзывов</h1>
+    {% endif %}
+</section>
+
+
 
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script src="{% static 'js/flowers.js' %}"></script>
