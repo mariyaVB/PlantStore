@@ -4,7 +4,7 @@
 {% block head_title %}
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'css/profile_style.css' %}" />
-    <title>Мои покупки</title>
+    <title>Мои отзывы</title>
 {% endblock head_title %}
 
 {% block base_content %}
@@ -55,13 +55,17 @@
                 </div>
 
                 <div class="feedback-date-rating">
-                    <p class="date-p">{{ feedback.date_created|date:"d M Y" }}</p>
+                    {% if feedback.date_created == feedback.date_updated %}
+                        <p class="date-p">{{ feedback.date_created|date:"d M Y" }}</p>
+                    {% else %}
+                        <p class="date-p">Изменён {{ feedback.date_updated|date:"d M Y" }}</p>
+                    {% endif %}
                     <p class="rating-p">{{ feedback.rating_stars }}</p>                            
                 </div>
 
                 <div class="feedback-delete-redaction">
-                    <button class="bt-redaction"><a href="#">Редактировать</a></button>
-                    <button class="bt-delete"><a href="#">Удалить</a></button>
+                    <button class="bt-redaction"><a href="{% url 'edit-feedback' feedback.id %}">Редактировать</a></button>
+                    <button class="bt-delete"><a href="{% url 'remove-feedback' feedback.id %}">Удалить</a></button>
                 </div>
 
                 <div class="feedback-text">
@@ -69,16 +73,16 @@
                 </div>
 
                 <div class="feedback-user-img">
-                    {% if feedback.images_feedback.image1 %}
-                        <img src="{{ feedback.images_feedback.image1.url }}" width="70px" height="90px">
+                    {% if feedback.image1 %}
+                        <img src="{{ feedback.image1.url }}" width="70px" height="90px">
                     {% endif %}
 
-                    {% if feedback.images_feedback.image2 %}
-                        <img src="{{ feedback.images_feedback.image2.url }}" width="70px" height="90px">
+                    {% if feedback.image2 %}
+                        <img src="{{ feedback.image2.url }}" width="70px" height="90px">
                     {% endif %}
 
-                    {% if feedback.images_feedback.image3 %}
-                        <img src="{{ feedback.images_feedback.image3.url }}" width="70px" height="90px">
+                    {% if feedback.image3 %}
+                        <img src="{{ feedback.image3.url }}" width="70px" height="90px">
                     {% endif %}
                 </div>
             </div>
@@ -101,6 +105,8 @@
 
     </div>
 </section>
+
+
 
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script src="{% static 'js/user.js' %}"></script>

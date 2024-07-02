@@ -55,6 +55,14 @@ a {
     margin: 0 20% 0 20%;
     width: 60%;
     padding: 20px;
+    text-align: center;
+    color: rgba(40, 49, 6, 1);
+}
+
+.answer-search {
+    margin: -100px 0 0 0;
+    text-align: center;
+    font-size: 13pt;
 }
 
 .hello-text .p1 {

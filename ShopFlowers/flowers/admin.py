@@ -9,6 +9,7 @@ admin.site.site_header = 'Управление Галереей зеленых �
 class FlowersAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'text', 'image', 'quantity', 'price', 'category', 'slug', 'product')
     list_display_links = ('id', 'title')
+    list_filter = ['id', 'title', 'price', 'quantity', 'category', 'product']
 
 
 @admin.register(Category)

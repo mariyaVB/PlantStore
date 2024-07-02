@@ -74,3 +74,45 @@ $('.many').click(function () {
     $('.many').toggle();
 });
 
+
+
+
+// Оценить товары в заказе
+$('.bt-rating').click(function() {
+  $('.feedback-order').toggle();
+  $('.popup').css({
+    'position': 'sticky',
+    'top': '0',
+    'background': 'rgba(234, 233, 229, 1)'
+    });
+});
+
+$('.bt-close').click(function() {
+    $('.feedback-order').toggle();
+    $('.popup').css({
+        'position': 'static',
+        'background': 'none'
+    });
+});
+
+
+
+// Рейтинг в отзывах
+
+$(document).ready(function() {
+    $('.star').click(function() {
+        event.preventDefault();
+        $(this).prevAll().andSelf().css('color', 'rgba(255, 237, 75, 1)');
+        $(this).nextAll().css('color', 'rgba(15, 15, 15, 1)'); 
+
+        let ratingValue = $(this).val();  // Получаем значение value кнопки
+        // console.log(typeof ratingValue);
+        // ratingValue = +ratingValue;
+      $('#hiddenRating').val(ratingValue); // Устанавливаем значение в скрытое поле
+      
+      console.log($('#hiddenRating').val()); 
+    });
+}); 
+
+
+

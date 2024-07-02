@@ -17,13 +17,14 @@
 <section class="cart">
 
     <div class="cart-product">
-            {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-                <span class="massages-text">{{ message }}</span>
-            {% endfor %}
-        </div>
-    {% endif %}
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <span class="massages-text">{{ message }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         {% if carts %}
             <h2 style="font-family: 'myFontMirra'; text-align: center; color: rgba(40, 49, 6, 1);">Корзина</h2>
             {% for cart in carts %}
@@ -40,10 +41,10 @@
                         <div class="quantity_inner">
                             <form method="post" action="{% url 'change-cart' cart.id %}">
                                 {% csrf_token %}
-<!--                            {{ cart.flowers.id}}-->
-                            <button type="submit" class="bt_minus">-</button>
-                            <input type="text" class="quantity" value="{{ cart.quantity }}" data-max-count="{{ cart.flowers.quantity }}" name="quantity">
-                            <button type="submit" class="bt_plus">+</button>
+
+                                <button type="submit" class="bt_minus">-</button>
+                                <input type="text" class="quantity" value="{{ cart.quantity }}" data-max-count="{{ cart.flowers.quantity }}" name="quantity">
+                                <button type="submit" class="bt_plus">+</button>
                             </form>
                         </div>
                     </div>
@@ -69,18 +70,10 @@
             <h1  style="font-family: 'myFontMirra'; text-align: start; color: rgba(40, 49, 6, 1);">Оформление заказа</h1>
             <form action="{% url 'add-order' %}" method="post">
                 {% csrf_token %}
-                {% if form.errors %}
-                    <div class="errors">
-                        {% for form_order in form %}
-                            {% for error in form_order.errors %}
-                                <p class="error">{{ error }}</p>
-                            {% endfor %}
-                        {% endfor %}
-                    </div>
-                {% endif %}
+
                 {{ form.taking }}
-                <span id="address" style="display: none;">{{ form.address }}</span>
-                {{ form.errors }}
+                <span id="address">{{ form.address }}</span>
+
                 <div>
                     <p>Количество товаров: {{ carts.total_quantity }} шт.</p>
                     <p>Стоимость товаров: {{ carts.total_summ }}₽</p>
@@ -91,6 +84,16 @@
                 </div>
 
                 <button class="cart-pay">Оформить</button>
+
+                {% if form.errors %}
+                    <div class="errors">
+                        {% for form_error in form %}
+                            {% for error in form_error.errors %}
+                                <p class="error">{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </form>
         </div>
     </div>

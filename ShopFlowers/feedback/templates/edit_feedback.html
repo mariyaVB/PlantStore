@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}
+    <link rel="stylesheet" href="{% static 'css/feedback_style.css' %}" />
+    <title>Редактировать отзыв</title>
+{% endblock head_title %}
+
+{% block base_content %}
+
+<section>
+    <div class="feedback">
+        <div class="feedback-product">
+            <img src="{{ feedback.flowers.image.url }}" width="180px" height="200px">
+        </div>
+
+        <form action="{% url 'edit-feedback' feedback.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="feedback-form-rating">
+                <button class="star" id="one" value="1">&#9733;</button>
+                <button class="star" id="two" value="2">&#9733;</button>
+                <button class="star" id="three" value="3">&#9733;</button>
+                <button class="star" id="four" value="4">&#9733;</button>
+                <button class="star" id="five" value="5">&#9733;</button>
+                {{ form.rating }}
+            </div>
+
+            <div class="feedback-form-text">
+                {{ form.text }}
+            </div>
+
+            <div class="feedback-form-img">
+                {{ form.image1 }}
+                {{ form.image2 }}
+                {{ form.image3 }}
+            </div>
+
+            <div class="feedback-user-img">
+                {% if feedback.image1 %}
+                    <img src="{{ feedback.image1.url }}" width="70px" height="90px">
+                {% endif %}
+
+                {% if feedback.image2 %}
+                    <img src="{{ feedback.image2.url }}" width="70px" height="90px">
+                {% endif %}
+
+                {% if feedback.image3 %}
+                    <img src="{{ feedback.image3.url }}" width="70px" height="90px">
+                {% endif %}
+            </div>
+
+            <div class="feedback-button">
+                <button type="submit" class="redaction-feedback">Сохранить</button>
+                <button class="exit-feedback"><a href="{% url 'feedback-profile' %}">Назад</a></button>
+            </div>
+
+            {% if form.errors %}
+                <div class="errors">
+                    {% for form_error in form %}
+                        {% for error in form_error.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</section>
+
+
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="{% static 'js/feedback.js' %}"></script>
+{% endblock base_content %}

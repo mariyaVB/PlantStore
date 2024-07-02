@@ -31,6 +31,7 @@ class Cart(models.Model):
                               choices=STATUS_CHOICES,
                               default=STATUS_IN_CART
                               )
+    is_feedback = models.BooleanField(default=False, verbose_name='Отзыв')
     objects = CartQuerySet.as_manager()
 
     class Meta:

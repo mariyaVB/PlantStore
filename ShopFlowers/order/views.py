@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView
 from .forms import OrderForm
+from feedback.forms import AddFeedbackForm
 from cart.models import Cart
 from order.models import Order
 
@@ -16,9 +17,9 @@ from order.models import Order
 class AddOrderView(View):
     @transaction.atomic
     def post(self, request):
-        form = OrderForm(request.POST, initial={'first_name': 'Mary'})
-        cart = Cart.objects.filter(user=request.user, status='В корзине')
         user = self.request.user
+        form = OrderForm(request.POST)
+        cart = Cart.objects.filter(user=request.user, status='В корзине')
         if form.is_valid() and cart:
             new_order = form.save(commit=False)
             new_order.user = user
@@ -30,6 +31,7 @@ class AddOrderView(View):
             new_order.save()
             new_order.cart.add(*cart)
             new_order.save()
+
             for el_cart in cart:
                 flowers = el_cart.flowers
                 flowers.quantity -= el_cart.quantity
@@ -39,7 +41,7 @@ class AddOrderView(View):
 
             return HttpResponseRedirect(reverse_lazy('order-profile'))
 
-        messages.add_message(request, messages.SUCCESS, 'Ваша корзина пуста или форма заполнена неправильно.')
+        messages.add_message(request, messages.SUCCESS, 'Ваша корзина пуста или адрес заполнен не правильно.')
         return HttpResponseRedirect(reverse_lazy('cart'))
 
 
@@ -50,7 +52,14 @@ class OrderProfileView(ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user).exclude(status='Отменен')
+        order = Order.objects.filter(user=self.request.user).exclude(status='Отменен')
+        return order
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        form = AddFeedbackForm
+        context['form'] = form
+        return context
 
 
 class CancelOrderView(ListView):

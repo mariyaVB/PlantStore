@@ -9,7 +9,7 @@ class OrderForm(forms.ModelForm):
         fields = ['address', 'taking', 'taking_summa', 'summa']
 
         widgets = {
-            'address': forms.TextInput(attrs={'class': 'form-input-order', 'placeholder': 'Адрес'}),
+            'address': forms.TextInput(attrs={'class': 'form-input-order', 'placeholder': 'Адрес', 'id': 'address-value'}),
             'taking': forms.widgets.Select(attrs={'class': 'form-choice-order', 'id': 'inputDelivery'}),
         }
 
@@ -17,10 +17,14 @@ class OrderForm(forms.ModelForm):
         address = self.cleaned_data['address']
         if address is not None:
             if len(address) > 100:
+                self.add_error('address', 'Адрес превышает 100 символов.')
                 raise ValidationError('Адрес превышает 100 символов')
             if len(address) < 5:
+                self.add_error('address', 'Адрес не может быть меньше 5 символов.')
                 raise ValidationError('Адрес не может быть меньше 5 символов')
-            return address
         else:
-            return address
+            self.add_error('address', 'Пожалуйста, введите адрес.')
+        return address
+
+
 

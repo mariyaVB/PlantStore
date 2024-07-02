@@ -4,6 +4,7 @@ import flowers.views as flowers
 
 urlpatterns = [
     path('', flowers.MainPage.as_view(), name='main'),
+    path('search/', flowers.Search.as_view(), name='search'),
     path('flowers/', flowers.FlowersView.as_view(), name='flowers'),
     path('pots/', flowers.PotsView.as_view(), name='pots'),
     path('care/', flowers.CareView.as_view(), name='care'),

@@ -1,0 +1,92 @@
+.feedback {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(114, 121, 88, 1);
+    margin: 50px 290px 50px 290px;
+    padding:  20px 0 20px 0;
+}
+
+.star {
+    font-size: 16pt;
+    color: rgba(15, 15, 15, 1);
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.feedback-product {
+    justify-self: center;
+    align-self: center;
+}
+/* .form-feedback-images {
+    color: transparent;
+}
+
+.form-feedback-images::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.form-feedback-images::before {
+    content: 'Загрузить фото';
+    border: 1px solid rgba(234, 233, 229, 1);
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgba(234, 233, 229, 1);
+    color: rgba(40, 49, 6, 1);
+    display: inline-block;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 10pt;
+}
+
+.form-feedback-images:hover::before {
+    border: 1px solid rgba(234, 233, 229, 1);
+    border-radius: 25px;
+    background: rgba(234, 233, 229, 1);
+} */
+
+.feedback-form-img {
+    display: flex;
+    gap: 10px;
+}
+
+.feedback-user-img {
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+    margin-top: 10px;
+}
+
+.feedback-button {
+    display: flex;
+    padding-left: 200px;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.redaction-feedback, .exit-feedback {
+    border: 1px solid rgba(114, 121, 88, 1);
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgba(209, 216, 184, 1);
+    display: inline-block;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 10pt;
+    color: rgba(40, 49, 6, 1);
+    a {
+        text-decoration: none;
+        color: rgba(40, 49, 6, 1);
+        padding: 0 18px 0 18px;
+    }     
+}
+
+.redaction-feedback:hover, .exit-feedback:hover {
+    border: 1px solid rgba(40, 49, 6, 1);    
+    background: rgba(114, 121, 88, 1);
+    color: rgba(209, 216, 184, 1);
+    a {
+        color: rgba(209, 216, 184, 1);
+    } 
+}

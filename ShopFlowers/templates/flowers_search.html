@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}
+    <link rel="stylesheet" href="{% static 'css/flowers_style.css' %}" />
+    <title>Результаты поиска</title>
+{% endblock head_title %}
+
+{% block base_content %}
+
+<section class="hello">
+    <div class="hello-text">
+        <p class="p1">Результаты поиска</p>
+        <p class="answer-search">по запросу {{ title }}</p>
+    </div>
+</section>
+
+<div class="breadcrumb">
+    <ul>
+        <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Каталог /</a></li>
+    </ul>
+</div>
+
+<section class="shop">
+    <div class="filters">
+        <p>Фильтры</p>
+<!--           <form action="{% url 'filter' %}" method="get">-->
+        <div class="filter-cat">
+            {% for category in view.get_category %}
+                <li>
+                    <input type="checkbox" name="category" value="{{ category.id }}">
+                    <label>{{ category.title }}</label>
+                </li>
+            {% endfor %}
+        </div>
+        <br>
+        <div class="filter-price">
+                    <li>
+                        <input type="checkbox" name="price" min="0" max="999" id="price-0-1000">
+                        <label for="price-0-1000">до 1000</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="price_from" min="1000" max="5000" id="price-1000-5000">
+                        <label for="price-1000-5000">от 1000 до 5000</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="price_from" min="5000" id="price-5000-inf">
+                        <label for="price-5000-inf">от 5000</label>
+                    </li>
+                </div>
+
+                <button type="submit">Найти</button>
+<!--            </form>-->
+        </div>
+
+        <div class="flowers-list" id="flowers-list-id">
+            {% for flower in search %}
+                <div class="flower">
+                    <a href="#">
+                        <img src="{{ flower.image.url }}">
+                    </a>
+
+                    <div class="flower-detail">
+                        <p class="p-text">{{ flower.title }}</p>
+                        <p class="p-text">от {{ flower.price }}₽</p>
+                        {% if flower.quantity > 0 %}
+                            <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+                        {% else %}
+                            <p style="margin: 5px;">Нет в наличии</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <nav class="list-pages">
+            <ul>
+                {% for page in paginator.page_range %}
+                <li class="page-num">
+                    <a href="?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+    </section>
+
+
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="{% static 'js/flowers.js' %}"></script>
+{% endblock base_content %}

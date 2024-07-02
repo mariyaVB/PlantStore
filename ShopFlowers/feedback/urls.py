@@ -4,7 +4,7 @@ import feedback.views as feedback
 
 urlpatterns = [
     path('feedback_profile/', feedback.FeedbackProfileView.as_view(), name='feedback-profile'),
-    # path('add_cart/<int:product_id>/', cart.AddCartView.as_view(), name='add-cart'),
-    # path('remove_cart/<int:cart_id>/', cart.RemoveCartView.as_view(), name='remove-cart'),
-    # path('change_cart/<int:cart_id>/', cart.ChangeCartView.as_view(), name='change-cart'),
+    path('add_feedback/<int:product_id>/', feedback.AddFeedbackView.as_view(), name='add-feedback'),
+    path('edit_feedback/<int:feedback_id>/', feedback.EditFeedbackView.as_view(), name='edit-feedback'),
+    path('remove_feedback/<int:feedback_id>/', feedback.RemoveFeedbackView.as_view(), name='remove-feedback'),
 ]

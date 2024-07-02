@@ -27,9 +27,9 @@
         </div>
 
         <div class="find">
-            <form>
-                <input type="text" placeholder="Поиск">
-                <button type="submit"><img src="{% static 'icons/icons_find.jpg' %}"></button>
+            <form method="get" action="{% url 'search' %}">
+                <input type="search" name="search" placeholder=" Введите название..." class="find-input">
+                <button type="submit"><img src="{% static 'icons/icons_find.jpg' %}" class="find-button"></button>
             </form>
         </div>
 
@@ -37,33 +37,31 @@
             {% if user.is_authenticated %}
             <div class="dropdown-user">
                 <button onclick="myFunction()" class="drop-btn">{{user.username}}</button>
-
                 <div id="myDropdown" class="dropdown-content">
                     <a href="{% url 'profile' %}">Личный кабинет</a>
+                    <a href="{% url 'order-profile' %}">Заказы</a>
+                    <a href="{% url 'feedback-profile' %}">Отзывы</a>
                     <a href="{% url 'logout' %}">Выйти</a>
                 </div>
             </div>
-
             {% else %}
                 <a href="{% url 'login' %}"><img class="auth" src="{% static 'icons/icons_user.jpg' %}"></a>
             {% endif %}
 
-
             <a href="{% url 'cart' %}" class="base-total-quantity">
                 <img src="{% static 'icons/icons_cart.jpg' %}">
             </a>
-<!--            <span class="p-base-total-quantity">{{ carts.total_quantity }}</span>-->
-
-
         </div>
     </nav>
 
     {% block base_content %}
 
     {% endblock base_content %}
-    <section>
-        <h1 style="text-align: center;">Подписка на соц сети</h1>
+    <section class="social-networks">
+            <img src="{% static 'icons/icons_telegram.jpg' %}">
+            <img src="{% static 'icons/icons_instagram.jpg' %}">
     </section>
+
     <section class="basement">
         <div class="logo_basement">
             <img src="{% static 'images/logo.jpg' %}">

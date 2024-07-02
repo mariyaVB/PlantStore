@@ -4,16 +4,6 @@ from flowers.models import Flowers
 from users.models import User
 
 
-class ImagesFeedback(models.Model):
-    image1 = models.ImageField(upload_to='feedback_images/', blank=True, null=True)
-    image2 = models.ImageField(upload_to='feedback_images/', blank=True, null=True)
-    image3 = models.ImageField(upload_to='feedback_images/', blank=True, null=True)
-
-    class Meta:
-        verbose_name = 'Фото пользователя'
-        verbose_name_plural = 'Фото пользователей'
-
-
 class FeedbackQuerySet(models.QuerySet):
     def rating_mean(self):
         if self:
@@ -36,13 +26,15 @@ class FeedbackQuerySet(models.QuerySet):
 class Feedback(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     flowers = models.ForeignKey(Flowers, on_delete=models.CASCADE, verbose_name='Товар')
-    images_feedback = models.ForeignKey(ImagesFeedback, on_delete=models.CASCADE, verbose_name='Фото пользователей', null=True)
     rating = models.IntegerField(default=0, verbose_name='Оценка',
                                  validators=[
                                      MinValueValidator(0),
                                      MaxValueValidator(5)
                                  ])
     text = models.CharField(max_length=300, verbose_name='Отзыв')
+    image1 = models.ImageField(upload_to='feedback_images/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='feedback_images/', blank=True, null=True)
+    image3 = models.ImageField(upload_to='feedback_images/', blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания отзыва')
     date_updated = models.DateTimeField(auto_now=True, verbose_name='Дата редактирования отзыва')
 

@@ -26,25 +26,30 @@ $('.quantity_inner .quantity').bind("change keyup input click", function() {
 });
 
 
+
+//Доставка или самовывоз
 document.addEventListener('DOMContentLoaded', function() {
     const delivery = document.getElementById('inputDelivery');
-    const address = document.getElementById('address'); 
+    const address = document.getElementById('address');
+    const addressValue = document.getElementById('address-value')
     const takingSumm = document.getElementById('takingSumm'); 
     const totalSumm = document.getElementById('totalSumm'); 
     const initialTotalSumm = parseInt(totalSumm.textContent.replace(' ₽', ''));
     const DELIVERY_COST = 500;
     const SELF_COST = 0;
 
-
-
     function toggleAddress() {
         if (delivery.value === 'Доставка') {
             address.style.display = 'block';
             takingSumm.textContent = 'Стоимость доставки: ' + DELIVERY_COST + '₽';
+            addressValue.value = '';
+            console.log(addressValue.value);
 
             } else {
                 address.style.display = 'none';
                 takingSumm.textContent = 'Стоимость доставки: ' + SELF_COST + '₽';
+                addressValue.value = 'Чайковского 20 пом.205';
+                console.log(addressValue.value);
             }
         }
 

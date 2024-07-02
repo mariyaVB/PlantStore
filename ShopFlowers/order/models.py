@@ -3,9 +3,6 @@ from users.models import User
 from cart.models import Cart
 
 
-
-
-
 class Order(models.Model):
     STATUS_NEW = 'Создан'
     STATUS_IN_PROGRESS = 'В обработке'

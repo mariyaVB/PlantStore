@@ -64,7 +64,7 @@
                             {% for cart in order.cart.all %}
                                 <div class="order-cart">
                                     <span class="order-cart-quantity">{{ cart.quantity }}</span>
-                                    <img src="{{ cart.flowers.image.url }}" width="70px" height="90px">
+                                    <a href="{% url 'flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -74,7 +74,7 @@
                             {% for cart in order.cart.all|slice:"0:6" %}
                                 <div class="order-cart">
                                     <span class="order-cart-quantity">{{ cart.quantity }}</span>
-                                    <img src="{{ cart.flowers.image.url }}" width="70px" height="90px">
+                                    <a href="{% url 'flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -83,7 +83,7 @@
                             {% for cart in order.cart.all|slice:"7:" %}
                                 <div class="order-cart">
                                     <span class="order-cart-quantity">{{ cart.quantity }}</span>
-                                    <img src="{{ cart.flowers.image.url }}" width="70px" height="90px">
+                                    <a href="{% url 'flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -93,14 +93,18 @@
                     </div>
                     
                     <div class="order-bt">
-                        <button class="bt-rating"><a href="#">Оценить товары</a></button><br>
-                        {% if order.status != Выполнен %}
+
+                        {% if order.status == 'Выполнен' %}
+                            <button class="bt-rating"><a>Оценить товары</a></button><br>
+                        {% endif %}
+
+                        {% if order.status != 'Выполнен' %}
                             <button class="bt-cancel"><a href="{% url 'cancel-order' order.id %}">Отменить заказ</a></button>
                         {% endif %}
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            {% endfor %}    
+        </div>   
 
         {% if messages %}
            <div class="messages">
@@ -118,6 +122,63 @@
 
     </div>
 </section>
+
+<section class="feedback-order" style="display: none;">
+    <div class="bt-close">&#215;</div>
+    {% for order in orders %}
+    {% if order.status == 'Выполнен' %}
+        {% for cart in order.cart.all %}
+            {% if not cart.is_feedback %}
+                <div class="popup-feedback">
+                    <div class="feedback-product">
+                        <img src="{{ cart.flowers.image.url }}" width="180px" height="200px">
+                    </div>
+
+                    <div class="feedback-forma">
+                        <form action="{% url 'add-feedback' cart.flowers.id %}" method="post">
+                            {% csrf_token %}
+                            {% if form.errors %}
+                                <div class="errors">
+                                    {% for form_order in form %}
+                                        {% for error in form_order.errors %}
+                                            <p class="error">{{ error }}</p>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {{ form.errors }}
+
+                            <div class="feedback-rating">
+                                <button class="star" id="one" value="1">&#9733;</button>
+                                <button class="star" id="two" value="2">&#9733;</button>
+                                <button class="star" id="three" value="3">&#9733;</button>
+                                <button class="star" id="four" value="4">&#9733;</button>
+                                <button class="star" id="five" value="5">&#9733;</button>
+                                {{ form.rating }}
+                            </div>
+
+                            <div class="feedback-text">
+                                {{ form.text }}
+                            </div>
+
+                            <div class="feedback-user-img">
+                                {{ form.image1 }}
+                                {{ form.image2 }}
+                                {{ form.image3 }}
+                            </div>
+
+                            <div class="feedback-button">
+                                <button type="submit" class="add-feedback">Добавить отзыв</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endfor %}
+</section>
+
 
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script src="{% static 'js/user.js' %}"></script>

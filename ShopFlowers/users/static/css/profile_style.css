@@ -31,7 +31,7 @@
 
 .popup {
 	width: 1600px;
-	height: 900px;
+	height: 850px;
 	display: flex;
 }
 
@@ -307,9 +307,105 @@ li:nth-child(4)::marker {
 
 
 
+
+/* Модальное окно для оценки товаров */
+.feedback-order {
+    background: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: 125px;
+    left: 350px;
+    width: 1000px;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(114, 121, 88, 1);
+}
+
+.bt-close {
+    text-align: end;
+    padding: 20px 50px 0 0;
+    cursor: pointer;
+    font-size: 14pt;
+}
+
+.popup-feedback {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.star {
+    font-size: 16pt;
+    color: rgba(15, 15, 15, 1);
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.feedback-product {
+    justify-self: center;
+    align-self: center;
+}
+/* .form-feedback-images {
+    color: transparent;
+}
+
+.form-feedback-images::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.form-feedback-images::before {
+    content: 'Загрузить фото';
+    border: 1px solid rgba(234, 233, 229, 1);
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgba(234, 233, 229, 1);
+    color: rgba(40, 49, 6, 1);
+    display: inline-block;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 10pt;
+}
+
+.form-feedback-images:hover::before {
+    border: 1px solid rgba(234, 233, 229, 1);
+    border-radius: 25px;
+    background: rgba(234, 233, 229, 1);
+} */
+
+.feedback-user-img {
+    display: flex;
+    gap: 10px;
+}
+
+.feedback-button {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 10px;
+}
+
+.add-feedback {
+    border: 1px solid rgba(114, 121, 88, 1);
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgba(209, 216, 184, 1);
+    display: inline-block;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 10pt;
+    color: rgba(40, 49, 6, 1);     
+}
+
+.add-feedback:hover {
+    border: 1px solid rgba(40, 49, 6, 1);    
+    background: rgba(114, 121, 88, 1);
+    color: rgba(209, 216, 184, 1);
+}
+
+
+
+
 /* Страница отзывов в профайле */
 .feedbacks {
-
+    margin-top: 15px;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     row-gap: 10px;
