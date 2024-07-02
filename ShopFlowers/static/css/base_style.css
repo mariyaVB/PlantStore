@@ -114,6 +114,7 @@ nav .user{
 .basement {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
 }
 
 .basement>.logo_basement {
@@ -124,15 +125,13 @@ nav .user{
 .basement>.connection, .basement>.info {
     justify-self: center;
     align-self: start;
+    p {
+        margin-top: -10px;
+    }
 }
 
 .logo_basement img{
     height: 200px;
-}
-
-.connection img{
-    height: 30px;
-    padding-right: 10px;
 }
 
 .author {
@@ -144,12 +143,25 @@ nav .user{
     background-size: cover;
     height: 180px;
     margin-top: 10px;
+    color: rgba(214, 215, 210, 1);
+    font-size: 14pt;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.social-networks-info {
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(114, 121, 88, 1);
+    padding: 20px;
+}
 
 .dropdown-user {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
+    z-index: 10;
 }
 
 .drop-btn {

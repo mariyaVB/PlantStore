@@ -13,8 +13,20 @@ class Category(models.Model):
         return self.title
 
 
+class Discount(models.Model):
+    title = models.CharField(max_length=50, verbose_name='Название распродажи')
+    percent = models.IntegerField(verbose_name='Размер скидки')
+
+    class Meta:
+        verbose_name = 'Распродажа'
+        verbose_name_plural = 'Распродажи'
+
+    def __str__(self):
+        return self.title
+
+
 class Flowers(models.Model):
-    product = models.CharField(max_length=50,  blank=True, null=True, verbose_name='Продукт')
+    product = models.CharField(max_length=50, blank=True, null=True, verbose_name='Продукт')
     title = models.CharField(max_length=100, verbose_name='Название')
     text = models.CharField(max_length=1500, verbose_name='Описание')
     price = models.IntegerField(verbose_name='Цена')
@@ -22,6 +34,8 @@ class Flowers(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
     image = models.ImageField(upload_to="flowers_images", blank=True, null=True, verbose_name='Изображение')
     quantity = models.IntegerField(verbose_name='Количество', blank=True, null=True)
+    is_discount = models.BooleanField(verbose_name='Скидка', default=False)
+    discount = models.ForeignKey(Discount, on_delete=models.CASCADE, verbose_name='Размер скидки', null=True)
 
     class Meta:
         verbose_name = 'Растение'
@@ -29,6 +43,14 @@ class Flowers(models.Model):
 
     def __str__(self):
         return self.title
+
+    def calculate_the_price(self):
+        if self.is_discount:
+            return int(self.price * ((100 - self.discount.percent) / 100))
+        else:
+            return int(self.price)
+
+
 
 
 

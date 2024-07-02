@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Flowers, Category
+from .models import Flowers, Category, Discount
 
 admin.site.index_title = 'Fresh Company'
 admin.site.site_header = 'Управление Галереей зеленых пейзажей'
@@ -16,4 +16,10 @@ class FlowersAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'slug')
     list_display_links = ('id', 'title')
+
+
+@admin.register(Discount)
+class DiscountAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'percent')
+    list_display_links = ('id', 'title', 'percent')
 

@@ -93,6 +93,7 @@ a {
 }
 
 .flower {
+    position: relative;  /*Для ленточки относительно карточки товара*/
     border-radius: 20px;
     outline: 0.5px solid rgba(119, 126, 92, 1);
     background: rgba(247, 247, 247, 0.5);
@@ -190,4 +191,22 @@ a {
     padding-top: 5px;
     text-align: center;
     color: rgba(40, 49, 6, 1);
+}
+
+.product-discount {
+	position: absolute; /*Для ленточки относительно flowers*/
+	left: 180px;
+	top: 0px;
+	filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.5));
+}
+
+.product-discount span {
+	display: block;
+	color: rgba(40, 49, 6, 1);
+	font-size: 16px;
+	text-align: center;
+	background: rgba(199, 194, 171, 1);
+	width: 40px;
+	line-height: 56px;
+	clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 95%, 0 100%);
 }

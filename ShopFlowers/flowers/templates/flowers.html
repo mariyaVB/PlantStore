@@ -66,13 +66,20 @@
         <div class="flowers-list" id="flowers-list-id">
             {% for flower in flowers %}
                 <div class="flower">
-                    <a href="{% url 'flower' slug=flower.slug %}">
-                        <img src="{{ flower.image.url }}">
-                    </a>
+                    {% if flower.is_discount %}
+                        <a href="{% url 'flower' slug=flower.slug %}">
+                            <img src="{{ flower.image.url }}">
+                        </a>
+                        <div class="product-discount"><span>{{ flower.discount.percent }}%</span></div>
+                    {% else %}
+                        <a href="{% url 'flower' slug=flower.slug %}">
+                            <img src="{{ flower.image.url }}">
+                        </a>
+                    {% endif %}
 
                     <div class="flower-detail">
                         <p class="p-text">{{ flower.title }}</p>
-                        <p class="p-text">от {{ flower.price }}₽</p>
+                        <p class="p-text">от {{ flower.calculate_the_price }}₽</p>
                         {% if flower.quantity > 0 %}
                             <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
                         {% else %}

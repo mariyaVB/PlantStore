@@ -95,7 +95,10 @@ class Search(ListView):
     template_name = 'flowers_search.html'
 
     def get_queryset(self):
-        return Flowers.objects.filter(title__icontains=self.request.GET.get('search'))
+        return Flowers.objects.filter(
+            Q(title__icontains=self.request.GET.get('search')) |
+            Q(category__title__icontains=self.request.GET.get('search'))
+        )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
