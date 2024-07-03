@@ -3,12 +3,14 @@
     src: url('../fonts/Mirra.otf');
 }
 
+/* Фон страницы */
 .fon {
     background-image: url(../images/fon-flowers3.png);
     background-size: cover;
     padding-bottom: 100px;
 }
 
+/* Хлебные крошки */
 .breadcrumb {
     margin-left: 320px;
     padding-top: 20px;
@@ -22,7 +24,6 @@
 .breadcrumb li {
     font-size: 10pt;
     padding-left: 2px;
-
 }
 
 .breadcrumb a {
@@ -31,6 +32,7 @@
     border-bottom: 2px solid rgba(67, 102, 205, 0);
 }
 
+/* Карточка со свойствами и кнопкой для корзины */
 .flower-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -38,10 +40,15 @@
     margin: 0 20% 0 20%;
     width: 60%;
     padding-top: 50px;
+    justify-items: center;
+    align-items: start;
+    display: relative;
 }
 
-flower-list>.flower-img{
+/* Фото товара */
+.flower-img{
     grid-column: 1;
+
 }
 
 .flower-img img{
@@ -49,18 +56,81 @@ flower-list>.flower-img{
     height: 500px;
 }
 
-.flower-list>.flower-property {
+/* Ленточка со скидкой */
+.product-discount {
+	position: absolute; /*Для ленточки относительно flower-list*/
+	left: 600px;
+	top: 185px;
+	filter: drop-shadow(2px 3px 2px rgba(15, 15, 15, 1));
+}
+
+.product-discount span {
+	display: block;
+	color: rgba(234, 233, 229, 1);
+	font-size: 16px;
+	text-align: center;
+	background:rgba(190, 55, 54, 1);
+	width: 100px;
+	line-height: 20px;
+    padding: 8px;
+	clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%); 
+    /* clip-path: ellipse(55px 25px at 50% 50%); *//* создает область отсечения 0 0, 100% 0, 100% 90%, 50% 95%, 0 100%; */
+}
+
+/* Свойства товара */
+.flower-property {
     grid-column: 2;
 }
 
+/* Имя товара */
 .flower-title {
     font-family: 'myFontMirra';
     font-weight: bold;
     font-size: 14pt;
     border-bottom: 1px solid rgba(114, 121, 88, 1);
     padding-bottom: 10px;
+    color: rgba(40, 49, 6, 1);
 }
 
+/* Описание товара */
+.p-text {
+    font-family: 'myFontMirra';
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: start;
+    color: rgba(40, 49, 6, 1);
+}
+
+/* Карточка с ценой */
+.flower-price {
+    margin-bottom: 10px;
+}
+
+/* Стиль написания цены */
+.p-price {
+    font-family: 'myFontMirra';
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: start;
+    width: 100px;
+    margin-left:10px;
+    display: inline;
+    text-decoration: line-through solid 2px rgba(190, 55, 54, 1);
+    color: rgba(78, 82, 60, 1);
+}
+
+.p-price-discount {
+    display: inline;
+    width: 100px;
+    font-family: 'myFontMirra';
+    font-size: 15pt;
+    font-weight: bold;
+    text-align: end;
+    margin-right: 10px;
+    color: rgba(40, 49, 6, 1);
+}
+
+/* Кнопка в корзину */
 .cart-button {
     padding: 10px 20px 10px 20px;
     border-style: none;
@@ -85,7 +155,7 @@ flower-list>.flower-img{
     color: rgba(40, 49, 6, 1);
 }
 
-
+/* Карусель */
 .carousel {
     height: 200px;
     width: 900px;
@@ -144,8 +214,6 @@ button.prev {
 }
 
 
-
-
 /* Отзывы */
 .feedback-list {
     margin: 0 100px 0 100px;
@@ -196,5 +264,15 @@ button.prev {
 .feedback-img {
     margin: 0 0 0 20px;
     padding-bottom: 15px;
+    position: relative;
+}
+
+.images:active {
+    width: 500px;
+    height: 600px;
+    transition: width 0.3s;
+    position: fixed;
+    top: 20%;
+    left: 25%;
 }
 

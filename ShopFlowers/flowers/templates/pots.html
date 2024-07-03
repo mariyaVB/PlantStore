@@ -11,14 +11,21 @@
         <div class="hello-text">
             <p class="p1">Каталог</p>
             <div class="list-cat">
-                <div class="cat-plant" style="border-bottom: 1px solid rgba(114, 121, 88, 1);"><a href="{% url 'flowers' %}">Комнатные растения</a></div>
-
-                <div class="cat-pots" style="border: 1px solid rgba(114, 121, 88, 1);border-top-left-radius: 20px;
-                                            border-top-right-radius: 20px;border-bottom: none;">
-                    <a href="{% url 'pots' %}">Горшки и кашпо</a>
+                <div class="cat-plant" style="border-bottom: 1px solid rgba(114, 121, 88, 1);">
+                    <a href="{% url 'flowers' %}">Комнатные растения</a>
                 </div>
 
-                <div class="cat-care" style="border-bottom: 1px solid rgba(114, 121, 88, 1);"><a href="{% url 'care' %}">Уход за растениями</a></div>
+                <div class="cat-pots" style="
+                    border: 1px solid rgba(114, 121, 88, 1);
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    border-bottom: none;">
+                    <a href="{% url 'pots' %}">Горшки и кашпо</a>
+                </div>
+                    
+                <div class="cat-care" style="border-bottom: 1px solid rgba(114, 121, 88, 1);">
+                    <a href="{% url 'care' %}">Уход за растениями</a>
+                </div>
             </div>
         </div>
     </section>
@@ -65,13 +72,28 @@
         <div class="flowers-list" id="flowers-list-id">
             {% for pot in pots %}
                 <div class="flower">
-                    <a href="{% url 'flower' slug=pot.slug %}">
-                        <img src="{{ pot.image.url }}">
-                    </a>
-
+                    {% if pot.is_discount %}
+                        <a href="{% url 'flower' slug=pot.slug %}">
+                            <img src="{{ pot.image.url }}">
+                        </a>
+                        <div class="product-discount"><span>{{ pot.discount.percent }}%</span></div>
+                    {% else %}
+                        <a href="{% url 'flower' slug=pot.slug %}">
+                            <img src="{{ pot.image.url }}">
+                        </a>
+                    {% endif %}
+                    
                     <div class="flower-detail">
                         <p class="p-text">{{ pot.title }}</p>
-                        <p class="p-text">от {{ pot.price }}₽</p>
+                        {% if pot.is_discount %}
+                            <div class="flower-price">
+                                <p class="p-price-discount">от {{ pot.calculate_the_price }}₽</p>
+                                <p class="p-price">{{ pot.price }}₽</p>
+                            </div>
+                        {% else %}       
+                            <p class="p-text">от {{ pot.calculate_the_price }}₽</p>
+                        {% endif %}   
+                         
                         {% if pot.quantity > 0 %}
                             <a href="{% url 'add-cart' pot.id %}" class="cart-button">Добавить в корзину</a>
                         {% else %}

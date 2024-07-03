@@ -52,7 +52,7 @@ class OrderProfileView(ListView):
     paginate_by = 4
 
     def get_queryset(self):
-        order = Order.objects.filter(user=self.request.user).exclude(status='Отменен')
+        order = Order.objects.filter(user=self.request.user).exclude(status='Отменен').order_by('-create_order')
         return order
 
     def get_context_data(self, **kwargs):

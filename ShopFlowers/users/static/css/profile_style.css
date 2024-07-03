@@ -17,8 +17,8 @@
     object-fit: cover;
     width: 200px;
     height: 200px;
-    border-radius: 100px;
-    border: 1px solid rgba(40, 49, 6, 1);
+    clip-path: ellipse(100px 100px at 50% 50%);
+    border: 2px solid rgba(40, 49, 6, 1);
     position: relative;
     top: 60px; left: 20px;
 }
@@ -305,9 +305,6 @@ li:nth-child(4)::marker {
     }
 }
 
-
-
-
 /* Модальное окно для оценки товаров */
 .feedback-order {
     background: rgba(255, 255, 255, 1);
@@ -399,9 +396,6 @@ li:nth-child(4)::marker {
     background: rgba(114, 121, 88, 1);
     color: rgba(209, 216, 184, 1);
 }
-
-
-
 
 /* Страница отзывов в профайле */
 .feedbacks {

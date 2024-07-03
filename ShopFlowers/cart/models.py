@@ -42,7 +42,9 @@ class Cart(models.Model):
         return str(self.id)
 
     def sum_cart(self):
-        return self.flowers.price * self.quantity
+        if self.flowers.is_discount:
+            return int(self.flowers.calculate_the_price() * self.quantity)
+        return int(self.flowers.price * self.quantity)
 
 
 

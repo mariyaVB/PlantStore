@@ -2,8 +2,6 @@
 {% load static %}
 {% block head_title %}
     <link rel="stylesheet" href="{% static 'css/flower_style.css' %}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <title>{{ flower.title }}</title>
 {% endblock head_title %}
 
@@ -26,7 +24,12 @@
 
 <section class="flower-list">
     <div class="flower-img">
-        <img src="{{ flower.image.url }}">
+        {% if flower.is_discount %}
+            <img src="{{ flower.image.url }}">
+            <div class="product-discount"><span>{{ flower.discount.title }}</span></div>
+        {% else %}
+            <img src="{{ flower.image.url }}">
+        {% endif %}
     </div>
 
     <div class="flower-property">
@@ -37,14 +40,23 @@
             &#8226; <span>{{ feedbacks.feedback_count }}</span>
         </div>
 
-        <p class="flower-text">{{ flower.text }}</p>        
-        <p style="font-family: 'myFontMirra'; font-weight: bold;">{{ flower.price }}₽</p>
-        {% if flower.quantity > 0 %}
-            <p>В наличии</p>
+        <p class="flower-text">{{ flower.text }}</p>
+
+        {% if flower.is_discount %}
+            <div class="flower-price">
+
+                <p class="p-price-discount">от {{ flower.calculate_the_price }}₽</p>
+                <p class="p-price">{{ flower.price }}₽</p>
+            </div>
         {% else %}
-            <p>Нет в наличии</p>
+            <p class="p-text">от {{ flower.calculate_the_price }}₽</p>
         {% endif %}
-        <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+
+        {% if flower.quantity > 0 %}
+            <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+        {% else %}
+            <p style="color: rgba(40, 49, 6, 1);">Нет в наличии</p>
+        {% endif %}
     </div>
 </section>
 
@@ -95,15 +107,15 @@
 
                 <div class="feedback-img">
                     {% if feedback.image1 %}
-                        <img src="{{ feedback.image1.url }}" width="100px" height="120px">
+                        <img src="{{ feedback.image1.url }}" width="100px" height="120px" class="images">
                     {% endif %}
 
                     {% if feedback.image2 %}
-                        <img src="{{ feedback.image2.url }}" width="100px" height="120px">
+                        <img src="{{ feedback.image2.url }}" width="100px" height="120px" class="images">
                     {% endif %}
 
                     {% if feedback.image3 %}
-                        <img src="{{ feedback.image3.url }}" width="100px" height="120px">
+                        <img src="{{ feedback.image3.url }}" width="100px" height="120px" class="images">
                     {% endif %}
                 </div>
             </div>

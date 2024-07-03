@@ -11,15 +11,21 @@
         <div class="hello-text">
             <p class="p1">Каталог</p>
             <div class="list-cat">
-                <div class="cat-plant" style="border-bottom: 1px solid rgba(114, 121, 88, 1);"><a href="{% url 'flowers' %}">Комнатные растения</a></div>
+                <div class="cat-plant" style="border-bottom: 1px solid rgba(114, 121, 88, 1);">
+                    <a href="{% url 'flowers' %}">Комнатные растения</a>
+                </div>
 
                 <div class="cat-pots" style="border-bottom: 1px solid rgba(114, 121, 88, 1);">
                     <a href="{% url 'pots' %}">Горшки и кашпо</a>
                 </div>
 
-                <div class="cat-care" style="border: 1px solid rgba(114, 121, 88, 1);border-top-left-radius: 20px;
-                                            border-top-right-radius: 20px;border-bottom: none;">
-                    <a href="{% url 'care' %}">Уход за растениями</a></div>
+                <div class="cat-care" style="
+                    border: 1px solid rgba(114, 121, 88, 1);
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    border-bottom: none;">
+                    <a href="{% url 'care' %}">Уход за растениями</a>
+                </div>
             </div>
         </div>
     </section>
@@ -66,13 +72,28 @@
         <div class="flowers-list" id="flowers-list-id">
             {% for care in cares %}
             <div class="flower">
-                <a href="{% url 'flower' slug=care.slug %}">
-                    <img src="{{ care.image.url }}">
-                </a>
+                {% if care.is_discount %}
+                    <a href="{% url 'flower' slug=care.slug %}">
+                        <img src="{{ care.image.url }}">
+                    </a>
+                    <div class="product-discount"><span>{{ care.discount.percent }}%</span></div>
+                {% else %}
+                    <a href="{% url 'flower' slug=care.slug %}">
+                        <img src="{{ care.image.url }}">
+                    </a>
+                {% endif %}
 
                 <div class="flower-detail">
                     <p class="p-text">{{ care.title }}</p>
-                    <p class="p-text">от {{ care.price }}₽</p>
+                    {% if care.is_discount %}
+                        <div class="flower-price">
+                            <p class="p-price-discount">от {{ care.calculate_the_price }}₽</p>
+                            <p class="p-price">{{ care.price }}₽</p>
+                        </div>
+                    {% else %}       
+                        <p class="p-text">от {{ care.calculate_the_price }}₽</p>
+                    {% endif %}
+
                     {% if care.quantity > 0 %}
                         <a href="{% url 'add-cart' care.id %}" class="cart-button">Добавить в корзину</a>
                     {% else %}

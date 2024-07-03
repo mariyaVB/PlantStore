@@ -21,7 +21,3 @@ $(document).ready(function() {
     });
 }); 
 
-// for (let i = 0; i < one.length; i++) {   
-//     one[i].style.background = 'Pink';
-//     one[i].style.border = '5px double black';
-// }

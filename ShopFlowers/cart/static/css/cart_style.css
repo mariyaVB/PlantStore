@@ -156,10 +156,9 @@
 }
 
 .select option {
-     color: rgba(40, 49, 6, 1);
+    color: rgba(40, 49, 6, 1);
     background: transparent;
 }
-
 
 /* Форма */
 .form-input-order {
@@ -183,12 +182,9 @@
 }
 
 .form-choice-order option {
-    height: 50px;
     color: rgba(40, 49, 6, 1);
     background: rgba(40, 49, 6, 0.3);
 }
-
-
 
 /* Сообщение об отмене */
 .messages {
@@ -197,5 +193,4 @@
 
 .messages-text {
     color: rgba(40, 49, 6, 1);
-
 }
