@@ -17,21 +17,21 @@
                         Настройки
                     </a>
                 </li>
-                <li><a href="{% url 'order-profile' %}" class="bt-my-orders">Мои покупки</a></li>
-                <li><a href="{% url 'feedback-profile' %}" class="bt-my-feedback">Мои отзывы</a></li>
+                <li><a href="{% url 'order:order-profile' %}" class="bt-my-orders">Мои покупки</a></li>
+                <li><a href="{% url 'feedback:feedback-profile' %}" class="bt-my-feedback">Мои отзывы</a></li>
                 <li><a class="bt-my-like">Избранное</a></li>
             </ul>
         </div>
     </div>
 
     <div class="overlay">
-        <form method="post" action="{% url 'profile' %}" enctype="multipart/form-data">
+        <form method="post" action="{% url 'user:profile' %}" enctype="multipart/form-data">
         {% csrf_token %}
             {% if user.photo %}
             <div class="name-photo">
                 <div class="bt-user-change">
                     <img class="user-photo" src="{{ user.photo.url }}">
-                    {{ form.photo }}
+                    <p class="photo-change">{{ form.photo }}</p>
                 </div>
                 <h2 class="user-name">{{ user.username }}</h2>
             </div>
@@ -52,7 +52,7 @@
                     <span class="label-form">{{ form.username.label }}:</span><br><p>{{ form.username }}</p>
                     <span class="label-form">{{ form.email.label }}:</span><br><p>{{ form.email }}</p>
                     <span class="label-form"><label>Изменить пароль:</label></span><br><br>
-                    <a href="{% url 'password-change' %}"><button type="button" class="btn-p">********</button></a>
+                    <a href="{% url 'user:password-change' %}"><button type="button" class="btn-p">********</button></a>
                     <div class="form-error">{{ form.errors }}</div>
                 </div>
 
@@ -71,7 +71,6 @@
 </section>
 
 
-<!--<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>-->
-<!--<script src="{% static 'js/user.js' %}"></script>-->
-
+<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<script src="{% static 'js/user.js' %}"></script>
 {% endblock base_content %}

@@ -9,16 +9,16 @@
 <section class="fon">
 <div class="breadcrumb">
     <ul>
-        <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
-        <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Каталог /</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers:main' %}">Главная /</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers:flowers' %}">Каталог /</a></li>
         {% if flower.product == 'Уход' %}
-            <li class="breadcrumb_item"><a href="{% url 'care' %}">{{ flower.product }} /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'flowers:care' %}">{{ flower.product }} /</a></li>
         {% elif flower.product == 'Комнатные растения' %}
-            <li class="breadcrumb_item"><a href="{% url 'flowers' %}">{{ flower.product }} /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'flowers:flowers' %}">{{ flower.product }} /</a></li>
         {% elif flower.product == 'Горшки' %}
-            <li class="breadcrumb_item"><a href="{% url 'pots' %}">{{ flower.product }} /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'flowers:pots' %}">{{ flower.product }} /</a></li>
         {% endif %}
-        <li class="breadcrumb_item"><a href="{% url 'flower' slug=flower.slug %}">{{ flower.title }}</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers:flower' slug=flower.slug %}">{{ flower.title }}</a></li>
     </ul>
 </div>
 
@@ -44,7 +44,6 @@
 
         {% if flower.is_discount %}
             <div class="flower-price">
-
                 <p class="p-price-discount">от {{ flower.calculate_the_price }}₽</p>
                 <p class="p-price">{{ flower.price }}₽</p>
             </div>
@@ -53,7 +52,7 @@
         {% endif %}
 
         {% if flower.quantity > 0 %}
-            <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+            <a href="{% url 'cart:add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
         {% else %}
             <p style="color: rgba(40, 49, 6, 1);">Нет в наличии</p>
         {% endif %}
@@ -65,8 +64,8 @@
     <div class="list-assortment">
         {% for assortment in assortments %}
             {% if assortment.product != flower.product %}
-                {% if assortment.category.title == 'Универсальный' or assortment.category == flower.category %}
-                    <a  href="{% url 'flower' slug=assortment.slug %}">
+                {% if assortment.category.title == 'Универсальный' or assortment.category.title == flower.category.title %}
+                    <a  href="{% url 'flowers:flower' slug=assortment.slug %}">
                         <div class="assortment">
                             <img src="{{ assortment.image.url }}" width="150px" height="150px">
                         </div>
@@ -126,7 +125,16 @@
 </section>
 
 
+<!--<button>-->
+<!--    <img src="{% static 'icons/add_favorite.png' %}" width="20px" height="20px" id="add-favourite">-->
+<!--</button>-->
 
-<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<!--<button hidden="hidden">-->
+<!--    <img src="{% static 'icons/delete_favourites.png' %}" width="20px" height="20px" id="delete-favourite">-->
+<!--</button>-->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="{% static 'js/flowers.js' %}"></script>
 {% endblock base_content %}

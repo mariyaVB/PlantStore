@@ -16,10 +16,12 @@ class MainPage(TemplateView):
 class FlowersView(ListView):
     """Показ комнатных растений"""
     model = Flowers
-    queryset = Flowers.objects.filter(product='Комнатные растения')
     template_name = 'flowers.html'
     context_object_name = 'flowers'
     paginate_by = 12
+
+    def get_queryset(self):
+        return Flowers.objects.filter(product='Комнатные растения').order_by('title')
 
     def get_category(self):
         return Category.objects.all()
@@ -28,10 +30,12 @@ class FlowersView(ListView):
 class PotsView(ListView):
     """Показ горшков для растений"""
     model = Flowers
-    queryset = Flowers.objects.filter(product='Горшки')
     template_name = 'pots.html'
     context_object_name = 'pots'
     paginate_by = 12
+
+    def get_queryset(self):
+        return Flowers.objects.filter(product='Горшки').order_by('title')
 
     def get_category(self):
         return Category.objects.all()
@@ -40,10 +44,12 @@ class PotsView(ListView):
 class CareView(ListView):
     """Показ ухода для растений"""
     model = Flowers
-    queryset = Flowers.objects.filter(product='Уход')
     template_name = 'care.html'
     context_object_name = 'cares'
     paginate_by = 12
+
+    def get_queryset(self):
+        return Flowers.objects.filter(product='Уход').order_by('title')
 
     def get_category(self):
         return Category.objects.all()

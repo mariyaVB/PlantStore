@@ -6,11 +6,12 @@ from order.models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['address', 'taking', 'taking_summa', 'summa']
+        fields = ['address', 'taking', 'taking_summa', 'summa', 'payment']
 
         widgets = {
             'address': forms.TextInput(attrs={'class': 'form-input-order', 'placeholder': 'Адрес', 'id': 'address-value'}),
             'taking': forms.widgets.Select(attrs={'class': 'form-choice-order', 'id': 'inputDelivery'}),
+            'payment': forms.widgets.Select(attrs={'class': 'form-choice-order', 'id': 'inputPayment'}),
         }
 
     def clean_address(self):
@@ -25,6 +26,8 @@ class OrderForm(forms.ModelForm):
         else:
             self.add_error('address', 'Пожалуйста, введите адрес.')
         return address
+
+
 
 
 

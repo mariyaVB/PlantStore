@@ -9,8 +9,8 @@
 <input type="hidden" name="next" value="{{ next }}" />
     <div class="breadcrumb">
         <ul>
-            <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
-            <li class="breadcrumb_item"><a href="{% url 'cart' %}">Корзина /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'flowers:main' %}">Главная /</a></li>
+            <li class="breadcrumb_item"><a href="{% url 'cart:cart' %}">Корзина /</a></li>
         </ul>
     </div>
 
@@ -34,12 +34,12 @@
                     </div>
 
                     <div class="cart-title">
-                        <a href="{% url 'flower' slug=cart.flowers.slug %}">{{ cart.flowers }}</a>
+                        <a href="{% url 'flowers:flower' slug=cart.flowers.slug %}">{{ cart.flowers }}</a>
                     </div>
 
                     <div class="cart-quantity">
                         <div class="quantity_inner">
-                            <form method="post" action="{% url 'change-cart' cart.id %}">
+                            <form method="post" action="{% url 'cart:change-cart' cart.id %}">
                                 {% csrf_token %}
 
                                 <button type="submit" class="bt_minus">-</button>
@@ -55,23 +55,24 @@
                     </div>
 
                     <div class="cart-remove">
-                        <a href="{% url 'remove-cart' cart.id %}"><img src="{% static 'icons/icon-delete.png' %}" width="20px" height="20px"></a>
+                        <a href="{% url 'cart:remove-cart' cart.id %}"><img src="{% static 'icons/icon-delete.png' %}" width="20px" height="20px"></a>
                     </div>
                 </div>
             {% endfor %}
         {% else %}
             <h1 style="font-family: 'myFontMirra'">В корзине пока нет товаров</h1>
-            <a href="{% url 'flowers' %}" style="color: rgba(40, 49, 6, 1);">Перейти в каталог</a>
+            <a href="{% url 'flowers:flowers' %}" style="color: rgba(40, 49, 6, 1);">Перейти в каталог</a>
         {% endif %}
     </div>
 
     <div class="cart-total">
         <div class="cart-total-frame">
             <h1  style="font-family: 'myFontMirra'; text-align: start; color: rgba(40, 49, 6, 1);">Оформление заказа</h1>
-            <form action="{% url 'add-order' %}" method="post">
+            <form action="{% url 'order:add-order' %}" method="post">
                 {% csrf_token %}
 
                 {{ form.taking }}
+                {{ form.payment }}
                 <span id="address">{{ form.address }}</span>
 
                 <div>

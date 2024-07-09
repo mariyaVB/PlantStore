@@ -16,15 +16,15 @@
 
 <div class="breadcrumb">
     <ul>
-        <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
-        <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Каталог /</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers:main' %}">Главная /</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers:flowers' %}">Каталог /</a></li>
     </ul>
 </div>
 
 <section class="shop">
     <div class="filters">
         <p>Фильтры</p>
-<!--           <form action="{% url 'filter' %}" method="get">-->
+<!--           <form action="{% url 'flowers:filter' %}" method="get">-->
         <div class="filter-cat">
             {% for category in view.get_category %}
                 <li>
@@ -57,14 +57,14 @@
             {% for flower in search %}
                 <div class="flower">
                     <a href="#">
-                        <img src="{{ flower.image.url }}">
+                        <img src="{{ flower.image.url }}" width="250px" height="300px">
                     </a>
 
                     <div class="flower-detail">
                         <p class="p-text">{{ flower.title }}</p>
                         <p class="p-text">от {{ flower.price }}₽</p>
                         {% if flower.quantity > 0 %}
-                            <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+                            <a href="{% url 'cart:add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
                         {% else %}
                             <p style="margin: 5px;">Нет в наличии</p>
                         {% endif %}

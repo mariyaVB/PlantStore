@@ -4,29 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Добавлена модель отзывов, представление для просмотра отзывов в профиле пользователя, представление на отображение отзывы под продуктом, настроены стили, в QuerySet, добавлены методы для подсчета среднего рейтинга и вывода на старицу звездочек">
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/feedback/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/feedback/static/css/feedback_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/feedback/static/js/feedback.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/feedback/templates/edit_feedback.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/feedback/templates/remove_feedback.html" afterDir="false" />
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Исправлена цена в корзине с учетом скидки.">
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/migrations/0022_alter_order_cart.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/email_cancel_order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/email_order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/payment/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Комнатные растения.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Комнатные растения.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/templates/edit_feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/templates/edit_feedback.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/templates/profile_feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/templates/profile_feedback.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flower_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flower_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/main_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/main_page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/flowers_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/flowers_search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_change_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_change_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_change_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_change_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_complete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +70,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -65,16 +99,17 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Study/Комнатные_растения/ShopFlowers/feedback&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Study/HomePlants/ShopFlowers/order/templates&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Study\HomePlants\ShopFlowers\order\templates" />
+      <recent name="D:\Study\HomePlants\ShopFlowers\payment" />
       <recent name="D:\Study\Комнатные_растения\ShopFlowers\feedback" />
       <recent name="D:\Study\Комнатные_растения\ShopFlowers\flowers\templates" />
       <recent name="D:\Study\Комнатные_растения\ShopFlowers\flowers\static\images" />
-      <recent name="D:\Study\Комнатные растения\ShopFlowers\flowers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Study\Комнатные_растения\ShopFlowers\ShopFlowers\templates" />
@@ -93,7 +128,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (Комнатные_растения)" />
+      <option name="SDK_NAME" value="Python 3.12 (HomePlants)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -325,7 +360,31 @@
       <option name="project" value="LOCAL" />
       <updated>1719427570588</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Написаны классы представлений на редактирование, удаление отзывов. Добавлен флаг отзыв написан в модели корзины, чтобы отслеживать отзывы и если отзыв есть то больше не будет предлагаться оценить товар. Если отзыв удален, то снова флаг отзыв не написан и есть возможность снова оценить.">
+      <option name="closed" value="true" />
+      <created>1719921480950</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1719921480950</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Создан класс Дисконт, добавлен ключ в продуктах на дисконт. В шаблоне отображается цена с учетом скидки, добавлены стили страницу с комнатными растениями.">
+      <option name="closed" value="true" />
+      <created>1719936414132</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1719936414132</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Исправлена цена в корзине с учетом скидки.">
+      <option name="closed" value="true" />
+      <created>1720010558967</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1720010558967</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -340,8 +399,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Начало проекта. Создана приложение flowers отвечающее за отображение товаров на странице и все взаимодействия с ними. Зарегистрирована модель Цветы и Категория." />
-    <MESSAGE value="Добавила 11 категорий, и 11 товаров в каждую категорию." />
     <MESSAGE value="Стартовая страница начата." />
     <MESSAGE value="Стартовая страница готова." />
     <MESSAGE value="Сделана базовая страница, классы представления на запрос гет, отображение объектов из базы данных." />
@@ -364,6 +421,9 @@
     <MESSAGE value="Отмена заказа. Добавлены горшки и уход за растениями, сделаны для них страницы. Реализована карусель товаров для доп покупок на странице с выбранным товаром." />
     <MESSAGE value="Добавлен js, когда пользователь выбирает доставку, появляется поле с адресом, так же меняется сумма доставки и итоговая сумма, все это прередается в скрытые инпуты и которые обрабатывает форма. Форма с адресом обрабатывается на длину вводимой информации, если самовывоз то поле скрывается и добавляется пустым, а если доставка то появляется и нужно ввести не менее 5 символов" />
     <MESSAGE value="Добавлена модель отзывов, представление для просмотра отзывов в профиле пользователя, представление на отображение отзывы под продуктом, настроены стили, в QuerySet, добавлены методы для подсчета среднего рейтинга и вывода на старицу звездочек" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлена модель отзывов, представление для просмотра отзывов в профиле пользователя, представление на отображение отзывы под продуктом, настроены стили, в QuerySet, добавлены методы для подсчета среднего рейтинга и вывода на старицу звездочек" />
+    <MESSAGE value="Написаны классы представлений на редактирование, удаление отзывов. Добавлен флаг отзыв написан в модели корзины, чтобы отслеживать отзывы и если отзыв есть то больше не будет предлагаться оценить товар. Если отзыв удален, то снова флаг отзыв не написан и есть возможность снова оценить." />
+    <MESSAGE value="Создан класс Дисконт, добавлен ключ в продуктах на дисконт. В шаблоне отображается цена с учетом скидки, добавлены стили страницу с комнатными растениями." />
+    <MESSAGE value="Исправлена цена в корзине с учетом скидки." />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправлена цена в корзине с учетом скидки." />
   </component>
 </project>

@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,12 +12,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nw4ss75blf776kmwg&@sy7w(kc)wcewp8$&uanbqn7!o#%7e5j'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'd4ee-95-58-138-130.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://d4ee-95-58-138-130.ngrok-free.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -29,6 +32,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'order.apps.OrderConfig',
     'feedback.apps.FeedbackConfig',
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -46,7 +50,7 @@ ROOT_URLCONF = 'ShopFlowers.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,9 +122,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-LOGIN_REDIRECT_URL = 'main'
-LOGOUT_REDIRECT_URL = 'main'
-LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'flowers:main'
+LOGOUT_REDIRECT_URL = 'flowers:main'
+LOGIN_URL = 'user:login'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -131,7 +135,7 @@ AUTH_USER_MODEL = 'users.User'
 DEFAULT_USER_IMAGE = MEDIA_URL + 'users_images/default-profile.png'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST_PASSWORD = "bbuu oode hmcr ldln"
+EMAIL_HOST_PASSWORD = 'bbuu oode hmcr ldln'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "mashatenkova61@gmail.com"
@@ -141,5 +145,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
 
+YOOKASSA_SHOP_ID = os.getenv('DJANGO_YOOKASSA_SHOP_ID')
+YOOKASSA_SECRET_KEY = os.getenv('DJANGO_YOOKASSA_SECRET_KEY')
 CART_SESSION_ID = 'cart'
 

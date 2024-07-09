@@ -14,11 +14,11 @@ class LoginUser(LoginView):
     extra_context = {'title': 'Авторизация', 'form_auth': form_class}
 
     def get_success_url(self):
-        return reverse_lazy('main')
+        return reverse_lazy('flowers:main')
 
 
 class LogoutUser(LogoutView):
-    next_page = reverse_lazy('main')
+    next_page = reverse_lazy('flowers:main')
 
 
 class RegisterUser(CreateView):
@@ -30,7 +30,7 @@ class RegisterUser(CreateView):
         raise Http404('Not Found')
 
     def get_success_url(self):
-        return reverse_lazy('login')
+        return reverse_lazy('user:login')
 
 
 class ProfileUser(LoginRequiredMixin, UpdateView):
@@ -41,7 +41,7 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
                      'default_image': settings.DEFAULT_USER_IMAGE}
 
     def get_success_url(self):
-        return reverse_lazy('profile')
+        return reverse_lazy('user:profile')
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -53,7 +53,7 @@ class PasswordChangeUser(PasswordChangeView):
     extra_context = {'title': 'Изменение пароля'}
 
     def get_success_url(self):
-        return reverse_lazy('password_change_done')
+        return reverse_lazy('user:password_change_done')
 
 
 

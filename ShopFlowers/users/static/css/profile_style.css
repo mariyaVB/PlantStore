@@ -189,7 +189,6 @@ li:nth-child(4)::marker {
 .form-profile-photo {
     margin-left: 63px;
     width: 115px;
-    border-radius: 45px;
     background-color: rgba(114, 121, 88, 1);
 }
 
@@ -527,4 +526,259 @@ li:nth-child(4)::marker {
 .messages-text {
 
     color: rgba(40, 49, 6, 1);
+}
+
+
+@media screen and (min-width: 800px) and (max-width: 1175px){
+    .form-grid {
+        height: 350px;
+        width: 600px;
+    }
+
+    .form-input-profile {
+        width: 150px;
+        height: 20px;
+        font-size: 8pt;
+    }
+    
+    .form-date-birth {
+        width: 52px;
+        height: 25px;
+        font-size: 8pt;
+    }
+    
+    .btn-p {
+        width: 150px;
+        height: 25px;
+    }
+       
+    .save-profile, .password-change {
+        font-size: 8pt;
+        width: 150px;
+        padding: 7px;
+        margin: 10px 0 0 -550px;
+    }
+
+    /* Страница заказов в профайле */
+    .orders {
+        column-gap: 5px;
+        width: 500px;
+    }
+
+    .order {
+        height: 200px;
+        width: 160px;
+    }
+
+    .date-p, .id-p, .summa-p, .rating-p, .text-p, .title-p, .status-p{
+        font-size: 8pt;
+    }
+
+    .order-img {
+        margin-top: -50px;
+        height: 150px;
+        img {
+            width: 50px;
+            height: 70px;
+        }
+    }
+
+        /* Страница отзывов в профайле */
+        .feedback {
+            width: 500px;
+            height: 200px;
+        }
+    
+        .feedback-product-img {
+            margin-top: 80px;
+            width: 25px;
+            height: 45px;
+        }
+    
+        .feedback-text {
+            margin: 20px 0 0 10px;
+            text-align: left;
+        }
+    
+        .feedback-delete-redaction {
+            margin-right: 50px;
+        }
+    
+        .feedback-user-img img{
+            width: 40px;
+            height: 60px;
+        }
+    
+        .bt-delete, .bt-redaction {
+            width: 85px;
+            height: 20px;
+            a {
+                font-size: 8pt;
+            }
+        }
+}
+
+@media screen and (max-width: 799px){   
+    .name-photo {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .user-photo {
+        width: 70px;
+        height: 70px;
+        clip-path: ellipse(35px 35px at 50% 50%);
+        top: 60px; left: 0px;
+    }
+    
+    .user-name {
+        top: 90px; left: 0;
+        font-size: 10pt;
+    }
+    
+    .popup {
+        width: 600px;
+        height: 550px;
+        display: flex;
+    }
+    
+    .menu {
+        width: 120px;
+    }
+    
+    .overlay {
+        width: 400px;
+    }
+  
+    .form-grid {
+        display: inline;
+        height: 350px;
+    }
+
+    .form-1, .form-2 {
+        margin-top: 50px;
+        padding-top: -10px;
+        text-align: start;
+    }
+    
+    .form-input-profile {
+        width: 50px;
+        height: 10px;
+        font-size: 8pt;
+    }
+    
+    .form-date-birth {
+        width: 50px;
+        height: 15px;
+        font-size: 8pt;
+    }
+    
+    .btn-p {
+        width: 60px;
+        height: 15px;
+    }
+       
+    .save-profile, .password-change {
+        font-size: 8pt;
+        width: 80px;
+        padding: 5px;
+        margin-left: -150px;
+    }
+    
+    li {
+        padding: 0px;
+        font-size: 8pt;
+    }
+
+    .form-grid {
+        line-height: 3px;
+    }
+    
+    .label-form {
+        display: none;
+    }
+    
+    /* Страница заказов в профайле */
+    .orders {
+        margin-top: -10px;
+        column-gap: 10px;
+        width: 250px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .order {
+        height: 120px;
+        width: 100px;
+    }
+
+    .date-p, .id-p, .summa-p, .rating-p, .text-p, .title-p {
+        font-size: 4pt;
+    }
+
+    .status-p {
+        font-size: 4pt;
+        width: 5px;
+        text-align: center;
+    }
+
+    .order-img {
+        margin-top: -70px;
+        height: 50px;
+        img {
+            width: 30px;
+            height: 40px;
+        }
+    }
+
+    .order-cart-quantity {
+        border-radius: 50%; 
+        padding: 3px 5px;
+        font-size: 4px;
+    }
+
+    .bt-rating, .bt-cancel, .bt-rating:hover, .bt-cancel:hover  {
+        margin-top: 85px;
+        padding: 0 0 15px 0;
+        height: 10px;
+        width: 60px;
+        a {
+            font-size: 4pt;
+        }
+    }
+
+    /* Страница отзывов в профайле */
+    .feedback {
+        width: 250px;
+        height: 100px;
+    }
+
+    .feedback-product-img {
+        margin-top: 20px;
+        width: 17px;
+        height: 35px;
+    }
+
+    .feedback-text {
+        margin: 20px 0 0 10px;
+        text-align: left;
+    }
+
+    .feedback-delete-redaction {
+        margin-right: 50px;
+    }
+
+    .feedback-user-img img{
+        width: 20px;
+        height: 30px;
+    }
+
+    .bt-delete, .bt-redaction {
+        width: 50px;
+        height: 20px;
+        a {
+            font-size: 4pt;
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
-from django.views.generic import ListView, TemplateView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView,  UpdateView
 from flowers.models import Flowers
 from cart.models import Cart
 from feedback.models import Feedback
@@ -21,7 +22,7 @@ class FeedbackProfileView(ListView):
         return Feedback.objects.filter(user=self.request.user).order_by('-date_created')
 
 
-class AddFeedbackView(View):
+class AddFeedbackView(LoginRequiredMixin, View):
     @transaction.atomic
     def post(self, request, product_id):
         form = AddFeedbackForm(request.POST, request.FILES)
@@ -40,21 +41,20 @@ class AddFeedbackView(View):
             feedback.save()
             cart.is_feedback = True
             cart.save()
-            feedback.add_error(None, 'Ошибка в написании отзыва.')
 
             messages.add_message(request, messages.SUCCESS, 'Отзыв успешно отправлен.')
-            return HttpResponseRedirect(reverse_lazy('feedback-profile'))
+            return HttpResponseRedirect(reverse_lazy('feedback:feedback-profile'))
 
         messages.add_message(request, messages.SUCCESS, 'Отзыв не отправлен. Слишком длинный отзыв.')
-        return HttpResponseRedirect(reverse_lazy('order-profile'))
+        return HttpResponseRedirect(reverse_lazy('order:order-profile'))
 
 
-class EditFeedbackView(UpdateView):
+class EditFeedbackView(LoginRequiredMixin, UpdateView):
     model = Feedback
     form_class = AddFeedbackForm
     template_name = 'edit_feedback.html'
     pk_url_kwarg = 'feedback_id'
-    success_url = reverse_lazy('feedback-profile')
+    success_url = reverse_lazy('feedback:feedback-profile')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -64,7 +64,7 @@ class EditFeedbackView(UpdateView):
         return context
 
 
-class RemoveFeedbackView(View):
+class RemoveFeedbackView(LoginRequiredMixin, View):
     def get(self, request, feedback_id):
         user = self.request.user
         feedback = Feedback.objects.get(id=feedback_id)

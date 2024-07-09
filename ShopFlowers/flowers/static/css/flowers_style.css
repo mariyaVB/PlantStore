@@ -43,7 +43,6 @@ a {
     background: rgba(209, 216, 184, 1);
     text-align: center;
     height: 90px;
-
 }
 
 .category-list span {
@@ -91,7 +90,7 @@ a {
 .shop {
     background-image: url(../images/fon-flowers3.png);
     background-size: cover;
-    display:grid;
+    display: grid;
     grid-template-columns: 1fr 4fr;
 }
 
@@ -103,11 +102,6 @@ a {
     grid-template-columns: repeat(4, 1fr);
     justify-self: center;
     align-self: center;
-}
-
-.flowers-list img {
-    width: 250px;
-    height: 300px;
 }
 
 /* Если дисконт то карточка товара с ленточкой*/
@@ -259,3 +253,100 @@ a {
     text-align: center;
     color: rgba(40, 49, 6, 1); */
 /* } */
+
+
+
+@media screen and (min-width: 800px) and (max-width: 1175px){
+    .hello {
+        height: 200px;
+    }
+
+    .breadcrumb {
+        background-image: url(../images/fon-flowers2.png);
+        padding: 5px 0 5px 240px;
+    }
+
+    .list-cat {
+        margin: 25px;
+    }
+
+    .cat-plant, .cat-pots, .cat-care {
+        width: 250px;
+        font-size: 10pt;
+    }
+
+    .hello-text .p1 {
+        font-size: 30pt;
+    }
+
+    .flowers-list {
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 5px;
+    }
+
+    .flower img {
+        width: 170px;
+        height: 220px;
+    }
+
+    .product-discount {
+        left: 120px;
+    }
+}
+
+@media screen and (max-width: 799px){
+    .hello {
+        height: 80px;
+    }
+
+    .breadcrumb {
+        padding: 45px 0 5px 100px;
+    }
+
+    .breadcrumb li {
+        font-size: 8pt;
+        padding-left: 2px;
+    }
+
+    .list-cat {
+        margin: 25px;
+    }
+
+    .cat-plant, .cat-pots, .cat-care {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        width: 100px;
+        font-size: 8pt;
+    }
+
+    .hello-text .p1 {
+        font-size: 20pt;
+    }
+
+    .flowers-list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+    }
+
+    .flower-detail {
+        padding: 5px;
+    }
+
+
+    .flower img {
+        width: 150px;
+        height: 200px;
+    }
+
+    .product-discount {
+        left: 90px;
+    }
+
+    .p-text {
+        font-family: 'myFontMirra';
+        font-size: 8pt;
+        font-weight: bold;
+        text-align: center;
+        color: rgba(40, 49, 6, 1);
+    }
+}

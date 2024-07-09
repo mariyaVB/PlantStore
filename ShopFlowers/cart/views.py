@@ -1,12 +1,17 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404, HttpResponseForbidden
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import ListView
 from .models import Cart
 from flowers.models import Flowers
 from order.forms import OrderForm
+import logging
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 
 class CartShow(LoginRequiredMixin, ListView):
@@ -23,15 +28,18 @@ class CartShow(LoginRequiredMixin, ListView):
         return context
 
 
-class AddCartView(View):
+class AddCartView(LoginRequiredMixin, View):
     def get(self, request, product_id):
         product = Flowers.objects.get(id=product_id)
-        cart = Cart.objects.filter(user=self.request.user, flowers=product)
+        cart = Cart.objects.filter(user=self.request.user, flowers=product, status='В корзине')
         if not cart.exists():
             Cart.objects.create(user=self.request.user, flowers=product, quantity=1)
         else:
             cart = cart.first()
-            cart.quantity += 1
+            if cart.quantity < product.quantity:
+                cart.quantity += 1
+            else:
+                pass
             cart.save()
 
         return redirect(request.META['HTTP_REFERER'])

@@ -4,6 +4,7 @@ from django.urls import path, reverse_lazy
 import users.views as users
 from users.forms import PasswordResetUserForm, SetPasswordUserForm
 
+app_name = 'user'
 urlpatterns = [
     path('login/', users.LoginUser.as_view(), name='login'),
     path('logout/', users.LogoutView.as_view(), name='logout'),
@@ -16,7 +17,7 @@ urlpatterns = [
     path('password-reset/', PasswordResetView.as_view(template_name='password_reset_form.html',
                                                       form_class=PasswordResetUserForm,
                                                       email_template_name='password_reset_email.html',
-                                                      success_url=reverse_lazy('password_reset_done')),
+                                                      success_url=reverse_lazy('user:password_reset_done')),
          name='password_reset'),
 
     path('password-reset/done/', PasswordResetDoneView.as_view(template_name='password_reset_done.html'),
@@ -26,7 +27,7 @@ urlpatterns = [
     path('password-reset/<uidb64>/<token>/',
          PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html',
                                           form_class=SetPasswordUserForm,
-                                          success_url=reverse_lazy('password_reset_complete')),
+                                          success_url=reverse_lazy('user:password_reset_complete')),
          name='password_reset_confirm'),
 
     path('password-reset/complete/',

@@ -12,9 +12,9 @@
     <div class="menu-profile">
         <div class="menu">
             <ul>
-                <li><a href="{% url 'profile' %}" class="bt-my-profile">Настройки</a></li>
+                <li><a href="{% url 'user:profile' %}" class="bt-my-profile">Настройки</a></li>
                 <li>
-                    <a href="{% url 'order-profile' %}" class="bt-my-orders">
+                    <a href="{% url 'order:order-profile' %}" class="bt-my-orders">
                         Мои покупки
                     </a>
                 </li>
@@ -47,11 +47,11 @@
             {% for feedback in feedbacks %}
             <div class="feedback">
                 <div class="feedback-product-img">
-                    <a href="{% url 'flower' slug=feedback.flowers.slug %}"><img src="{{ feedback.flowers.image.url }}" width="50px" height="70px"></a>
+                    <a href="{% url 'flowers:flower' slug=feedback.flowers.slug %}"><img src="{{ feedback.flowers.image.url }}" width="50px" height="70px"></a>
                 </div>
 
                 <div class="feedback-product-title">
-                    <a href="{% url 'flower' slug=feedback.flowers.slug %}"><p class="title-p">{{ feedback.flowers.title }}</p></a>   
+                    <a href="{% url 'flowers:flower' slug=feedback.flowers.slug %}"><p class="title-p">{{ feedback.flowers.title }}</p></a>
                 </div>
 
                 <div class="feedback-date-rating">
@@ -64,8 +64,8 @@
                 </div>
 
                 <div class="feedback-delete-redaction">
-                    <button class="bt-redaction"><a href="{% url 'edit-feedback' feedback.id %}">Редактировать</a></button>
-                    <button class="bt-delete"><a href="{% url 'remove-feedback' feedback.id %}">Удалить</a></button>
+                    <button class="bt-redaction"><a href="{% url 'feedback:edit-feedback' feedback.id %}">Редактировать</a></button>
+                    <button class="bt-delete"><a href="{% url 'feedback:remove-feedback' feedback.id %}">Удалить</a></button>
                 </div>
 
                 <div class="feedback-text">

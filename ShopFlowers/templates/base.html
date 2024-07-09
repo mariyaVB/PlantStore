@@ -15,19 +15,20 @@
 <body>
     <nav class="nav_main">
         <div class="logo">
-            <a href="{% url 'main' %}">FRESH COMPANY</a>
+            <a href="{% url 'flowers:main' %}">FRESH COMPANY</a>
         </div>
 
         <div class="networks">
-            <a href="{% url 'flowers' %}">Комнатные растения</a>
-            <a href="{% url 'pots' %}">Горшки для растений</a>
-            <a href="{% url 'care' %}">Уход за растениями</a>
-            <a href="{% url 'about' %}">О нас</a>
-            <a href="{% url 'services' %}">Услуги</a>
+            <a href="{% url 'flowers:flowers' %}" class="networks-flowers">Комнатные растения</a>
+            <a href="{% url 'flowers:pots' %}" class="networks-pots">Горшки для растений</a>
+            <a href="{% url 'flowers:care' %}" class="networks-care">Уход за растениями</a>
+            <a href="{% url 'about' %}" class="networks-about">О нас</a>
+            <a href="{% url 'services' %}" class="networks-services">Услуги</a>
+            <a href="{% url 'flowers:flowers' %}" class="networ-catalog" hidden>Каталог</a>
         </div>
 
         <div class="find">
-            <form method="get" action="{% url 'search' %}">
+            <form method="get" action="{% url 'flowers:search' %}">
                 <input type="search" name="search" placeholder=" Введите название..." class="find-input">
                 <button type="submit"><img src="{% static 'icons/icons_find.jpg' %}" class="find-button"></button>
             </form>
@@ -38,17 +39,17 @@
             <div class="dropdown-user">
                 <button onclick="myFunction()" class="drop-btn">{{user.username}}</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="{% url 'profile' %}">Личный кабинет</a>
-                    <a href="{% url 'order-profile' %}">Заказы</a>
-                    <a href="{% url 'feedback-profile' %}">Отзывы</a>
-                    <a href="{% url 'logout' %}">Выйти</a>
+                    <a href="{% url 'user:profile' %}">Личный кабинет</a>
+                    <a href="{% url 'order:order-profile' %}">Заказы</a>
+                    <a href="{% url 'feedback:feedback-profile' %}">Отзывы</a>
+                    <a href="{% url 'user:logout' %}">Выйти</a>
                 </div>
             </div>
             {% else %}
-                <a href="{% url 'login' %}"><img class="auth" src="{% static 'icons/icons_user.jpg' %}"></a>
+                <a href="{% url 'user:login' %}"><img class="auth" src="{% static 'icons/icons_user.jpg' %}"></a>
             {% endif %}
 
-            <a href="{% url 'cart' %}" class="base-total-quantity">
+            <a href="{% url 'cart:cart' %}" class="base-total-quantity">
                 <img src="{% static 'icons/icons_cart.jpg' %}">
             </a>
         </div>

@@ -1,7 +1,7 @@
 from django.urls import path
 import flowers.views as flowers
 
-
+app_name = 'flowers'
 urlpatterns = [
     path('', flowers.MainPage.as_view(), name='main'),
     path('search/', flowers.Search.as_view(), name='search'),

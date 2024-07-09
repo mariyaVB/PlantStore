@@ -128,3 +128,77 @@ $('.feedback-count-rating-mean').click(function() {
     alreadyScrolled = true; // Меняем флаг после прокрутки
   }
 });
+
+
+
+
+//$(document).ready(function() {
+//    // Проверяем состояние кнопок при загрузке страницы
+//    checkButtonFavourite();
+//
+//    $("#add-favourite").click(function() {
+//      $(this).parent().hide();
+//      $("#delete-favourite").parent().show();
+//      // Сохраняем состояние в LocalStorage
+//      localStorage.setItem("favourite", "deleted");
+//    });
+//
+//    $("#delete-favourite").click(function() {
+//      $(this).parent().hide();
+//      $("#add-favourite").parent().show();
+//      // Сохраняем состояние в LocalStorage
+//      localStorage.setItem("favourite", "added");
+//    });
+//
+//    // Функция проверки состояния
+//    function checkButtonFavourite() {
+//      let checkFavourite = localStorage.getItem("favourite");
+//      if (checkFavourite === "deleted") {
+//        $("#add-favourite").parent().hide();
+//        $("#delete-favourite").parent().show();
+//      } else {
+//        $("#delete-favourite").parent().hide();
+//        $("#add-favourite").parent().show();
+//      }
+//    }
+//});
+
+
+//
+//$(document).ready(function() {
+//    // Делегирование событий для всех кнопок с классом "add-favourite"
+//     $(".flower-favourite").delegate("#add-favourite", "click" , function() {
+//     // Скрываем саму кнопку "Добавить"
+//     $(this).parent().hide();
+//     // Находим кнопку "Удалить" (внутри того же родительского элемента)
+//     $(this).find("#delete-favourite").parent().show();
+//    // Получаем id товара из атрибута data-product-id
+//    let productId = $(this).data("product-id");
+//    // Сохраняем состояние в LocalStorage
+//    localStorage.setItem("favouriteState_" + productId, "deleted");
+//    });
+//
+//    $(".flower-favourite").delegate("#delete-favourite", "click" , function() {
+//    $(this).parent().hide();
+//    $(this).find("#add-favourite").parent().show();
+//    var productId = $(this).data("product-id");
+//    localStorage.setItem("favouriteState_" + productId, "added");
+//    });
+//
+//// Проверяем состояние кнопок при загрузке страницы
+//checkButtonState();
+//// Функция проверки состояния
+//function checkButtonState() {
+//    $(".add-favourite, .delete-favourite").each(function() {
+//        var productId = $(this).data("product-id");
+//        var state = localStorage.getItem("favouriteState_" + productId);
+//        if (state === "deleted") {
+//        $(this).parent().hide();
+//        $(this).parent().siblings().find(".delete-favourite").parent().show();
+//        } else {
+//        $(this).parent().siblings().find(".add-favourite").parent().show();
+//        $(this).parent().hide();
+//    }
+//});
+//}
+//});

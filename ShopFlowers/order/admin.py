@@ -12,8 +12,8 @@ class OrderInline(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderInline]
     exclude = ('cart',)
-    list_display = ('id', 'user', 'status', 'quantity', 'summa', 'taking', 'create_order', 'ending_order', 'taking_summa')
+    list_display = ('id', 'user', 'status_order', 'quantity', 'summa', 'taking', 'create_order', 'ending_order', 'taking_summa')
     list_display_links = ('id', 'user')
-    list_filter = ['id', 'status']
+    list_filter = ['id', 'status_order']
     verbose_name = 'Заказы'
 

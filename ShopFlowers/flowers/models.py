@@ -26,11 +26,11 @@ class Discount(models.Model):
 
 
 class Flowers(models.Model):
-    product = models.CharField(max_length=50, blank=True, null=True, verbose_name='Продукт')
-    title = models.CharField(max_length=100, verbose_name='Название')
-    text = models.CharField(max_length=1500, verbose_name='Описание')
+    product = models.CharField(max_length=50, verbose_name='Продукт', blank=True, null=True)
+    title = models.CharField(max_length=100, verbose_name='Название', blank=True, null=True,)
+    text = models.CharField(max_length=1500, verbose_name='Описание', blank=True, null=True,)
     price = models.IntegerField(verbose_name='Цена')
-    slug = models.CharField(max_length=50, verbose_name='Слаг')
+    slug = models.CharField(max_length=50, verbose_name='Слаг', blank=True, null=True,)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
     image = models.ImageField(upload_to="flowers_images", blank=True, null=True, verbose_name='Изображение')
     quantity = models.IntegerField(verbose_name='Количество', blank=True, null=True)

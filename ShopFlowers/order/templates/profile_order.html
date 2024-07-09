@@ -12,13 +12,13 @@
     <div class="menu-profile">
         <div class="menu">
             <ul>
-                <li><a href="{% url 'profile' %}" class="bt-my-profile">Настройки</a></li>
+                <li><a href="{% url 'user:profile' %}" class="bt-my-profile">Настройки</a></li>
                 <li>
                     <a class="bt-my-orders" style="background-color: rgba(202, 208, 183, 0.6); border: 1px solid rgba(114, 121, 88, 1);">
                         Мои покупки
                     </a>
                 </li>
-                <li><a href="{% url 'feedback-profile' %}" class="bt-my-feedback">Мои отзывы</a></li>
+                <li><a href="{% url 'feedback:feedback-profile' %}" class="bt-my-feedback">Мои отзывы</a></li>
                 <li><a class="bt-my-like">Избранное</a></li>
             </ul>
         </div>
@@ -53,8 +53,8 @@
                         </div>
                         
                          <div class="info-right">
-                            <p class="status-p"> {{ order.status }}</p>
-                            <p class="summa-p">{{ order.summa }}₽</p>
+                            <p class="status-p">{{ order.status_order }}</p>
+                            <p class="summa-p">{{ order.summa }}₽ {{ order.status_payment }}</p>
                          </div>
                     </div>
                     
@@ -64,7 +64,7 @@
                             {% for cart in order.cart.all %}
                                 <div class="order-cart">
                                     <span class="order-cart-quantity">{{ cart.quantity }}</span>
-                                    <a href="{% url 'flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
+                                    <a href="{% url 'flowers:flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -74,7 +74,7 @@
                             {% for cart in order.cart.all|slice:"0:6" %}
                                 <div class="order-cart">
                                     <span class="order-cart-quantity">{{ cart.quantity }}</span>
-                                    <a href="{% url 'flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
+                                    <a href="{% url 'flowers:flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -83,7 +83,7 @@
                             {% for cart in order.cart.all|slice:"7:" %}
                                 <div class="order-cart">
                                     <span class="order-cart-quantity">{{ cart.quantity }}</span>
-                                    <a href="{% url 'flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
+                                    <a href="{% url 'flowers:flower' slug=cart.flowers.slug %}"><img src="{{ cart.flowers.image.url }}" width="70px" height="90px"></a>
                                 </div>
                             {% endfor %}
                         </div>
@@ -93,13 +93,12 @@
                     </div>
                     
                     <div class="order-bt">
-
-                        {% if order.status == 'Выполнен' %}
+                        {% if order.status_order == 'Выполнен' %}
                             <button class="bt-rating"><a>Оценить товары</a></button><br>
                         {% endif %}
 
-                        {% if order.status != 'Выполнен' %}
-                            <button class="bt-cancel"><a href="{% url 'cancel-order' order.id %}">Отменить заказ</a></button>
+                        {% if order.status_order != 'Выполнен' %}
+                            <button class="bt-cancel"><a href="{% url 'order:cancel-order' order.id %}">Отменить заказ</a></button>
                         {% endif %}
                     </div>
                 </div>
@@ -126,7 +125,7 @@
 <section class="feedback-order" style="display: none;">
     <div class="bt-close">&#215;</div>
     {% for order in orders %}
-    {% if order.status == 'Выполнен' %}
+    {% if order.status_order == 'Выполнен' %}
         {% for cart in order.cart.all %}
             {% if not cart.is_feedback %}
                 <div class="popup-feedback">
@@ -135,7 +134,7 @@
                     </div>
 
                     <div class="feedback-forma">
-                        <form action="{% url 'add-feedback' cart.flowers.id %}" method="post">
+                        <form action="{% url 'feedback:add-feedback' cart.flowers.id %}" method="post">
                             {% csrf_token %}
                             {% if form.errors %}
                                 <div class="errors">

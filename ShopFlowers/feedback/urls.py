@@ -1,7 +1,7 @@
 from django.urls import path, reverse_lazy
 import feedback.views as feedback
 
-
+app_name = 'feedback'
 urlpatterns = [
     path('feedback_profile/', feedback.FeedbackProfileView.as_view(), name='feedback-profile'),
     path('add_feedback/<int:product_id>/', feedback.AddFeedbackView.as_view(), name='add-feedback'),

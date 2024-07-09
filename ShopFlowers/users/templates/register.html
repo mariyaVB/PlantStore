@@ -11,7 +11,7 @@
 <section class="popup">
 <div class="overlay">
     <h2 class="form-title">{{ title }}</h2>
-    <form method="post" action="{% url 'register' %}">
+    <form method="post" action="{% url 'user:register' %}">
         {% csrf_token %}
 
         <div class="form-error">{{ form.non_field_errors }}</div>
@@ -24,7 +24,7 @@
     </form>
 
     <span class="hint">Постоянный клиент?</span><br>
-    <a href="{% url 'login' %}"><button class="entrance">Войти</button></a>
+    <a href="{% url 'user:login' %}"><button class="entrance">Войти</button></a>
 </div>
 </section>
 

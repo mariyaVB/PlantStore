@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-email {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-image: url(../images/fon-flowers3.png);
+            background-size: cover;
+        }
+
+        h1 {
+            color: rgba(40, 49, 6, 1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid rgba(202, 208, 183, 1);
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(214, 215, 210, 1);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color:rgba(40, 49, 6, 1);
+        }
+    </style>
+</head>
+<body>
+<div class="container-email">
+    {% if user.first_name %}
+        <h1>🎉 {{ user.first_name }} Ваш заказ оформлен! 🎉</h1>
+        <p style="text-align: center;">Спасибо за покупку в нашем магазине! Мы получили ваш заказ № <span style="font-weight: bold;">{{ order.id }}</span> и скоро отправим его вам.</p>
+    {% else %}
+        <h1>🎉 {{ user.username }} Ваш заказ оформлен! 🎉</h1>
+        <p style="text-align: center;">Спасибо за покупку в нашем магазине! Мы получили ваш заказ № <span style="font-weight: bold;">{{ order.id }}</span> и скоро отправим его вам.</p>
+    {% endif %}
+    <h2>Товары в заказе:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Название товара</th>
+                <th>Количество</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cart in order.cart.all %}
+            <tr>
+                <td>{{ cart.flowers.title }}</td>
+                <td>{{ cart.quantity }} шт.</td>
+                <td>{{ cart.flowers.calculate_the_price }}₽</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>Оплата: <span style="font-weight: bold;">{{ order.payment }}</span></p>
+    <p>Доставка: <span style="font-weight: bold;">{{ order.taking }}</span></p>
+    <p>Общая стоимость заказа: <span style="font-weight: bold;">{{ order.summa }}₽</span></p>
+    <p>С уважением команда FreshCompany 🌿</p>
+    </div>
+</div>
+</body>
+</html>

@@ -16,15 +16,15 @@
                 border-top-left-radius: 20px;
                 border-top-right-radius: 20px;
                 border-bottom: none;">
-                <a href="{% url 'flowers' %}">Комнатные растения</a>
+                <a href="{% url 'flowers:flowers' %}">Комнатные растения</a>
             </div>
 
             <div class="cat-pots" style="border-bottom: 1px solid rgba(114, 121, 88, 1);">
-                <a href="{% url 'pots' %}">Горшки и кашпо</a>
+                <a href="{% url 'flowers:pots' %}">Горшки и кашпо</a>
             </div>
 
             <div class="cat-care" style="border-bottom: 1px solid rgba(114, 121, 88, 1);">
-                <a href="{% url 'care' %}">Уход за растениями</a>
+                <a href="{% url 'flowers:care' %}">Уход за растениями</a>
             </div>
         </div>
     </div>
@@ -32,15 +32,15 @@
 
 <div class="breadcrumb">
     <ul>
-        <li class="breadcrumb_item"><a href="{% url 'main' %}">Главная /</a></li>
-        <li class="breadcrumb_item"><a href="{% url 'flowers' %}">Комнатные растения /</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers:main' %}">Главная /</a></li>
+        <li class="breadcrumb_item"><a href="{% url 'flowers:flowers' %}">Комнатные растения /</a></li>
     </ul>
 </div>
 
 <section class="shop">
         <div class="filters">
             <p>Фильтры</p>
-<!--            <form action="{% url 'filter' %}" method="get">-->
+<!--            <form action="{% url 'flowers:filter' %}" method="get">-->
                 <div class="filter-cat">
                 {% for category in view.get_category %}
                 <li>
@@ -73,13 +73,13 @@
             {% for flower in flowers %}
                 <div class="flower">
                     {% if flower.is_discount %}
-                        <a href="{% url 'flower' slug=flower.slug %}">
-                            <img src="{{ flower.image.url }}">
+                        <a href="{% url 'flowers:flower' slug=flower.slug %}">
+                            <img src="{{ flower.image.url }}" width="250px" height="300px">
                         </a>
                         <div class="product-discount"><span>{{ flower.discount.percent }}%</span></div>
                     {% else %}
-                        <a href="{% url 'flower' slug=flower.slug %}">
-                            <img src="{{ flower.image.url }}">
+                        <a href="{% url 'flowers:flower' slug=flower.slug %}">
+                            <img src="{{ flower.image.url }}" width="250px" height="300px">
                         </a>
                     {% endif %}
 
@@ -95,7 +95,7 @@
                         {% endif %}
 
                         {% if flower.quantity > 0 %}
-                            <a href="{% url 'add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+                            <a href="{% url 'cart:add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
                         {% else %}
                             <p style="margin: 5px; color: rgba(40, 49, 6, 1);">Нет в наличии</p>
                         {% endif %}

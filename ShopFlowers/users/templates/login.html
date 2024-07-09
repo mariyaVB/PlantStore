@@ -12,7 +12,7 @@
 <section class="popup">
 <div class="overlay">
     <h2 class="form-title">{{ title }}</h2>
-    <form method="post" action="{% url 'login' %}" >
+    <form method="post" action="{% url 'user:login' %}" >
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}"/>
 
@@ -38,9 +38,9 @@
     </form>
 
     <span class="hint">Новый клиент?</span><br>
-    <a href="{% url 'register' %}"><button class="registration">Регистрация</button></a>
+    <a href="{% url 'user:register' %}"><button class="registration">Регистрация</button></a>
     <br><span class="hint">Забыли пароль?</span><br>
-    <a href="{% url 'password_reset' %}"><button class="registration">Восстановление пароля</button></a>
+    <a href="{% url 'user:password_reset' %}"><button class="registration">Восстановление пароля</button></a>
 </div>
 </section>
 

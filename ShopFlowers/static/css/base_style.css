@@ -90,12 +90,6 @@ nav form {
     width: 20px;
 }
 
-.f button:before {
-    content: "\f002";
-    font-size: 16px;
-    color: #F9F0DA;
-}
-
 nav .user{
     display: flex;
     gap: 10px;
@@ -196,3 +190,143 @@ nav .user{
 
 .show {display:block;}
 
+
+@media screen and (min-width: 800px) and (max-width: 1175px){
+    nav .logo {
+        font-size: 16pt;
+    }
+
+    nav .networks {
+        gap: 5px;
+    }
+
+    .networks a {
+        font-size: 8pt;
+
+    }
+
+    .find-input {
+        width: 100px;
+
+    }
+    
+    .find button {
+        left: 70px;
+    }
+    
+    .find img {
+        top: 5px;
+        height: 15px;
+        width: 15px;
+    }
+
+    nav .user{
+        padding-right: 10px;
+    }
+
+    .user img {
+        padding-right: 5px;
+    }
+
+    .logo_basement img{
+        height: 130px;
+    }
+
+    .basement>.connection, .basement>.info {
+        p {
+            font-size: 10pt;
+        }
+    }
+
+    .social-networks-info {
+        img {
+            width: 30px;
+            height: 30px;
+        }
+        p{
+            font-size: 10pt;
+        }
+    }
+
+    .author {
+        font-size: 10pt;
+    }
+}
+
+@media screen and (max-width: 799px){
+    .nav_main {
+        grid-template-columns: 40% 15% 25% 20%;
+    }
+
+    nav .logo {
+        font-size: 14pt;
+    }
+
+    .networks-flowers, 
+    .networks-pots,
+    .networks-care,
+    .networks-about,
+    .networks-services {
+        display: none;
+    }
+
+    .networ-catalog {
+        display: block;
+    }
+
+    nav .networks {
+        gap: 0;
+    }
+
+    .networks a {
+        font-size: 10pt;
+    }
+
+    .find-input {
+        width: 70px;
+        font-size: 10px;
+        margin-left: 5px;
+    }
+    
+    .find button {
+        left: 50px;
+    }
+    
+    .find img {
+        top: 3px;
+        height: 15px;
+        width: 15px;
+    }
+
+    nav .user{
+        padding-right: 0;
+    }
+
+    .user img {
+        padding-right: 0;
+    }
+
+    .logo_basement img{
+        height: 80px;
+    }
+
+    .basement>.connection, .basement>.info {
+        p {
+            font-size: 6pt;
+        }
+    }
+
+    .social-networks-info {
+        img {
+            width: 20px;
+            height: 20px;
+        }
+        p{
+            font-size: 8pt;
+        }
+    }
+
+    .author {
+        font-size: 8pt;
+    }   
+}
