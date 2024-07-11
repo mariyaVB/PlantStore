@@ -38,84 +38,97 @@
 </div>
 
 <section class="shop">
-        <div class="filters">
-            <p>Фильтры</p>
-<!--            <form action="{% url 'flowers:filter' %}" method="get">-->
-                <div class="filter-cat">
+    <div class="filters">
+        <form action="{% url 'flowers:filter-flowers' %}" method="get" name="filter">
+            <h3 class="title-filter">Категории:</h3>
+            <input type="hidden" class="checked" name="product" value="Комнатные растения">
+            <ul class="filter-ul">
                 {% for category in view.get_category %}
-                <li>
-                    <input type="checkbox" name="category" value="{{ category.id }}">
-                    <label>{{ category.title }}</label>
-                </li>
-                {% endfor %}
-                </div>
-                <br>
-                <div class="filter-price">
                     <li>
-                        <input type="checkbox" name="price" min="0" max="999" id="price-0-1000">
-                        <label for="price-0-1000">до 1000</label>
+                        <input type="checkbox" class="checked" name="category" value="{{ category.id }}">
+                        <span class="">{{ category.title }}</span>
                     </li>
-                    <li>
-                        <input type="checkbox" name="price_from" min="1000" max="5000" id="price-1000-5000">
-                        <label for="price-1000-5000">от 1000 до 5000</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" name="price_from" min="5000" id="price-5000-inf">
-                        <label for="price-5000-inf">от 5000</label>
-                    </li>
-                </div>
-
-                <button type="submit">Найти</button>
-<!--            </form>-->
-        </div>
-
-        <div class="flowers-list" id="flowers-list-id">
-            {% for flower in flowers %}
-                <div class="flower">
-                    {% if flower.is_discount %}
-                        <a href="{% url 'flowers:flower' slug=flower.slug %}">
-                            <img src="{{ flower.image.url }}" width="250px" height="300px">
-                        </a>
-                        <div class="product-discount"><span>{{ flower.discount.percent }}%</span></div>
-                    {% else %}
-                        <a href="{% url 'flowers:flower' slug=flower.slug %}">
-                            <img src="{{ flower.image.url }}" width="250px" height="300px">
-                        </a>
-                    {% endif %}
-
-                    <div class="flower-detail">
-                        <p class="p-text">{{ flower.title }}</p>
-                        {% if flower.is_discount %}
-                            <div class="flower-price">
-                                <p class="p-price-discount">от {{ flower.calculate_the_price }}₽</p>
-                                <p class="p-price">{{ flower.price }}₽</p>
-                            </div>
-                        {% else %}
-                            <p class="p-text">от {{ flower.calculate_the_price }}₽</p>
-                        {% endif %}
-
-                        {% if flower.quantity > 0 %}
-                            <a href="{% url 'cart:add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
-                        {% else %}
-                            <p style="margin: 5px; color: rgba(40, 49, 6, 1);">Нет в наличии</p>
-                        {% endif %}
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-        <nav class="list-pages">
-            <ul>
-                {% for page in paginator.page_range %}
-                <li class="page-num">
-                    <a href="?page={{ page }}">{{ page }}</a>
-                </li>
                 {% endfor %}
             </ul>
-        </nav>
 
-    </section>
+            <h3 class="title-filter">Цена:</h3>
+            <ul class="filter-ul">
+                <li>
+                    <input type="checkbox" class="checked" name="price" value="extra-price">
+                    <span>До 1000₽</span>
+                </li>
 
+                <li>
+                    <input type="checkbox" class="checked" name="price" value="rare-price">
+                    <span>От 1000₽ до 5000₽</span>
+                </li>
+
+                <li>
+                    <input type="checkbox" class="checked" name="price" value="medium-price">
+                    <span>От 5000₽ до 10000₽</span>
+                </li>
+
+                <li>
+                    <input type="checkbox" class="checked" name="price" value="well-done-price">
+                    <span>От 10000₽</span>
+                </li>
+            </ul>
+            <button type="submit" class="filter-btn">Найти</button>
+        </form>
+        <button class="filter-btn"><a href="{% url 'flowers:flowers' %}">Сбросить все</a></button>
+    </div>
+
+    <div class="flowers-list" id="flowers-list-id">
+        {% for flower in flowers %}
+        <div class="flower">
+            {% if flower.is_discount %}
+                <a href="{% url 'flowers:flower' slug=flower.slug %}">
+                    <img src="{{ flower.image.url }}" width="250px" height="300px">
+                </a>
+                <div class="product-discount"><span>{{ flower.discount.percent }}%</span></div>
+            {% else %}
+                <a href="{% url 'flowers:flower' slug=flower.slug %}">
+                    <img src="{{ flower.image.url }}" width="250px" height="300px">
+                </a>
+            {% endif %}
+
+            <div class="flower-detail">
+                <p class="p-text">{{ flower.title }}</p>
+                    {% if flower.is_discount %}
+                        <div class="flower-price">
+                            <p class="p-price-discount">от {{ flower.calculate_the_price }}₽</p>
+                            <p class="p-price">{{ flower.price }}₽</p>
+                        </div>
+                    {% else %}
+                        <p class="p-text">от {{ flower.calculate_the_price }}₽</p>
+                    {% endif %}
+
+                    {% if flower.quantity > 0 %}
+                        <a href="{% url 'cart:add-cart' flower.id %}" class="cart-button">Добавить в корзину</a>
+                    {% else %}
+                        <p style="margin: 5px; color: rgba(40, 49, 6, 1);">Нет в наличии</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <nav class="list-pages">
+        <ul>
+            {% for page in paginator.page_range %}
+            {% if page == page_obj.number %}
+                <li class="page-num-active">
+                    <a href="?page={{ page }}" class="p">{{ page }}</a>
+                </li>
+            {% else %}
+                <li class="page-num">
+                    <a href="?page={{ page }}" class="p">{{ page }}</a>
+                </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+</section>
 
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script src="{% static 'js/flowers.js' %}"></script>

@@ -196,13 +196,17 @@
 
 
 @media screen and (min-width: 800px) and (max-width: 1175px){
+    .breadcrumb {
+        background-size: cover;
+    }
+
     .breadcrumb li {
         font-size: 6pt;
         padding-left: 25px;
     }
 
     .cart-product-frame {
-        width: 350px;
+        width: 450px;
     }
 
     .cart-title, .price, .summa {
@@ -246,6 +250,10 @@
     .cart-remove img{
         width: 10px;
         height: 10px;
+    }
+
+    .cart-total {
+        width: 350px;
     }
 
     .cart-total-frame {
@@ -299,10 +307,10 @@
         font-size: 10px;
     }
 
-    .cart-img {
+    .cart-img img{
         width: 70px;
         height: 70px;
-        margin-bottom: 70px;
+ 
     }
 
     .price {

@@ -43,8 +43,36 @@
             </div>
             {% endif %}
 
+        <div class="order-status">
+            <form action="{% url 'order:order-filter' %}" method="get" name="order-filter">
+                <div id="status-progress">
+                    <label>
+                        <input type="radio" name="status" value="progress">
+                        <span>В работе</span>
+                    </label>
+                    
+                    
+                </div>
+
+                <div id="status-completed">
+                    <label>
+                        <input type="radio" name="status" value="completed">
+                        <span>Выполненные</span>
+                    </label>
+                </div>
+
+                <div id="status-cancel">
+                    <label>
+                        <input type="radio" name="status" value="cancel" >
+                        <span>Отмененные</span>
+                    </label>
+                </div>
+            </form>
+        </div>
+
         <div class="orders">
             {% for order in orders %}
+            <input class="flag-status" value="{{ order.status_order }}" type="hidden">
                 <div class="order">
                     <div class="order-info">
                         <div class="info-left">
@@ -102,7 +130,7 @@
                         {% endif %}
                     </div>
                 </div>
-            {% endfor %}    
+            {% endfor %}           
         </div>   
 
         {% if messages %}

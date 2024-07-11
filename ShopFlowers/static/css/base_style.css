@@ -233,12 +233,14 @@ nav .user{
     }
 
     .basement>.connection, .basement>.info {
+
         p {
             font-size: 10pt;
         }
     }
 
     .social-networks-info {
+        background-size: cover;
         img {
             width: 30px;
             height: 30px;

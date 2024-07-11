@@ -17,8 +17,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'd4ee-95-58-138-130.ngrok-free.app']
-CSRF_TRUSTED_ORIGINS = ['https://d4ee-95-58-138-130.ngrok-free.app']
+ALLOWED_HOSTS = ['127.0.0.1', '06b0-95-58-138-130.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://06b0-95-58-138-130.ngrok-free.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',

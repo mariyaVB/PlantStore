@@ -1,90 +1,53 @@
-//document.addEventListener('DOMContentLoaded', function() {
-//    const form = document.querySelector('form[name=filter]');
+//function ajaxSend(url, params) {
+//    // Отправляем запрос
+//    fetch(`${url}?${params}`, {
+//        method: 'GET',
+//        headers: {
+//            'Content-Type': 'application/x-www-form-urlencoded',
+//        },
+//    })
+//        .then(response => response.json())
+//        .then(json => render(json))
+//        .catch(error => console.error(error))
+//}
+//
+//const forms = document.querySelector('form[name=filter]');
+//
+//forms.addEventListener('submit', function (e) {
+//
+//    e.preventDefault();
+//    let url = this.action;
+//    let params = new URLSearchParams(new FormData(this)).toString();
+//    ajaxSend(url, params);
+//});
+//
+//function render(json) {
 //    const flowersList = document.getElementById('flowers-list-id');
 //
-//    form.addEventListener('submit', (event) => {
-//    event.preventDefault();
-//    const formData = new FormData(form);
-//    const urlParams = new URLSearchParams(formData);
-//    const url = form.action + '?' + urlParams.toString();
+//    flowersList.innerHTML = '';
 //
-//    fetch(url)
-//        .then(response => response.json())
-//        .then(data => {
-//            renderProducts(data);
-//        })
-//        .catch(error => {
-//            console.error('Ошибка при отправке запроса:', error);
-//        });
-//    });
+//    // Цикл по найденным цветам
+//    for (const flower of json.flowers) {
+//        const flowerHTML = `
+//            <div class="flower">
+//                <a href="/flowers/${flower.slug}/">
+//                    <img src="/media/${flower.image}" width="250px" height="300px">
+//                </a>
+//                ${flower.is_discount ? `<div class="product-discount"><span>${flower.discount.percent}%</span></div>` : ''}
+//                <div class="flower-detail">
+//                    <p class="p-text">${flower.title}</p>
+//                    ${flower.is_discount ? `<div class="flower-price"><p class="p-price-discount">от ${flower.calculate_the_price}₽</p><p class="p-price">${flower.price}₽</p></div>` : `<p class="p-text">от ${flower.calculate_the_price}₽</p>`}
+//                    ${flower.quantity > 0 ? `<a href="/cart/add-cart/${flower.id}/" class="cart-button">Добавить в корзину</a>` : `<p style="margin: 5px; color: rgba(40, 49, 6, 1);">Нет в наличии</p>`}
+//                </div>
+//            </div>
+//        `;
 //
-//        function renderProducts(products) {
-//            flowersList.innerHTML = '';
-//            products.forEach(product => {
-//                flowersList.innerHTML = `
-//                    <div class="flower">
-//                         <a href="/flower/${product.slug}/">
-//                             <img src="${product.image}" alt="${product.name}">
-//                         </a>
-//                         <div class="flower-detail">
-//                             <p class="p-text">${product.name}</p>
-//                             <p class="p-text">от ${product.price}₽</p>
-//                             ${product.quantity > 0 ?
-//                                 `<a href="/add-cart/${product.id}/" class="cart-button">Добавить в корзину</a>` :
-//                                 '<p style="margin: 5px;">Нет в наличии</p>'
-//                             }
-//                         </div>
-//                    </div>
-//                `;
-//            });
-//        }
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     const form = document.querySelector('input[name=category]');
-//     const flowersListContainer = document.getElementById('flowers-list-id');
-
-//     form.addEventListener('submit', (event) => {
-//         event.preventDefault();
-//         const formData = new FormData(form);
-//         const urlParams = new URLSearchParams(formData);
-//         const url = form.action + '?' + urlParams.toString();
-
-//         fetch(url)
-//             .then(response => response.json())
-//             .then(data => {
-//                 renderProducts(data);
-//             })
-//             .catch(error => {
-//                 console.error('Ошибка при отправке запроса:', error);
-//             });
-//     });
-
-//     function renderProducts(products) {
-//         flowersListContainer.innerHTML = ''; // Очищаем контейнер
-
-//         products.forEach(product => {
-//             const productDiv = document.createElement('div');
-//             productDiv.innerHTML = `
-//                 <div class="flower">
-//                 <a href="/flower/${product.slug}/">
-//                     <img src="${product.image}" alt="${product.name}">
-//                 </a>
-//                 <div class="flower-detail">
-//                     <p class="p-text">${product.name}</p>
-//                     <p class="p-text">от ${product.price}₽</p>
-//                     ${product.quantity > 0 ?
-//                         `<a href="/add-cart/${product.id}/" class="cart-button">Добавить в корзину</a>` :
-//                         '<p style="margin: 5px;">Нет в наличии</p>'
-//                     }
-//                 </div>
-//                 </div>
-//             `;
-//             flowersListContainer.appendChild(productDiv);
-//         });
-//     }
-// });
+//        flowersList.innerHTML += flowerHTML; // Добавляем HTML-код в контейнер
+//    }
+//}
 
 
+//Карусель
 let assortment = $('.assortment'),
     list_assortment = $('.list-assortment'),
     countAssortment = assortment.length,
@@ -130,8 +93,6 @@ $('.feedback-count-rating-mean').click(function() {
 });
 
 
-
-
 //$(document).ready(function() {
 //    // Проверяем состояние кнопок при загрузке страницы
 //    checkButtonFavourite();
@@ -161,44 +122,4 @@ $('.feedback-count-rating-mean').click(function() {
 //        $("#add-favourite").parent().show();
 //      }
 //    }
-//});
-
-
-//
-//$(document).ready(function() {
-//    // Делегирование событий для всех кнопок с классом "add-favourite"
-//     $(".flower-favourite").delegate("#add-favourite", "click" , function() {
-//     // Скрываем саму кнопку "Добавить"
-//     $(this).parent().hide();
-//     // Находим кнопку "Удалить" (внутри того же родительского элемента)
-//     $(this).find("#delete-favourite").parent().show();
-//    // Получаем id товара из атрибута data-product-id
-//    let productId = $(this).data("product-id");
-//    // Сохраняем состояние в LocalStorage
-//    localStorage.setItem("favouriteState_" + productId, "deleted");
-//    });
-//
-//    $(".flower-favourite").delegate("#delete-favourite", "click" , function() {
-//    $(this).parent().hide();
-//    $(this).find("#add-favourite").parent().show();
-//    var productId = $(this).data("product-id");
-//    localStorage.setItem("favouriteState_" + productId, "added");
-//    });
-//
-//// Проверяем состояние кнопок при загрузке страницы
-//checkButtonState();
-//// Функция проверки состояния
-//function checkButtonState() {
-//    $(".add-favourite, .delete-favourite").each(function() {
-//        var productId = $(this).data("product-id");
-//        var state = localStorage.getItem("favouriteState_" + productId);
-//        if (state === "deleted") {
-//        $(this).parent().hide();
-//        $(this).parent().siblings().find(".delete-favourite").parent().show();
-//        } else {
-//        $(this).parent().siblings().find(".add-favourite").parent().show();
-//        $(this).parent().hide();
-//    }
-//});
-//}
 //});

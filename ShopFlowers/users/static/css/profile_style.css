@@ -57,7 +57,7 @@
 	border-radius: 10px;
 	box-shadow: 30px 10px 40px  rgba(114, 121, 88, 0.3);
 	display: grid;
-    grid-template-rows: 35% 65%;
+    grid-template-rows: 35% 10% 55%;
 }
 
 .form-profile {
@@ -196,8 +196,39 @@ li:nth-child(4)::marker {
 
 
 /* Страница заказов в профайле */
+.order-status>form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 20px;
+}
+
+.order-status>form>div {
+    height: 25px;
+    justify-content: center;
+    align-self: center;
+    span {
+        color: rgba(40, 49, 6, 1);   
+        cursor: pointer;     
+    }
+}
+
+input[type=radio] {
+	display: none;
+}
+
+.active {
+    border: 1px solid rgba(234, 233, 229, 1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: none;
+}
+
+.not-active {
+    border-bottom: 1px solid rgba(234, 233, 229, 1);
+}
+
 .orders {
-    margin-top: 70px;
+    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 30px;

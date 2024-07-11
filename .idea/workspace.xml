@@ -4,63 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Исправлена цена в корзине с учетом скидки.">
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/migrations/0022_alter_order_cart.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/email_cancel_order.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/email_order.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopFlowers/payment/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Подключена оплата и возврат. Сделана адаптивная верстка.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Комнатные растения.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Комнатные растения.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/templates/edit_feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/templates/edit_feedback.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/templates/profile_feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/templates/profile_feedback.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flower_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flower_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/main_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/main_page.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers_category.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/payment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/payment/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/flowers_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/flowers_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_change_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_change_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_change_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_change_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_email.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/password_reset_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/js/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -384,7 +347,31 @@
       <option name="project" value="LOCAL" />
       <updated>1720010558967</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Подключена оплата и возврат. Сделана адаптивная верстка.">
+      <option name="closed" value="true" />
+      <created>1720534585432</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1720534585432</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Подключена оплата и возврат. Сделана адаптивная верстка.">
+      <option name="closed" value="true" />
+      <created>1720534835653</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1720534835653</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Подключена оплата и возврат. Сделана адаптивная верстка.">
+      <option name="closed" value="true" />
+      <created>1720534880219</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1720534880219</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -399,7 +386,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Стартовая страница начата." />
     <MESSAGE value="Стартовая страница готова." />
     <MESSAGE value="Сделана базовая страница, классы представления на запрос гет, отображение объектов из базы данных." />
     <MESSAGE value="Написаны два класса представления (ListView, DetailView) обрабатывающие страницу, где все цветы и страницу с одним выбранным растением." />
@@ -424,6 +410,7 @@
     <MESSAGE value="Написаны классы представлений на редактирование, удаление отзывов. Добавлен флаг отзыв написан в модели корзины, чтобы отслеживать отзывы и если отзыв есть то больше не будет предлагаться оценить товар. Если отзыв удален, то снова флаг отзыв не написан и есть возможность снова оценить." />
     <MESSAGE value="Создан класс Дисконт, добавлен ключ в продуктах на дисконт. В шаблоне отображается цена с учетом скидки, добавлены стили страницу с комнатными растениями." />
     <MESSAGE value="Исправлена цена в корзине с учетом скидки." />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправлена цена в корзине с учетом скидки." />
+    <MESSAGE value="Подключена оплата и возврат. Сделана адаптивная верстка." />
+    <option name="LAST_COMMIT_MESSAGE" value="Подключена оплата и возврат. Сделана адаптивная верстка." />
   </component>
 </project>

@@ -92,6 +92,56 @@ a {
     background-size: cover;
     display: grid;
     grid-template-columns: 1fr 4fr;
+    justify-items: center;
+}
+
+/* Секция с фильтрами */
+.filters {
+    position: sticky;
+    top: 0;
+}
+
+.filter-ul { 
+    list-style-type: none;
+    color: rgba(40, 49, 6, 1);
+}
+
+
+input[type=checkbox]:checked {
+    background-color: rgba(40, 49, 6, 1);
+    color: red;
+}
+
+.title-filter {
+    text-align: center;
+    color: rgba(40, 49, 6, 1);
+    font-family: 'myFontMirra';
+}
+
+.filter-btn {
+    margin: 5px 25% 0 25%;
+    width: 50%;
+    border-style: none;
+    background-color: rgba(114, 121, 88, 1);
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 25px;
+    color: rgba(214, 215, 210, 1);
+    cursor: pointer;
+    a {
+        text-decoration: none;
+        color: rgba(214, 215, 210, 1);
+    }
+}
+
+.filter-btn:hover {
+    background-color:  rgba(209, 216, 184, 1);
+    color:  rgba(40, 49, 6, 1);
+    box-shadow: 0 0 30px 5px rgba(40, 49, 6, 0.5);
+    a {
+        color:  rgba(40, 49, 6, 1);
+    }
 }
 
 /* Сторона с карточками товаров */
@@ -204,6 +254,7 @@ a {
     border-radius: 25px;
     color: rgba(40, 49, 6, 1);
     cursor: pointer;
+    box-shadow: 0 0 30px 5px rgba(40, 49, 6, 0.3);
 }
 
 /* Тень при наведении на карточку товара */
@@ -236,11 +287,21 @@ a {
     font-weight: bold;
 }
 
+.page-num-active {
+    display: inline;
+    padding: 0 15px 0 15px;
+    color: rgba(40, 49, 6, 1);
+    font-family: 'myFontMirra';
+    font-weight: bold;
+    border: 1px solid rgba(119, 126, 92, 1);
+    border-radius: 50px;
+    text-align: center;
+}
+
 .list-cat {
     margin-left: 80px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
 }
 /* .cat-plant { */
     /* width: 340px;

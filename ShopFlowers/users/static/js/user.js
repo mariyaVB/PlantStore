@@ -1,46 +1,4 @@
 //profile.html
-////Меню личного кабинета
-//$('.bt-my-orders').click(function () {
-////    $('.bt-my-orders').css('backgroundColor', 'rgba(114, 121, 88, 1)');
-//    $('.popup-my-settings').hide();
-//    $('.popup-my-feedback').hide();
-//    $('.popup-my-like').hide();
-//    $('.popup-my-cart').hide();
-//    $('.popup-my-orders').show();
-//});
-//
-//$('.bt-my-profile').click(function () {
-////    $('.bt-my-profile').css('backgroundColor', 'rgba(114, 121, 88, 1)');
-//    $('.popup-my-settings').show();
-//    $('.popup-my-orders').hide();
-//    $('.popup-my-feedback').hide();
-//    $('.popup-my-like').hide();
-//    $('.popup-my-cart').hide();
-//});
-//
-//$('.bt-my-feedback').click(function () {
-//    $('.popup-my-settings').hide();
-//    $('.popup-my-orders').hide();
-//    $('.popup-my-like').hide();
-//    $('.popup-my-cart').hide();
-//    $('.popup-my-feedback').show();
-//});
-//
-//$('.bt-my-like').click(function () {
-//    $('.popup-my-settings').hide();
-//    $('.popup-my-orders').hide();
-//    $('.popup-my-like').show();
-//    $('.popup-my-cart').hide();
-//    $('.popup-my-feedback').hide();
-//});
-//
-//$('.bt-my-cart').click(function () {
-//    $('.popup-my-settings').hide();
-//    $('.popup-my-orders').hide();
-//    $('.popup-my-like').hide();
-//    $('.popup-my-cart').show();
-//    $('.popup-my-feedback').hide();
-//});
 
 //Изменить фото
 $('.bt-user-change').mouseover(function () {
@@ -75,6 +33,41 @@ $('.many').click(function () {
 });
 
 
+
+// Вкладки в заказах
+$(document).ready(function() {
+    let flag = $('.flag-status').val();
+    console.log(flag)
+    // Начальная стилизация
+    if (flag == 'Создан' | flag == 'В обработке' | flag == 'Готов') {
+        $('#status-progress').addClass('active');
+        $('#status-completed, #status-cancel').addClass('not-active');
+    } 
+    else if (flag == 'Выполнен') {
+        $('#status-completed').addClass('active');
+        $('#status-progress, #status-cancel').addClass('not-active');
+    }
+    else if (flag == 'Отменен') {
+        $('#status-cancel').addClass('active');
+        $('#status-progress, #status-completed').addClass('not-active');
+    } else {
+        console.log(flag)
+    }
+
+    // $('#status-all').addClass('active');
+    // $('#status-progress, #status-completed, #status-cancel, #status-feedback').addClass('not-active');
+
+    // Обработчики кликов
+    $('#status-all, #status-progress, #status-completed, #status-cancel, #status-feedback').click(function() {
+        // Отправить форму        
+        document.forms['order-filter'].submit();
+
+        // Переключать классы
+        // $(this).toggleClass('active not-active');
+        // $('#status-all, #status-progress, #status-completed, #status-cancel, #status-feedback').not(this).addClass('not-active');
+       
+    });
+});
 
 
 // Оценить товары в заказе
