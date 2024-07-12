@@ -42,6 +42,15 @@
 
     </section>
 
+    <section>
+
+    <ul>
+    {% for obj in objects %}
+        <li>{{ obj.text }} - {{ obj.link }}</li>
+    {% endfor %}
+    </ul>
+    </section>
+
 {% endblock base_content %}
 
 

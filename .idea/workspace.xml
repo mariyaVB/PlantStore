@@ -4,26 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Подключена оплата и возврат. Сделана адаптивная верстка.">
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Фильтрация товаров в каталоге, фильтрация заказов в личном кабинете.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/static/css/cart_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/flowers_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/js/flowers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers_category.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/payment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/payment/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/js/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/js/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/flowers_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/flowers_search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -371,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720534880219</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Фильтрация товаров в каталоге, фильтрация заказов в личном кабинете.">
+      <option name="closed" value="true" />
+      <created>1720716250998</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1720716250998</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -386,7 +378,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Стартовая страница готова." />
     <MESSAGE value="Сделана базовая страница, классы представления на запрос гет, отображение объектов из базы данных." />
     <MESSAGE value="Написаны два класса представления (ListView, DetailView) обрабатывающие страницу, где все цветы и страницу с одним выбранным растением." />
     <MESSAGE value="Добавлена страница выбора категории и отображения товаров этой категории." />
@@ -411,6 +402,7 @@
     <MESSAGE value="Создан класс Дисконт, добавлен ключ в продуктах на дисконт. В шаблоне отображается цена с учетом скидки, добавлены стили страницу с комнатными растениями." />
     <MESSAGE value="Исправлена цена в корзине с учетом скидки." />
     <MESSAGE value="Подключена оплата и возврат. Сделана адаптивная верстка." />
-    <option name="LAST_COMMIT_MESSAGE" value="Подключена оплата и возврат. Сделана адаптивная верстка." />
+    <MESSAGE value="Фильтрация товаров в каталоге, фильтрация заказов в личном кабинете." />
+    <option name="LAST_COMMIT_MESSAGE" value="Фильтрация товаров в каталоге, фильтрация заказов в личном кабинете." />
   </component>
 </project>

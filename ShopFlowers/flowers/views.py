@@ -1,4 +1,11 @@
+import json
 import random
+
+from django.shortcuts import render
+from django.views import View
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from bs4 import BeautifulSoup
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import Http404, JsonResponse
@@ -8,10 +15,59 @@ from cart.models import Cart
 from feedback.models import Feedback
 
 
-class MainPage(TemplateView):
-    model = Cart
-    context_object_name = 'carts'
-    template_name = 'main_page.html'
+def plant_news(request):
+    chrome_options = Options()
+    chrome_options.add_argument('headless')
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.get("https://green-story.ru/blog/")
+
+    html_doc = driver.page_source
+    soup = BeautifulSoup(html_doc, 'html.parser')
+    news_items = soup.find_all('div', class_='t-card__title t-heading t-heading_xs')[:3]
+    plants = []
+    for i in news_items:
+        print(f'{i} iterations')
+        text = i.find(class_='t-card__link').text.strip()
+        text = text.replace('\xa0', ' ')
+        link = i.find('a', class_='t-card__link')['href']
+        plants.append({
+            'text': text,
+            'link': link
+        })
+        plants = dict(plants)
+
+    driver.quit()
+    print(plants)
+
+    return render(request, 'main_page.html', plants)
+
+# class MainPage(View):
+#     def post(self, request):
+#         print("До  загрузки  страницы")
+#         chrome_options = Options()
+#         chrome_options.add_argument('headless')
+#         driver = webdriver.Chrome(options=chrome_options)
+#         driver.get("https://green-story.ru/blog/")
+#         print("После  загрузки  страницы")
+#
+#         html_doc = driver.page_source
+#         soup = BeautifulSoup(html_doc, 'lxml')
+#         news_items = soup.find_all('div', class_='t-card__title t-heading t-heading_xs')[:3]
+#         plants = []
+#         for i in news_items:
+#             print(f'{i} iterations')
+#             title = i.find(class_='t-card__link').text.strip()
+#             title = title.replace('\xa0', ' ')
+#             link = i.find('a', class_='t-card__link')['href']
+#             plants.append({
+#                 'Описание': title,
+#                 'Ссылка': link
+#             })
+#
+#         driver.quit()
+#         print(plants)
+#
+#         return render(request, 'main_page.html', json.load(plants))
 
 
 class FlowersView(ListView):
@@ -81,27 +137,22 @@ class FlowerDetailView(DetailView):
 
 class Search(ListView):
     """Поиск товаров на сайте"""
-    paginate_by = 12
+    model = Flowers
     template_name = 'flowers_search.html'
-
-    def get_queryset(self):
-        return Flowers.objects.filter(
-            Q(title__icontains=self.request.GET.get('search')) |
-            Q(category__title__icontains=self.request.GET.get('search'))
-        )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         title = self.request.GET.get('search')
         context['title'] = title
         context['search'] = Flowers.objects.filter(
-            Q(title__icontains=self.request.GET.get('search')) |
-            Q(category__title__icontains=self.request.GET.get('search'))
+            Q(title__icontains=title) |
+            Q(category__title__icontains=title)
         )
         return context
 
 
 class FilterFlowersView(FlowersView):
+    """Фильтрация растений"""
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         price = self.request.GET.getlist('price')
@@ -138,6 +189,7 @@ class FilterFlowersView(FlowersView):
 
 
 class FilterCaresView(CareView):
+    """Фильтрация ухода"""
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         price = self.request.GET.getlist('price')
@@ -174,6 +226,7 @@ class FilterCaresView(CareView):
 
 
 class FilterPotsView(PotsView):
+    """Фильтрация горшков"""
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         price = self.request.GET.getlist('price')
