@@ -19,11 +19,6 @@
         </div>
 
         <div class="networks">
-            <a href="{% url 'flowers:flowers' %}" class="networks-flowers">Комнатные растения</a>
-            <a href="{% url 'flowers:pots' %}" class="networks-pots">Горшки для растений</a>
-            <a href="{% url 'flowers:care' %}" class="networks-care">Уход за растениями</a>
-            <a href="{% url 'about' %}" class="networks-about">О нас</a>
-            <a href="{% url 'services' %}" class="networks-services">Услуги</a>
             <a href="{% url 'flowers:flowers' %}" class="networ-catalog" hidden>Каталог</a>
         </div>
 
@@ -60,9 +55,15 @@
     {% endblock base_content %}
     <section class="social-networks">
         <div class="social-networks-info">
-            <p>Будь в курсе событий, подпишись на наши социальные сети</p>
+            <p>Присоединяйтесь к нашему зеленому сообществу и дайте растениям преобразить ваш мир!
+            <p>Fresh Company - ваш зеленый оазис в городе.</p>
+            
             <a href="#"><img src="{% static 'icons/icons_telegram.jpg' %}" width="50px" height="50px"></a>
             <a href="#"><img src="{% static 'icons/icons_instagram.jpg' %}" width="50px" height="50px"></a>
+        </div>
+
+        <div class="social-networks-img">
+            <img src="{% static 'images/social-networks.png' %}" width="500px" height="400px">
         </div>
     </section>
 

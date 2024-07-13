@@ -133,24 +133,22 @@ nav .user{
 }
 
 .social-networks {
-    background-image: url(../images/social-networks.png);
-    background-size: cover;
-    height: 180px;
+    background: rgba(234, 233, 229, 1);
+    height: 400px;
     margin-top: 10px;
-    color: rgba(214, 215, 210, 1);
+    color: rgba(40, 49, 6, 1);
+    font-family: 'myFontMirra';
     font-size: 14pt;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 70% 30%;
 }
 
 .social-networks-info {
     text-align: center;
-    border-radius: 25px;
-    box-shadow: 0 0 30px rgba(114, 121, 88, 1);
-    padding: 20px;
+    justify-self: center;
+    align-self: center;
 }
+
 
 .dropdown-user {
     position: relative;

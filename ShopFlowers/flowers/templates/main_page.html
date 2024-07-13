@@ -9,36 +9,78 @@
 {% block base_content %}
 
 <section class="home">
-        <div class="start">
-
+    <div class="main">
+        <div class="catalog">
+            <h1 style="font-family: 'myFontMirra'; font-size: 45pt; font-weight: lighter; color: rgba(40, 49, 6, 1);">Галлерея зеленых пейзажей</h1>
+            <button class="catalog-button"><a href="{% url 'flowers:flowers' %}" class="networks-flowers">Открыть каталог</a></button>
         </div>
 
+        <div class="carousel">
+            <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center;">Хиты продаж</h3>
+
+            <div class="courusel-assortment">
+                {% for favorite in favorites %}
+                    <div class="assortment">
+                        <a href="{% url 'flowers:flower' slug=favorite.flowers.slug %}">
+                        <img src="{{favorite.flowers.image.url }}" width="150px" height="200px"></a>  
+                    </div>
+                {% endfor %}
+
+                <div class="assortment-control">
+                    <button class="prev">&#60;</button>
+                    <button class="next">&#62;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-us">
+        <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center;">Мы про...</h3>
         <div class="about">
+            <div class="about-hello">
+                <p>Fresh Company - это больше, чем просто магазин комнатных растений. Мы - команда страстных любителей природы, которые хотят поделиться своей любовью к зелени с вами. Мы верим, что растения способны не только украсить ваш дом, но и создать уютную атмосферу, улучшить настроение и даже повысить продуктивность.</p>
 
+                <img src="{% static 'images/about_one.jpg' %}" width="750px" height="375px">
+            </div>
+
+            <div class="about-our-plus">
+                <img src="{% static 'images/about_three.jpg' %}" width="325px" height="325px">
+                <ul class="abaut-ul">
+                    <li>Качество: Мы стремимся предлагать высококачественные растения и услуги.</li>
+                    <li>Экологичность: Мы заботимся об окружающей среде и используем экологически чистые материалы и методы.</li>
+                    <li>Любовь к растениям: Мы с удовольствием делимся своими знаниями и опытом с вами.</li>
+                </ul>
+            </div>
+
+            <div class="about-services">
+                <ul class="abaut-ul">
+                    <li>Профессионализм: Мы имеем большой опыт в работе с комнатными растениями.</li>
+                    <li>Качество: Мы гарантируем вам здоровые и красивые растения.</li>
+                    <li>Индивидуальный подход: Мы с удовольствием подберем растения и поможем вам в уходе за ними.</li>
+                </ul>
+
+                <img src="{% static 'images/about_four.jpg' %}" width="325px" height="325px">
+            </div>
         </div>
+    </div>
 
-        <div class="news">
+    <div class="news">
+        <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center; grid-column: 1 / span 5;">Последние новости о растениях</h3>
 
+        <div class="news-list">
+            {% for plant in plants %}
+                <div class="new">
+                    <img src="{{ plant.images }}" width="200px" height="200px">
+                    <p>{{ plant.text }}</p>
+                    <button class="news-button"><a href="https://green-story.ru/{{ plant.link }}">Подробнее</a></button>
+                </div>    
+            {% endfor %}  
         </div>
+    </div>
 </section>
 
-<section class="line">
-
-</section>
-
-<section>
-    <h1>Последние новости о растениях</h1>
-    <ul>
-        {% for plant in plants %}
-            <li>
-                <h2>{{ plant.text }}</h2>
-                <img src="{{ plant.images }}">
-                <a href="https://green-story.ru/{{ plant.link }}">Подробнее</a>
-            </li>
-        {% endfor %}
-    </ul>
-</section>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="{% static 'js/flowers.js' %}"></script>
 {% endblock base_content %}
 
 

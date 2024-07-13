@@ -12,7 +12,7 @@ from feedback.models import Feedback
 from cart.models import Cart
 
 
-async def plant_news(request):
+def plant_news(request):
     chrome_options = Options()
     chrome_options.add_argument('headless')
     driver = webdriver.Chrome(options=chrome_options)
@@ -33,15 +33,15 @@ async def plant_news(request):
             'link': link,
             'images': images,
         })
-
     driver.quit()
-    print(plants)
 
-    return render(request, 'main_page.html', {'plants': plants})
+    favorites = Feedback.objects.filter(Q(rating__gte=4, rating__lte=5))
+
+    return render(request, 'main_page.html', {'plants': plants, 'favorites': favorites})
 
 
-async def plant_news_view(request):
-    return await plant_news(request)
+# async def plant_news_view(request):
+#     return await plant_news(request)
 
 # class MainPage(View):
 #     def post(self, request):
