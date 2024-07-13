@@ -1,21 +1,18 @@
-import json
 import random
-
 from django.shortcuts import render
-from django.views import View
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
+from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import Http404, JsonResponse
 from .models import Flowers, Category
-from django.views.generic import TemplateView, ListView, DetailView
-from cart.models import Cart
 from feedback.models import Feedback
+from cart.models import Cart
 
 
-def plant_news(request):
+async def plant_news(request):
     chrome_options = Options()
     chrome_options.add_argument('headless')
     driver = webdriver.Chrome(options=chrome_options)
@@ -23,23 +20,28 @@ def plant_news(request):
 
     html_doc = driver.page_source
     soup = BeautifulSoup(html_doc, 'html.parser')
-    news_items = soup.find_all('div', class_='t-card__title t-heading t-heading_xs')[:3]
+    find_text_link = soup.find_all('div', class_='t-card__title t-heading t-heading_xs')[:3]
+    find_img = soup.find_all('div', class_='t853__imgwrapper t853__imgwrapper_mobile-nopadding')[:3]
     plants = []
-    for i in news_items:
-        print(f'{i} iterations')
-        text = i.find(class_='t-card__link').text.strip()
-        text = text.replace('\xa0', ' ')
-        link = i.find('a', class_='t-card__link')['href']
+    for text, img in zip(find_text_link, find_img):
+        title = text.find(class_='t-card__link').text.strip()
+        title = title.replace('\xa0', ' ')
+        link = text.find('a', class_='t-card__link')['href']
+        images = img.find('img', class_='t853__img t-img js-product-img loaded')['src']
         plants.append({
-            'text': text,
-            'link': link
+            'text': title,
+            'link': link,
+            'images': images,
         })
-        plants = dict(plants)
 
     driver.quit()
     print(plants)
 
-    return render(request, 'main_page.html', plants)
+    return render(request, 'main_page.html', {'plants': plants})
+
+
+async def plant_news_view(request):
+    return await plant_news(request)
 
 # class MainPage(View):
 #     def post(self, request):

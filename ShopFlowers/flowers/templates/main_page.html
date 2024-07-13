@@ -8,48 +8,36 @@
 
 {% block base_content %}
 
-    <section class="home">
+<section class="home">
         <div class="start">
 
         </div>
 
-        <div class="hit">
+        <div class="about">
 
         </div>
 
-        <div class="novelty">
+        <div class="news">
 
         </div>
+</section>
 
-        <div class="catalog">
+<section class="line">
 
-        </div>
+</section>
 
-        <div class="sale">
-
-        </div>
-
-        <div class="design">
-
-        </div>
-
-        <div class="other">
-
-        </div>
-    </section>
-
-    <section class="line">
-
-    </section>
-
-    <section>
-
+<section>
+    <h1>Последние новости о растениях</h1>
     <ul>
-    {% for obj in objects %}
-        <li>{{ obj.text }} - {{ obj.link }}</li>
-    {% endfor %}
+        {% for plant in plants %}
+            <li>
+                <h2>{{ plant.text }}</h2>
+                <img src="{{ plant.images }}">
+                <a href="https://green-story.ru/{{ plant.link }}">Подробнее</a>
+            </li>
+        {% endfor %}
     </ul>
-    </section>
+</section>
 
 {% endblock base_content %}
 

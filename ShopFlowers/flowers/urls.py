@@ -4,7 +4,7 @@ import flowers.views as flowers
 app_name = 'flowers'
 urlpatterns = [
     # path('', flowers.MainPage.as_view(), name='main'),
-    path('', flowers.plant_news, name='main'),
+    path('', flowers.plant_news_view, name='main'),
     path('flowers/', flowers.FlowersView.as_view(), name='flowers'),
     path('pots/', flowers.PotsView.as_view(), name='pots'),
     path('care/', flowers.CareView.as_view(), name='care'),

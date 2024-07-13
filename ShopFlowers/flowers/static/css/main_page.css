@@ -2,82 +2,45 @@ body {
     margin: 0;
 }
 
-.home {
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(15, 1fr);
-    gap: 0.5%;
-    height: 2250px;
-}
-
 .start {
-    background-image: url(../images/hello.jpg);
-    background-size: cover;
-	background-repeat: no-repeat;
-	grid-column: 1 / span 3;
-	grid-row: 1 / span 5;
-}
-
-.hit {
-    background-image: url(../images/hit.jpg);
-    background-size: cover;
-	background-repeat: no-repeat;
-	grid-column: 1 / span 3;
-	grid-row: 6 / span 2;
-}
-
-.novelty {
-    background-image: url(../images/novelty.jpg);
-    background-size: cover;
-	background-repeat: no-repeat;
-	grid-column: 1 / 1;
-	grid-row: 8 / span 4;
-}
-
-.catalog {
-    background-image: url(../images/catalog.jpg);
-    background-size: cover;
-	background-repeat: no-repeat;
-	grid-column: 2 / span 2;
-	grid-row: 8 / span 3;
-}
-
-.sale {
-    background-image: url(../images/sale.jpg);
-    background-size: cover;
-	background-repeat: no-repeat;
-	grid-column: 1 / 1;
-	grid-row: 12 / span 4;
-}
-
-.design {
-    background-image: url(../images/design.jpg);
-    background-size: cover;
-	background-repeat: no-repeat;
-	grid-column: 2 / 2;
-	grid-row: 11 / span 5;
-}
-
-.other {
-    background-image: url(../images/other.jpg);
-    background-size: cover;
-	background-repeat: no-repeat;
-	grid-column: 3 / 3;
-	grid-row: 11 / span 5;
+	background-image: url("../images/start.png");
 }
 
 
+/* 
 @media screen and (min-width: 800px) and (max-width: 1175px){
-	.home {
-		grid-template-rows: repeat(7, 1fr);
-		height: 1600px;
-	}
 	
-	.start {
+	
+	.hit {
 		grid-column: 1 / span 3;
-		grid-row: 1 / span 2;
+		grid-row: 3;
 	}
 	
+	.novelty {
+		grid-column: 1 / 1;
+		grid-row: 4 / span 2;
+	}
+	
+	.catalog {
+		grid-column: 2 / span 2;
+		grid-row: 4 / span 1;
+	}
+	
+	.sale {
+		grid-column: 1 / 1;
+		grid-row: 6 / span 2;
+	}
+	
+	.design {
+		grid-column: 2 / 2;
+		grid-row: 5 / span 3;
+	}
+	
+	.other {
+		grid-column: 3 / 3;
+		grid-row: 5 / span 3;
+	}
+
 	.hit {
 		grid-column: 1 / span 3;
 		grid-row: 3;
@@ -110,43 +73,5 @@ body {
 }
 
 @media screen and (max-width: 799px){
-	.home {
-		grid-template-rows: repeat(5, 1fr);
-		height: 600px;
-	}
-	
-	.start {
-		grid-column: 1 / span 3;
-		grid-row: 1/ span 2;
-	}
-	
-	.hit {
-		grid-column: 1 / span 3;
-		grid-row: 3;
-	}
-	
-	.novelty {
-		grid-column: 1 / 1;
-		grid-row: 4;
-	}
-	
-	.catalog {
-		grid-column: 2 / span 2;
-		grid-row: 4;
-	}
-	
-	.sale {
-		grid-column: 1 / 1;
-		grid-row: 5;
-	}
-	
-	.design {
-		grid-column: 2 / 2;
-		grid-row: 5;
-	}
-	
-	.other {
-		grid-column: 3 / 3;
-		grid-row: 5;
-	}
-}
+
+} */

@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Фильтрация товаров в каталоге, фильтрация заказов в личном кабинете.">
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Почти готов парсинг">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/main_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/main_page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/images/fcc84127dffc1d2a71832ef341bb33be.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/images/name.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/flowers_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/flowers_search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,7 +367,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720716250998</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Почти готов парсинг">
+      <option name="closed" value="true" />
+      <created>1720797835787</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1720797835787</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -378,7 +390,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Сделана базовая страница, классы представления на запрос гет, отображение объектов из базы данных." />
     <MESSAGE value="Написаны два класса представления (ListView, DetailView) обрабатывающие страницу, где все цветы и страницу с одним выбранным растением." />
     <MESSAGE value="Добавлена страница выбора категории и отображения товаров этой категории." />
     <MESSAGE value="Добавлены фото для двух категорий, кнопка назад." />
@@ -403,6 +414,7 @@
     <MESSAGE value="Исправлена цена в корзине с учетом скидки." />
     <MESSAGE value="Подключена оплата и возврат. Сделана адаптивная верстка." />
     <MESSAGE value="Фильтрация товаров в каталоге, фильтрация заказов в личном кабинете." />
-    <option name="LAST_COMMIT_MESSAGE" value="Фильтрация товаров в каталоге, фильтрация заказов в личном кабинете." />
+    <MESSAGE value="Почти готов парсинг" />
+    <option name="LAST_COMMIT_MESSAGE" value="Почти готов парсинг" />
   </component>
 </project>
