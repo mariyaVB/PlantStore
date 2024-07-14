@@ -1,4 +1,4 @@
-//Карусель
+//Карусель flower.html
 let assortment = $('.assortment'),
     list_assortment = $('.list-assortment'),
     countAssortment = assortment.length,
@@ -74,3 +74,32 @@ $('.feedback-count-rating-mean').click(function() {
 //      }
 //    }
 //});
+
+//Карусель main_page.html
+let mainAssortment = $('.main-assortment'),
+    mainCouruselAssortment = $('.main-courusel-assortment'),
+    countMainAssortment = mainAssortment.length,
+    mainPosition = 0,
+    mainStep = 200;
+    mainMax = (countMainAssortment * 200) - 800;
+
+$(mainCouruselAssortment).width(200 * countAssortment);
+$('.main-next').click(function () {
+    if (mainPosition == -mainMax) {
+        mainPosition = 0;
+        mainCouruselAssortment.css("left", mainPosition + "px");
+    }else{
+        mainPosition = mainPosition - mainStep;
+        mainCouruselAssortment.css("left", mainPosition + "px");
+    }
+});
+
+$('.main-prev').click(function () {
+    if (mainPosition == 0) {
+        mainPosition = -mainMax;
+        mainCouruselAssortment.css("left", mainPosition + "px");
+    }else{
+        mainPosition = mainPosition + mainstep;
+        mainCouruselAssortment.css("left", mainPosition + "px");
+    }
+});

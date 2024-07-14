@@ -3,73 +3,82 @@ from django.shortcuts import render
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
-from django.views.generic import ListView, DetailView
+import schedule
+import time
+from django.views.generic import ListView, DetailView, TemplateView
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q, Avg
+from django.db.models import F
 from django.http import Http404, JsonResponse
-from .models import Flowers, Category
+from .models import Flowers, Category, News
 from feedback.models import Feedback
 from cart.models import Cart
 
 
-def plant_news(request):
-    chrome_options = Options()
-    chrome_options.add_argument('headless')
-    driver = webdriver.Chrome(options=chrome_options)
-    driver.get("https://green-story.ru/blog/")
-
-    html_doc = driver.page_source
-    soup = BeautifulSoup(html_doc, 'html.parser')
-    find_text_link = soup.find_all('div', class_='t-card__title t-heading t-heading_xs')[:3]
-    find_img = soup.find_all('div', class_='t853__imgwrapper t853__imgwrapper_mobile-nopadding')[:3]
-    plants = []
-    for text, img in zip(find_text_link, find_img):
-        title = text.find(class_='t-card__link').text.strip()
-        title = title.replace('\xa0', ' ')
-        link = text.find('a', class_='t-card__link')['href']
-        images = img.find('img', class_='t853__img t-img js-product-img loaded')['src']
-        plants.append({
-            'text': title,
-            'link': link,
-            'images': images,
-        })
-    driver.quit()
-
-    favorites = Feedback.objects.filter(Q(rating__gte=4, rating__lte=5))
-
-    return render(request, 'main_page.html', {'plants': plants, 'favorites': favorites})
-
-
-# async def plant_news_view(request):
-#     return await plant_news(request)
-
-# class MainPage(View):
-#     def post(self, request):
-#         print("До  загрузки  страницы")
-#         chrome_options = Options()
-#         chrome_options.add_argument('headless')
-#         driver = webdriver.Chrome(options=chrome_options)
-#         driver.get("https://green-story.ru/blog/")
-#         print("После  загрузки  страницы")
+# def plant_news(request):
+#     chrome_options = Options()
+#     chrome_options.add_argument('headless')
+#     driver = webdriver.Chrome(options=chrome_options)
+#     driver.get("https://plants-flowers.ru/")
 #
-#         html_doc = driver.page_source
-#         soup = BeautifulSoup(html_doc, 'lxml')
-#         news_items = soup.find_all('div', class_='t-card__title t-heading t-heading_xs')[:3]
-#         plants = []
-#         for i in news_items:
-#             print(f'{i} iterations')
-#             title = i.find(class_='t-card__link').text.strip()
-#             title = title.replace('\xa0', ' ')
-#             link = i.find('a', class_='t-card__link')['href']
-#             plants.append({
-#                 'Описание': title,
-#                 'Ссылка': link
-#             })
+#     html_doc = driver.page_source
+#     soup = BeautifulSoup(html_doc, 'lxml')
+#     find_img = soup.find_all('div', class_='ast-blog-featured-section post-thumb ast-width-md-6')[:3]
+#     find_text_link = soup.find_all('h2', class_='entry-title')[:3]
 #
-#         driver.quit()
-#         print(plants)
+#     plants = []
+#     for text_link, img in zip(find_text_link, find_img):
+#         title = text_link.get_text(strip=True)
+#         # title = title.replace('\xa0', ' ')
+#         link = text_link.find('a')['href']
+#         images = img.find('img', class_='attachment-400x400 size-400x400')['src']
+#         plants.append({
+#             'text': title,
+#             'link': link,
+#             'images': images,
+#         })
 #
-#         return render(request, 'main_page.html', json.load(plants))
+#     driver.quit()
+#
+#     favorites = Feedback.objects.filter(Q(rating__gte=4, rating__lte=5))
+#     return render(request, 'main_page.html', {'plants': plants, 'favorites': favorites})
+
+
+
+class MainPage(TemplateView):
+    """Стартовая страница"""
+    def plant_news(self, request):
+        chrome_options = Options()
+        chrome_options.add_argument('headless')
+        driver = webdriver.Chrome(options=chrome_options)
+        driver.get("https://plants-flowers.ru/")
+
+        html_doc = driver.page_source
+        soup = BeautifulSoup(html_doc, 'lxml')
+        find_img = soup.find_all('div', class_='ast-blog-featured-section post-thumb ast-width-md-6')[:3]
+        find_text_link = soup.find_all('h2', class_='entry-title')[:3]
+
+        news = News.objects.all()
+        if news:
+            for new in news:
+                new.delete()
+        else:
+            for text_link, img in zip(find_text_link, find_img):
+                title = text_link.get_text(strip=True)
+                link = text_link.find('a')['href']
+                images = img.find('img', class_='attachment-400x400 size-400x400')['src']
+                News.objects.create(link_image=images, link_new=link, text=title)
+
+            driver.quit()
+
+    schedule.every().sunday.at('06:00').do(plant_news)
+
+    template_name = 'main_page.html'
+    extra_context = {
+        'title': 'Галерея зеленых пейзажей Fresh Company',
+        'plants_news': News.objects.all(),
+        'favorites': Feedback.objects.filter(Q(rating__gte=4, rating__lte=5)),
+    }
 
 
 class FlowersView(ListView):

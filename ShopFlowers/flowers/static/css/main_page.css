@@ -45,46 +45,63 @@ body {
 	}
 }
 
-.carousel {
-    height: 150px;
-    width: 600px;
-    margin: 100px 10px 100px 10px; 
-    overflow: hidden;  
+.main-carousel {
+	width: 800px;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;  
     margin: 0 auto;
 }
 
-.courusel-assortment {
-    height: 150px;
+.main-courusel-assortment {
+	height: 200px;
+	position: relative;
     display: flex;
-    position: relative;
+	gap: 50px;
 }
 
-.assortment {
-    width: 150px;
+.main-assortment {
+	background: rgba(214, 215, 210, 1);
+	width: 200px;
+	height: 182px;
     transition: 1s;
+	img {
+		margin-left: -40px;
+		margin-top: -40px;
+	}
 }
 
-/* .assortment-control button {
+.main-assortment-control button {
     font-size: 14pt;
     border: none;
     color: rgba(114, 121, 88, 1);
     font-weight: bold;
     background: transparent;    
     position: absolute;
-    top: 800px;
+    top: 700px;
     cursor: pointer;
     width: 35px;
     height: 35px;
     text-align: center;
 }
 
-button.next {
-    right: 225px;
+.main-assortment-control button:active, .main-assortment-control button:hover {    
+    color: rgba(114, 121, 88, 1);
+    transform: scale(1);
+    box-shadow: 3px 2px 22px 1px rgba(40, 49, 6, 1);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    text-align: center;
 }
 
-button.prev {
-    left: 220px;
-} */
+.main-next {
+    right: 200px;
+}
+
+.main-prev {
+    left: 200px;
+}
 
 .assortment-control button:active, .assortment-control button:hover {    
     color: rgba(114, 121, 88, 1);
@@ -95,22 +112,6 @@ button.prev {
     height: 35px;
     text-align: center;
 }
-
-/* .courusel-assortment {
-	display: flex;
-	gap: 25px;
-}
-
-.assortment {
-	background: rgba(214, 215, 210, 1);
-	height: 160px;
-	width: 100px;
-	img {
-		margin-left: -70px;
-		align-self: end;
-	}
-} */
-
 
 .about-us {
 	height: 600px;
@@ -127,7 +128,7 @@ button.prev {
 	margin: -10px 20px 0 20px;
 }
 
-.abaut-ul {
+.about-ul {
 	list-style-type: '🌿';
 	color: rgba(40, 49, 6, 1);
 }

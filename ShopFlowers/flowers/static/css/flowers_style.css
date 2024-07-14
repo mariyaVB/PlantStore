@@ -106,12 +106,6 @@ a {
     color: rgba(40, 49, 6, 1);
 }
 
-
-input[type=checkbox]:checked {
-    background-color: rgba(40, 49, 6, 1);
-    color: red;
-}
-
 .title-filter {
     text-align: center;
     color: rgba(40, 49, 6, 1);

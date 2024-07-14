@@ -51,7 +51,10 @@ class Flowers(models.Model):
             return int(self.price)
 
 
-
+class News(models.Model):
+    link_image = models.CharField(max_length=150, verbose_name='Ссылка на картинку', blank=True, null=True)
+    link_new = models.CharField(max_length=150, verbose_name='Ссылка на блог', blank=True, null=True)
+    text = models.CharField(max_length=150, verbose_name='Заголовок блога', blank=True, null=True)
 
 
 

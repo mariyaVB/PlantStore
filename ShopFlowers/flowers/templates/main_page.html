@@ -2,7 +2,7 @@
 {% load static %}
 {% block head_title %}
     <link rel="stylesheet" href="{% static 'css/main_page.css' %}" />
-    <title>Галерея зеленых пейзажей Fresh Company</title>
+    <title>{{ title }}</title>
 {% endblock head_title %}
 
 
@@ -15,21 +15,21 @@
             <button class="catalog-button"><a href="{% url 'flowers:flowers' %}" class="networks-flowers">Открыть каталог</a></button>
         </div>
 
-        <div class="carousel">
+        <div class="main-carousel">
             <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center;">Хиты продаж</h3>
 
-            <div class="courusel-assortment">
+            <div class="main-courusel-assortment">
                 {% for favorite in favorites %}
-                    <div class="assortment">
+                    <div class="main-assortment">
                         <a href="{% url 'flowers:flower' slug=favorite.flowers.slug %}">
-                        <img src="{{favorite.flowers.image.url }}" width="150px" height="200px"></a>  
+                        <img src="{{favorite.flowers.image.url }}" width="200px" height="250px"></a>
                     </div>
                 {% endfor %}
-
-                <div class="assortment-control">
-                    <button class="prev">&#60;</button>
-                    <button class="next">&#62;</button>
-                </div>
+            </div>
+        
+            <div class="main-assortment-control">
+                <button class="main-prev">&#60;</button>
+                <button class="main-next">&#62;</button>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
 
             <div class="about-our-plus">
                 <img src="{% static 'images/about_three.jpg' %}" width="325px" height="325px">
-                <ul class="abaut-ul">
+                <ul class="about-ul">
                     <li>Качество: Мы стремимся предлагать высококачественные растения и услуги.</li>
                     <li>Экологичность: Мы заботимся об окружающей среде и используем экологически чистые материалы и методы.</li>
                     <li>Любовь к растениям: Мы с удовольствием делимся своими знаниями и опытом с вами.</li>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="about-services">
-                <ul class="abaut-ul">
+                <ul class="about-ul">
                     <li>Профессионализм: Мы имеем большой опыт в работе с комнатными растениями.</li>
                     <li>Качество: Мы гарантируем вам здоровые и красивые растения.</li>
                     <li>Индивидуальный подход: Мы с удовольствием подберем растения и поможем вам в уходе за ними.</li>
@@ -65,14 +65,14 @@
     </div>
 
     <div class="news">
-        <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center; grid-column: 1 / span 5;">Последние новости о растениях</h3>
+        <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center; grid-column: 1 / span 5;">Советы по озеленению</h3>
 
         <div class="news-list">
-            {% for plant in plants %}
+            {% for plant in plants_news %}
                 <div class="new">
-                    <img src="{{ plant.images }}" width="200px" height="200px">
+                    <img src="{{ plant.link_image }}" width="200px" height="200px">
                     <p>{{ plant.text }}</p>
-                    <button class="news-button"><a href="https://green-story.ru/{{ plant.link }}">Подробнее</a></button>
+                    <button class="news-button"><a href="{{ plant.link_new }}">Подробнее</a></button>
                 </div>    
             {% endfor %}  
         </div>
