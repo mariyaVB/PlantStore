@@ -1,10 +1,13 @@
 import os
 import uuid
 import json
+import datetime
+
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 from dotenv import load_dotenv
-from yookassa import Payment, Configuration
+from yookassa import Payment, Refund, Configuration
 from cart.models import Cart
 from payment.models import PaymentConnectionOrder
 from django.core.mail import EmailMultiAlternatives
@@ -21,6 +24,31 @@ Configuration.secret_key = os.getenv('DJANGO_YOOKASSA_SECRET_KEY')
 logger = logging.getLogger(__name__)
 
 
+def email_client(user, order):
+    data = {
+        'user': user,
+        'order': order,
+    }
+    try:
+        order_status = Order.objects.get(id=order)
+    except ObjectDoesNotExist:
+        raise 'Письмо не отправлено'
+
+    if order_status == 'Оформлен':
+        email_html = render_to_string('email_order.html', data)
+        msg = EmailMultiAlternatives(subject='Уведомление о заказе на сайте FreshCompany', to=[user.email])
+        msg.attach_alternative(email_html, 'text/html')
+        msg.send()
+        return HttpResponse(status=200)
+
+    elif order_status == 'Отменен':
+        email_html = render_to_string('email_cancel_order.html', data)
+        msg = EmailMultiAlternatives(subject='Уведомление о отмене заказа на сайте FreshCompany', to=[f'{user.email}'])
+        msg.attach_alternative(email_html, 'text/html')
+        msg.send()
+        return HttpResponse(status=200)
+
+
 def create_payment(summa, metadata):
     """ Создание оплаты """
     idempotence_key = str(uuid.uuid4())
@@ -32,7 +60,7 @@ def create_payment(summa, metadata):
         },
         "confirmation": {
             "type": "redirect",
-            "return_url": "https://06b0-95-58-138-130.ngrok-free.app/order/order_profile/"
+            "return_url": "https://371c-37-150-198-50.ngrok-free.app/order/order_profile/"
         },
         "capture": True,
         "description": "Оплата на сайте FreshCompany",
@@ -40,6 +68,23 @@ def create_payment(summa, metadata):
     }, idempotence_key)
 
     return payment
+
+
+def refund_payment(order):
+    """Создание возврата"""
+    try:
+        payment = PaymentConnectionOrder.objects.get(order=order)
+        refund = Refund.create({
+            "amount": {
+                "value": order.summa,
+                "currency": "RUB",
+                "description": "Возврат денежных средств за заказ на сайте FreshCompany",
+            },
+            "payment_id": payment.payment_id
+        })
+        return refund
+    except (ValueError, AttributeError, TypeError):
+        return Http404
 
 
 @csrf_exempt
@@ -50,6 +95,8 @@ def payment_webhook(request):
             print(f'JSON {payment_json}')
         except json.JSONDecodeError:
             return HttpResponse(status=400)
+        payment_event = payment_json.get('event')
+        print(f'PAYMENT EVENT {payment_event}')
 
         payment_object = payment_json.get('object')
         print(f'OBJECTS {payment_object}')
@@ -62,68 +109,72 @@ def payment_webhook(request):
         payment_status = payment_object.get('status')
         print(f'Payment_status: {payment_status}')
 
-        if payment_status == 'succeeded':
-            user_id = int(payment_object['metadata']['user_id'])
-            user = User.objects.get(id=user_id)
-            print(f'User_id: {user_id} User: {user.username}')
+        if payment_event == 'payment.succeeded':
+            if payment_status == 'succeeded':
+                print('НАЧАЛО ВЕБХУКА')
+                user_id = int(payment_object['metadata']['user_id'])
+                user = User.objects.get(id=user_id)
+                taking = payment_object['metadata'].get('taking')
+                address = payment_object['metadata'].get('address')
+                taking_summa = int(payment_object['metadata'].get('taking_summa'))
+                summa = float(payment_object['amount'].get('value'))
+                quantity = int(payment_object['metadata'].get('quantity'))
+                payment = payment_object['metadata'].get('payment')
 
-            taking = payment_object['metadata'].get('taking')
-            print(f'taking {taking}')
+                order = Order.objects.create(
+                    user=user,
+                    taking=taking,
+                    address=address,
+                    taking_summa=taking_summa,
+                    quantity=quantity,
+                    summa=summa,
+                    payment=payment,
+                    is_payment=True,
+                    status_payment='Оплачен'
+                )
 
-            address = payment_object['metadata'].get('address')
-            print(f'address {address}')
+                cart_items = Cart.objects.filter(user=user, status='В корзине')
+                order.cart.add(*cart_items)
+                order.save()
+                PaymentConnectionOrder.objects.create(payment_id=payment_id, order=order)
 
-            taking_summa = payment_object['metadata'].get('taking_summa')
-            print(f'taking_summa {taking_summa}')
+                for cart in order.cart.all():
+                    flowers = cart.flowers
+                    flowers.quantity -= cart.quantity
+                    cart.status = 'Оформлен'
+                    flowers.save()
+                    cart.save()
 
-            summa = payment_object['amount'].get('value')
-            print(f'summa {summa}')
+                email_client(user, order)
+                return HttpResponse(status=200)
+            else:
+                return Http404()
 
-            quantity = payment_object['metadata'].get('quantity')
-            print(f'quantity {quantity}')
+        elif payment_event == 'refund.succeeded':
+            if payment_status == 'succeeded':
+                print('НАЧАЛО ВЕБХУКА')
+                refund_id = payment_object.get('payment_id')
+                print(f'refund {refund_id}')
+                payment_connection_order = PaymentConnectionOrder.objects.get(payment_id=refund_id)
+                order = payment_connection_order.order
+                print(f'Order: {order}')
 
-            payment = payment_object['metadata'].get('payment')
-            print(f'payment {payment}')
+                user = order.user
+                print(f'User: {user} User: {user.username}')
 
-            order = Order.objects.create(
-                user=user,
-                taking=taking,
-                address=address,
-                taking_summa=taking_summa,
-                quantity=quantity,
-                summa=summa,
-                payment=payment,
-                is_payment=True,
-                status_payment='Оплачен'
-            )
+                order.status_order = 'Отменен'
+                order.ending_order = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                order.save()
+                for cart in order.cart.all():
+                    flowers = cart.flowers
+                    flowers.quantity += cart.quantity
+                    flowers.save()
 
-            cart_items = Cart.objects.filter(user=user, status='В корзине')
-            order.cart.add(*cart_items)
-            order.save()
-            print(f'Order: {order}')
+                email_client(user, order)
+                return HttpResponse(status=200)
 
-            PaymentConnectionOrder.objects.create(payment_id=payment_id, order=order)
-
-            for cart in order.cart.all():
-                flowers = cart.flowers
-                flowers.quantity -= cart.quantity
-                cart.status = 'Оформлен'
-                flowers.save()
-                cart.save()
-
-            data = {
-                'user': user,
-                'order': order,
-            }
-
-            email_html = render_to_string('email_order.html', data)
-            msg = EmailMultiAlternatives(
-                subject='Уведомление о заказе на сайте FreshCompany',
-                to=[user.email]
-            )
-            msg.attach_alternative(email_html, 'text/html')
-            msg.send()
-            return HttpResponse(status=200)
+            else:
+                return HttpResponse(status=200)
 
         else:
             return HttpResponse(status=200)

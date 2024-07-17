@@ -2,7 +2,7 @@ import datetime
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.db import transaction, IntegrityError
 from django.urls import reverse_lazy
 from django.views import View
@@ -11,11 +11,9 @@ from .forms import OrderForm
 from feedback.forms import AddFeedbackForm
 from cart.models import Cart
 from order.models import Order
-from payment.views import create_payment
-from payment.models import PaymentConnectionOrder
+from payment.views import create_payment, refund_payment
+from payment.views import email_client
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
 
 
 class AddOrderView(View):
@@ -48,6 +46,8 @@ class AddOrderView(View):
                     flowers.save()
                     el_cart.save()
 
+                email_client(user, new_order)
+
             elif new_order.payment == 'Онлайн':
                 try:
                     metadata = {
@@ -61,19 +61,9 @@ class AddOrderView(View):
                     payment = create_payment(new_order.summa, metadata)
                     return redirect(payment.confirmation.confirmation_url)
                 except IntegrityError:
-                    return redirect('cart:cart')
+                    return redirect(request.META['HTTP_REFERER'])
 
-            data = {
-                'user': user,
-                'order': new_order,
-            }
-
-            email_html = render_to_string('email_order.html', data)
-            msg = EmailMultiAlternatives(subject='Уведомление о заказе на сайте FreshCompany', to=[user.email])
-            msg.attach_alternative(email_html, 'text/html')
-            msg.send()
-
-            return HttpResponseRedirect(reverse_lazy('order:order-profile'))
+            return HttpResponseRedirect(reverse_lazy('order:order-profile'))   # !!!!!!!!!!
 
         messages.add_message(request, messages.SUCCESS, 'Ваша корзина пуста или адрес заполнен неправильно.')
         return HttpResponseRedirect(reverse_lazy('cart:cart'))
@@ -106,47 +96,25 @@ class CancelOrderView(ListView):
     def get(self, request, order_id):
         user = self.request.user
         order = Order.objects.get(id=order_id)
-        order.status_order = 'Отменен'
-        order.ending_order = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        order.save()
-        for cart in order.cart.all():
-            flowers = cart.flowers
-            flowers.quantity += cart.quantity
-            flowers.save()
 
-        if order.payment == 'Онлайн':
+        if order.payment == 'При получении':
+            order.status_order = 'Отменен'
+            order.ending_order = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            order.save()
+            for cart in order.cart.all():
+                flowers = cart.flowers
+                flowers.quantity += cart.quantity
+                flowers.save()
+
+            email_client(user, order)
+
+        elif order.payment == 'Онлайн':
             """ Возврат оплаты """
-            payment = PaymentConnectionOrder.objects.get(order=order.id)
-            Refund.create({
-                "amount": {
-                    "value": order.summa,
-                    "currency": "RUB",
-                    "description": "Возврат денежных средств за заказ на сайте FreshCompany",
-                },
-                "payment_id": payment.payment_id
-            })
+            try:
+                refund_payment(order)
 
-            data = {
-                'user': user,
-                'order': order,
-            }
-
-            email_html = render_to_string('email_cancel_order.html', data)
-            msg = EmailMultiAlternatives(subject='Уведомление о отмене заказа на сайте FreshCompany', to=[f'{user.email}'])
-            msg.attach_alternative(email_html, 'text/html')
-            msg.send()
-
-            messages.add_message(request, messages.SUCCESS, 'Ваш заказ успешно отменен.')
-            return redirect(request.META['HTTP_REFERER'])
-        data = {
-            'user': user,
-            'order': order,
-        }
-
-        email_html = render_to_string('email_cancel_order.html', data)
-        msg = EmailMultiAlternatives(subject='Уведомление о отмене заказа на сайте FreshCompany', to=[f'{user.email}'])
-        msg.attach_alternative(email_html, 'text/html')
-        msg.send()
+            except IntegrityError:
+                return Http404()
 
         messages.add_message(request, messages.SUCCESS, 'Ваш заказ успешно отменен.')
         return HttpResponseRedirect(reverse_lazy('order:order-profile'))
