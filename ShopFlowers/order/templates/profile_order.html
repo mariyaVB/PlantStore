@@ -49,8 +49,6 @@
                         <input type="radio" name="status" value="progress">
                         <span>В работе</span>
                     </label>
-                    
-                    
                 </div>
 
                 <div id="status-completed">
@@ -124,9 +122,11 @@
                             <button class="bt-rating"><a>Оценить товары</a></button><br>
                         {% endif %}
 
-                        {% if order.status_order != 'Выполнен' %}
+                        {% if order.status_order != 'Выполнен' and order.status_order != 'Отменен' %}
                             <button class="bt-cancel"><a href="{% url 'order:cancel-order' order.id %}">Отменить заказ</a></button>
                         {% endif %}
+
+
                     </div>
                 </div>
             {% endfor %}           

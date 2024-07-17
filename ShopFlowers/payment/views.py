@@ -30,18 +30,18 @@ def email_client(user, order):
         'order': order,
     }
     try:
-        order_status = Order.objects.get(id=order)
-    except ObjectDoesNotExist:
+        order = Order.objects.get(id=order.id)
+    except (ObjectDoesNotExist, TypeError):
         raise 'Письмо не отправлено'
 
-    if order_status == 'Оформлен':
+    if order.status_order == 'Оформлен':
         email_html = render_to_string('email_order.html', data)
         msg = EmailMultiAlternatives(subject='Уведомление о заказе на сайте FreshCompany', to=[user.email])
         msg.attach_alternative(email_html, 'text/html')
         msg.send()
         return HttpResponse(status=200)
 
-    elif order_status == 'Отменен':
+    elif order.status_order == 'Отменен':
         email_html = render_to_string('email_cancel_order.html', data)
         msg = EmailMultiAlternatives(subject='Уведомление о отмене заказа на сайте FreshCompany', to=[f'{user.email}'])
         msg.attach_alternative(email_html, 'text/html')
@@ -74,17 +74,18 @@ def refund_payment(order):
     """Создание возврата"""
     try:
         payment = PaymentConnectionOrder.objects.get(order=order)
-        refund = Refund.create({
-            "amount": {
-                "value": order.summa,
-                "currency": "RUB",
-                "description": "Возврат денежных средств за заказ на сайте FreshCompany",
-            },
-            "payment_id": payment.payment_id
-        })
-        return refund
     except (ValueError, AttributeError, TypeError):
-        return Http404
+        return Http404()
+
+    refund = Refund.create({
+        "amount": {
+            "value": order.summa,
+            "currency": "RUB",
+            "description": "Возврат денежных средств за заказ на сайте FreshCompany",
+        },
+        "payment_id": payment.payment_id
+    })
+    return refund
 
 
 @csrf_exempt
@@ -92,26 +93,18 @@ def payment_webhook(request):
     if request.method == 'POST':
         try:
             payment_json = json.loads(request.body)
-            print(f'JSON {payment_json}')
         except json.JSONDecodeError:
             return HttpResponse(status=400)
         payment_event = payment_json.get('event')
-        print(f'PAYMENT EVENT {payment_event}')
-
         payment_object = payment_json.get('object')
-        print(f'OBJECTS {payment_object}')
         if not payment_object:
             return HttpResponse(status=400)
 
         payment_id = payment_object.get('id')
-        print(f'Payment_id: {payment_id}')
-
         payment_status = payment_object.get('status')
-        print(f'Payment_status: {payment_status}')
 
         if payment_event == 'payment.succeeded':
             if payment_status == 'succeeded':
-                print('НАЧАЛО ВЕБХУКА')
                 user_id = int(payment_object['metadata']['user_id'])
                 user = User.objects.get(id=user_id)
                 taking = payment_object['metadata'].get('taking')
@@ -152,15 +145,10 @@ def payment_webhook(request):
 
         elif payment_event == 'refund.succeeded':
             if payment_status == 'succeeded':
-                print('НАЧАЛО ВЕБХУКА')
                 refund_id = payment_object.get('payment_id')
-                print(f'refund {refund_id}')
                 payment_connection_order = PaymentConnectionOrder.objects.get(payment_id=refund_id)
                 order = payment_connection_order.order
-                print(f'Order: {order}')
-
                 user = order.user
-                print(f'User: {user} User: {user.username}')
 
                 order.status_order = 'Отменен'
                 order.ending_order = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

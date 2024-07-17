@@ -33,6 +33,7 @@ class AddOrderView(View):
             new_order.payment = form.cleaned_data['payment']
             new_order.quantity = cart.total_quantity()
             new_order.summa = form.cleaned_data['summa']
+            new_order.save()
 
             if new_order.payment == 'При получении':
                 new_order.status_payment = 'Не оплачен'
@@ -112,7 +113,6 @@ class CancelOrderView(ListView):
             """ Возврат оплаты """
             try:
                 refund_payment(order)
-
             except IntegrityError:
                 return Http404()
 

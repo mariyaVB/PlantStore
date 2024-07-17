@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Переделана главная страница, создана новая БД">
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="астроены вебхуки на оплату и возврат">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/email_cancel_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/email_cancel_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/payment/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/payment/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/payment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/payment/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -399,7 +398,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721220026320</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="астроены вебхуки на оплату и возврат">
+      <option name="closed" value="true" />
+      <created>1721231293322</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1721231293322</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -414,7 +421,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Хлебные крошки." />
     <MESSAGE value="Авторизация сделана." />
     <MESSAGE value="Авторизация и выход готовы." />
     <MESSAGE value="Готова регистрация и добавлен вход по логину и E-mail." />
@@ -439,6 +445,7 @@
     <MESSAGE value="Меняю главную страницу" />
     <MESSAGE value="Дизайн главной страницы готов. Осталось карусель." />
     <MESSAGE value="Переделана главная страница, создана новая БД" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переделана главная страница, создана новая БД" />
+    <MESSAGE value="астроены вебхуки на оплату и возврат" />
+    <option name="LAST_COMMIT_MESSAGE" value="астроены вебхуки на оплату и возврат" />
   </component>
 </project>
