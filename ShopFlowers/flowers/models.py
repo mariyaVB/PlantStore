@@ -56,6 +56,9 @@ class News(models.Model):
     link_new = models.CharField(max_length=150, verbose_name='Ссылка на блог', blank=True, null=True)
     text = models.CharField(max_length=150, verbose_name='Заголовок блога', blank=True, null=True)
 
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Блог'
 
 
 

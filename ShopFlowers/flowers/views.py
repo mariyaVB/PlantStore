@@ -1,48 +1,13 @@
 import random
-from django.shortcuts import render
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import schedule
-import time
 from django.views.generic import ListView, DetailView, TemplateView
 from django.core.paginator import Paginator
-from django.db.models import Q, Avg
-from django.db.models import F
-from django.http import Http404, JsonResponse
+from django.db.models import Q
 from .models import Flowers, Category, News
 from feedback.models import Feedback
-from cart.models import Cart
-
-
-# def plant_news(request):
-#     chrome_options = Options()
-#     chrome_options.add_argument('headless')
-#     driver = webdriver.Chrome(options=chrome_options)
-#     driver.get("https://plants-flowers.ru/")
-#
-#     html_doc = driver.page_source
-#     soup = BeautifulSoup(html_doc, 'lxml')
-#     find_img = soup.find_all('div', class_='ast-blog-featured-section post-thumb ast-width-md-6')[:3]
-#     find_text_link = soup.find_all('h2', class_='entry-title')[:3]
-#
-#     plants = []
-#     for text_link, img in zip(find_text_link, find_img):
-#         title = text_link.get_text(strip=True)
-#         # title = title.replace('\xa0', ' ')
-#         link = text_link.find('a')['href']
-#         images = img.find('img', class_='attachment-400x400 size-400x400')['src']
-#         plants.append({
-#             'text': title,
-#             'link': link,
-#             'images': images,
-#         })
-#
-#     driver.quit()
-#
-#     favorites = Feedback.objects.filter(Q(rating__gte=4, rating__lte=5))
-#     return render(request, 'main_page.html', {'plants': plants, 'favorites': favorites})
-
 
 
 class MainPage(TemplateView):

@@ -120,7 +120,7 @@ nav .user{
     font-size: 14pt;
     font-weight: bold;
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 65% 35%;
 }
 
 .social-networks-info {

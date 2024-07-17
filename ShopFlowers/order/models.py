@@ -1,15 +1,6 @@
 from django.db import models
 from users.models import User
 from cart.models import Cart
-from yookassa import Payment, Configuration, Refund
-import uuid
-from django.shortcuts import render, redirect, get_object_or_404
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-Configuration.account_id = os.getenv('DJANGO_YOOKASSA_SHOP_ID')
-Configuration.secret_key = os.getenv('DJANGO_YOOKASSA_SECRET_KEY')
 
 
 class Order(models.Model):

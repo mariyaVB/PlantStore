@@ -1,5 +1,3 @@
-import os
-import uuid
 import datetime
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -15,73 +13,10 @@ from cart.models import Cart
 from order.models import Order
 from payment.views import create_payment
 from payment.models import PaymentConnectionOrder
-from dotenv import load_dotenv
-from yookassa import Payment, Configuration, Refund
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
-from django.core.serializers import serialize
-from django.core import serializers
-import json
 
-
-load_dotenv()
-Configuration.account_id = os.getenv('DJANGO_YOOKASSA_SHOP_ID')
-Configuration.secret_key = os.getenv('DJANGO_YOOKASSA_SECRET_KEY')
-
-
-# class AddOrderView(View):
-#     """ Сохраняем заказ """
-#     @transaction.atomic
-#     def post(self, request):
-#         user = self.request.user
-#         form = OrderForm(request.POST)
-#         cart = Cart.objects.filter(user=request.user, status='В корзине')
-#         if form.is_valid() and cart:
-#             new_order = form.save(commit=False)
-#             if new_order.payment == 'Онлайн':
-#                 try:
-#                     payment = create_payment(new_order.summa, new_order.id, user.id, )
-#                     return redirect(payment.confirmation.confirmation_url)
-#                 except IntegrityError:
-#                     return redirect('cart:cart')
-#
-#             else:
-#                 new_order.user = user
-#                 new_order.address = form.cleaned_data['address']
-#                 new_order.taking = form.cleaned_data['taking']
-#                 new_order.taking_summa = form.cleaned_data['taking_summa']
-#                 new_order.status_payment = form.cleaned_data['payment']
-#                 new_order.quantity = cart.total_quantity()
-#                 new_order.summa = form.cleaned_data['summa']
-#                 new_order.save()
-#                 new_order.cart.add(*cart)
-#                 new_order.status_payment = 'Не оплачен'
-#                 new_order.save()
-#
-#                 for el_cart in cart:
-#                     flowers = el_cart.flowers
-#                     flowers.quantity -= el_cart.quantity
-#                     el_cart.status = 'Оформлен'
-#                     flowers.save()
-#                     el_cart.save()
-#                 new_order.status_payment = 'Не оплачен'
-#                 new_order.save()
-#
-#                 data = {
-#                     'user': user,
-#                     'order': new_order,
-#                 }
-#
-#                 email_html = render_to_string('email_order.html', data)
-#                 msg = EmailMultiAlternatives(subject='Уведомление о заказе на сайте FreshCompany', to=[f'{user.email}'])
-#                 msg.attach_alternative(email_html, 'text/html')
-#                 msg.send()
-#
-#             return HttpResponseRedirect(reverse_lazy('order:order-profile'))
-#
-#         messages.add_message(request, messages.SUCCESS, 'Ваша корзина пуста или адрес заполнен не правильно.')
-#         return HttpResponseRedirect(reverse_lazy('cart:cart'))
 
 class AddOrderView(View):
     """ Сохраняем заказ """
@@ -94,16 +29,15 @@ class AddOrderView(View):
         if form.is_valid() and cart.exists():
             new_order = form.save(commit=False)
             new_order.user = user
-            new_order.address = form.cleaned_data['address']
             new_order.taking = form.cleaned_data['taking']
-
+            new_order.address = form.cleaned_data['address']
+            new_order.taking_summa = form.cleaned_data['taking_summa']
             new_order.payment = form.cleaned_data['payment']
             new_order.quantity = cart.total_quantity()
             new_order.summa = form.cleaned_data['summa']
 
             if new_order.payment == 'При получении':
                 new_order.status_payment = 'Не оплачен'
-                new_order.save()
                 new_order.cart.add(*cart)
                 new_order.save()
 
@@ -119,6 +53,7 @@ class AddOrderView(View):
                     metadata = {
                         'user_id': user.id,
                         'taking': form.cleaned_data['taking'],
+                        'taking_summa': form.cleaned_data['taking_summa'],
                         'address': form.cleaned_data['address'],
                         'payment': form.cleaned_data['payment'],
                         'quantity': new_order.quantity

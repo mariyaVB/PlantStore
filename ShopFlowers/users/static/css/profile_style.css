@@ -110,13 +110,11 @@
     cursor: pointer;
 }
 
-.form-photo {
+.form-profile-photo {
 	border: none;
 	width: 100px;
-	height: 30px;
 	border: 2px solid rgba(114, 121, 88, 1);
 	border-radius: 10px;
-    background: transparent;
     text-align: center;
 }
 
@@ -138,8 +136,7 @@
     cursor: pointer;
 }
 
-.bt-my-profile, .bt-my-orders, .bt-my-feedback,
-.bt-my-like, .bt-my-cart {
+.bt-my-profile, .bt-my-orders, .bt-my-feedback {
     border-radius: 10px;
     padding: 5px;
     text-decoration: none;
@@ -147,8 +144,7 @@
     color: rgba(40, 49, 6, 1);
 }
 
-.bt-my-profile:hover, .bt-my-orders:hover, .bt-my-feedback:hover,
-.bt-my-like:hover, .bt-my-cart:hover {
+.bt-my-profile:hover, .bt-my-orders:hover, .bt-my-feedback:hover {
     border: 1px solid rgba(114, 121, 88, 1);
     border-radius: 10px;
     cursor: pointer;
@@ -429,14 +425,13 @@ input[type=radio] {
 
 /* Страница отзывов в профайле */
 .feedbacks {
-    margin-top: 15px;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     row-gap: 10px;
 }
 
 .feedback {
-    height: 200px;
+    height: 180px;
     background: rgba(234, 233, 229, 1);
     border-radius: 10px;
     box-shadow: 20px 10px 20px  rgba(114, 121, 88, 0.1);

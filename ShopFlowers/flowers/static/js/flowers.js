@@ -77,7 +77,7 @@ $('.feedback-count-rating-mean').click(function() {
 
 //Карусель main_page.html
 let mainAssortment = $('.main-assortment'),
-    mainCouruselAssortment = $('.main-courusel-assortment'),
+    mainCouruselAssortment = $('.main-carousel-assortment'),
     countMainAssortment = mainAssortment.length,
     mainPosition = 0,
     mainStep = 200;
@@ -99,7 +99,7 @@ $('.main-prev').click(function () {
         mainPosition = -mainMax;
         mainCouruselAssortment.css("left", mainPosition + "px");
     }else{
-        mainPosition = mainPosition + mainstep;
+        mainPosition = mainPosition + mainStep;
         mainCouruselAssortment.css("left", mainPosition + "px");
     }
 });

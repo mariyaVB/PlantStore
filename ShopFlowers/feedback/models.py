@@ -48,6 +48,3 @@ class Feedback(models.Model):
         return self.rating * '⭐'
 
 
-class Favorite(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    flowers = models.ForeignKey(Flowers, on_delete=models.CASCADE, verbose_name='Товар')

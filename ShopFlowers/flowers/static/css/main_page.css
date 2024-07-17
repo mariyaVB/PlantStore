@@ -1,5 +1,6 @@
 body {
     margin: 0;
+	width: 100vw;
 }
 
 @font-face {
@@ -8,7 +9,7 @@ body {
 }
 
 .main {
-	background-image: url(../images/main.png);
+	background-image: url(../images/start.png);
 	background-size: cover;
 	height: 900px;
 	display: grid;
@@ -53,7 +54,7 @@ body {
     margin: 0 auto;
 }
 
-.main-courusel-assortment {
+.main-carousel-assortment {
 	height: 200px;
 	position: relative;
     display: flex;
@@ -87,7 +88,6 @@ body {
 
 .main-assortment-control button:active, .main-assortment-control button:hover {    
     color: rgba(114, 121, 88, 1);
-    transform: scale(1);
     box-shadow: 3px 2px 22px 1px rgba(40, 49, 6, 1);
     border-radius: 50%;
     width: 35px;
@@ -103,59 +103,46 @@ body {
     left: 200px;
 }
 
-.assortment-control button:active, .assortment-control button:hover {    
-    color: rgba(114, 121, 88, 1);
-    transform: scale(1);
-    box-shadow: 3px 2px 22px 1px rgba(40, 49, 6, 1);
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    text-align: center;
-}
-
 .about-us {
 	height: 600px;
 	background: rgba(234, 233, 229, 1);
-	display: flex;
-	flex-direction: column;
+	padding: 10px 20px 0 20px;
 }
 
+  
 .about {
+	width: 97vw;
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(3, 1fr);
-	column-gap: 5px;
-	margin: -10px 20px 0 20px;
+	grid-template-columns: 50% 25% 25%;
+	margin: -15px 0 -10px 0;
+	justify-content: center;
 }
-
-.about-ul {
-	list-style-type: '🌿';
-	color: rgba(40, 49, 6, 1);
-}
-
+  
 .about-hello, .about-our-plus, .about-services {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: center; 
 }
-
-.about-hello {
-	grid-column: 1/ span 2;
-	grid-row: 1 / span 3;
+  
+.about-hello img, .about-our-plus img, .about-services img {
+	align-self: center; 
 }
-
-.about-our-plus {
-	grid-column: 3/ 3;
-	grid-row: 1 / span 3;
-
+  
+.about-our-plus ul, .about-services ul {
+	justify-content: center; 
 }
-
-.about-services {
-	grid-column: 4/ 4;
-	grid-row: 1 / span 3;
+  
+.about-hello p {
+	text-align: center; 
+	font-size: 16px;
+	color:  rgba(40, 49, 6, 1);
 }
-
+  
+.about-ul {
+	list-style-type: '🌿';
+	color: rgba(40, 49, 6, 1);
+}
 
 .news {
 	margin: 10px 0 15px 0;

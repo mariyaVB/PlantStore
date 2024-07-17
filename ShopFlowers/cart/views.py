@@ -38,9 +38,9 @@ class AddCartView(LoginRequiredMixin, View):
             cart = cart.first()
             if cart.quantity < product.quantity:
                 cart.quantity += 1
+                cart.save()
             else:
                 pass
-            cart.save()
 
         return redirect(request.META['HTTP_REFERER'])
 
