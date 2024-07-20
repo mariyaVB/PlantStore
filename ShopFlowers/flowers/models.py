@@ -35,7 +35,7 @@ class Flowers(models.Model):
     image = models.ImageField(upload_to="flowers_images", blank=True, null=True, verbose_name='Изображение')
     quantity = models.IntegerField(verbose_name='Количество', blank=True, null=True)
     is_discount = models.BooleanField(verbose_name='Скидка', default=False)
-    discount = models.ForeignKey(Discount, on_delete=models.CASCADE, verbose_name='Размер скидки', null=True)
+    discount = models.ForeignKey(Discount, on_delete=models.CASCADE, verbose_name='Размер скидки', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Растение'

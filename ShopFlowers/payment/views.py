@@ -2,8 +2,9 @@ import os
 import uuid
 import json
 import datetime
-
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from django.db import transaction, IntegrityError
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 from dotenv import load_dotenv
@@ -29,10 +30,11 @@ def email_client(user, order):
         'user': user,
         'order': order,
     }
-    try:
-        order = Order.objects.get(id=order.id)
-    except (ObjectDoesNotExist, TypeError):
-        raise 'Письмо не отправлено'
+    order = get_object_or_404(Order, id=order.id)
+    # try:
+    #     order = Order.objects.get(id=order.id)
+    # except (ObjectDoesNotExist, TypeError):
+    #     raise 'Письмо не отправлено'
 
     if order.status_order == 'Оформлен':
         email_html = render_to_string('email_order.html', data)
@@ -52,42 +54,48 @@ def email_client(user, order):
 def create_payment(summa, metadata):
     """ Создание оплаты """
     idempotence_key = str(uuid.uuid4())
+    try:
+        payment = Payment.create({
+            "amount": {
+                "value": summa,
+                "currency": "RUB"
+            },
+            "confirmation": {
+                "type": "redirect",
+                "return_url": "https://adf2-37-150-198-50.ngrok-free.app/order/order_profile/"
+            },
+            "capture": True,
+            "description": "Оплата на сайте FreshCompany",
+            "metadata": metadata,
+        }, idempotence_key)
 
-    payment = Payment.create({
-        "amount": {
-            "value": summa,
-            "currency": "RUB"
-        },
-        "confirmation": {
-            "type": "redirect",
-            "return_url": "https://371c-37-150-198-50.ngrok-free.app/order/order_profile/"
-        },
-        "capture": True,
-        "description": "Оплата на сайте FreshCompany",
-        "metadata": metadata,
-    }, idempotence_key)
-
-    return payment
+        return payment
+    except (IntegrityError, ValidationError):
+        return Http404('Ошибка при создании оплаты')
 
 
 def refund_payment(order):
     """Создание возврата"""
     try:
         payment = PaymentConnectionOrder.objects.get(order=order)
-    except (ValueError, AttributeError, TypeError):
-        return Http404()
+    except PaymentConnectionOrder.DoesNotExist:
+        return Http404('Не найдена платежка')
 
-    refund = Refund.create({
-        "amount": {
-            "value": order.summa,
-            "currency": "RUB",
-            "description": "Возврат денежных средств за заказ на сайте FreshCompany",
-        },
-        "payment_id": payment.payment_id
-    })
-    return refund
+    try:
+        refund = Refund.create({
+            "amount": {
+                "value": order.summa,
+                "currency": "RUB",
+                "description": "Возврат денежных средств за заказ на сайте FreshCompany",
+            },
+            "payment_id": payment.payment_id
+        })
+        return refund
+    except (IntegrityError, ValidationError):
+        return Http404('Ошибка при создании возврата')
 
 
+@transaction.atomic
 @csrf_exempt
 def payment_webhook(request):
     if request.method == 'POST':
@@ -95,8 +103,10 @@ def payment_webhook(request):
             payment_json = json.loads(request.body)
         except json.JSONDecodeError:
             return HttpResponse(status=400)
+
         payment_event = payment_json.get('event')
         payment_object = payment_json.get('object')
+
         if not payment_object:
             return HttpResponse(status=400)
 
@@ -165,6 +175,7 @@ def payment_webhook(request):
                 return HttpResponse(status=200)
 
         else:
+            print('Прыгнули сюда')
             return HttpResponse(status=200)
 
     else:

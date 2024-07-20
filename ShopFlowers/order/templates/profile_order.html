@@ -43,7 +43,7 @@
             {% endif %}
 
         <div class="order-status">
-            <form action="{% url 'order:order-filter' %}" method="get" name="order-filter">
+            <form action="{% url 'order:order-profile' %}" method="get" name="order-filter">
                 <div id="status-progress">
                     <label>
                         <input type="radio" name="status" value="progress">
@@ -118,8 +118,14 @@
                     </div>
                     
                     <div class="order-bt">
-                        {% if order.status_order == 'Выполнен' %}
-                            <button class="bt-rating"><a>Оценить товары</a></button><br>
+                        {% if order.status_order == 'Выполнен'%}
+                            {% for cart in order.cart.all %}
+                                {% if not cart.is_feedback %}
+                                    <button class="bt-rating"><a>Оценить товары</a></button><br>
+                                {% else %}
+                                    <span style="color: rgba(88, 88, 88, 1);">Отзыв добавлен</span>
+                                {% endif %}
+                            {% endfor %}
                         {% endif %}
 
                         {% if order.status_order != 'Выполнен' and order.status_order != 'Отменен' %}

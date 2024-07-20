@@ -1,8 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import Http404, HttpResponseForbidden
-from django.shortcuts import render, redirect, get_object_or_404
+from django.http import Http404
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView
 from .models import Cart
@@ -20,9 +19,13 @@ class CartShow(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        cart = Cart.objects.filter(user=self.request.user)
+        carts = Cart.objects.filter(user=self.request.user).filter_status_cart()
+        for cart in carts:
+            if cart.flowers.quantity <= 0:
+                cart.delete()
+
         form = OrderForm
-        context['carts'] = cart.filter_status_cart()
+        context['carts'] = carts
         context['form'] = form
 
         return context
@@ -30,7 +33,11 @@ class CartShow(LoginRequiredMixin, ListView):
 
 class AddCartView(LoginRequiredMixin, View):
     def get(self, request, product_id):
-        product = Flowers.objects.get(id=product_id)
+        try:
+            product = Flowers.objects.get(id=product_id)
+        except Flowers.DoesNotExist:
+            return Http404('Продукт не найден')
+
         cart = Cart.objects.filter(user=self.request.user, flowers=product, status='В корзине')
         if not cart.exists():
             Cart.objects.create(user=self.request.user, flowers=product, quantity=1)
@@ -47,14 +54,15 @@ class AddCartView(LoginRequiredMixin, View):
 
 class RemoveCartView(View):
     def get(self, request, cart_id):
-        cart = Cart.objects.filter(id=cart_id)
         try:
+            cart = Cart.objects.filter(id=cart_id)
             cart.delete()
-            messages.add_message(request, messages.SUCCESS, 'Товар удален из корзины.')
+        except Cart.DoesNotExist:
+            print('Корзина для удаления не найдена')
+            return Http404('Корзина для удаления не найдена')
 
-            return redirect(request.META['HTTP_REFERER'])
-        except cart.DoesNotExist:
-            raise Http404('Ошибка при удалении корзины')
+        messages.add_message(request, messages.SUCCESS, 'Товар удален из корзины.')
+        return redirect(request.META['HTTP_REFERER'])
 
 
 class ChangeCartView(View):

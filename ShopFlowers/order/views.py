@@ -1,6 +1,7 @@
 import datetime
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.http import HttpResponseRedirect, Http404
 from django.db import transaction, IntegrityError
@@ -13,7 +14,7 @@ from cart.models import Cart
 from order.models import Order
 from payment.views import create_payment, refund_payment
 from payment.views import email_client
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 
 
 class AddOrderView(View):
@@ -22,25 +23,34 @@ class AddOrderView(View):
     def post(self, request):
         user = self.request.user
         form = OrderForm(request.POST)
-        cart = Cart.objects.filter(user=user, status='В корзине')
+        try:
+            carts = Cart.objects.filter(user=user).filter_status_cart()
+        except Cart.DoesNotExist:
+            return Http404('Корзины для заказа не найдены')
 
-        if form.is_valid() and cart.exists():
+        if form.is_valid() and carts.exists():
             new_order = form.save(commit=False)
             new_order.user = user
             new_order.taking = form.cleaned_data['taking']
             new_order.address = form.cleaned_data['address']
             new_order.taking_summa = form.cleaned_data['taking_summa']
             new_order.payment = form.cleaned_data['payment']
-            new_order.quantity = cart.total_quantity()
+            for cart in carts:
+                if cart.flowers.quantity > 0:
+                    new_order.quantity = carts.total_quantity()
+                elif cart.flowers.quantity <= 0:
+                    messages.add_message(request, messages.SUCCESS,
+                                         'Количество доступных к оформлению товаров изменилось.')
+                    return HttpResponseRedirect(reverse_lazy('cart:cart'))
             new_order.summa = form.cleaned_data['summa']
-            new_order.save()
 
             if new_order.payment == 'При получении':
+                new_order.save()
                 new_order.status_payment = 'Не оплачен'
-                new_order.cart.add(*cart)
+                new_order.cart.add(*carts)
                 new_order.save()
 
-                for el_cart in cart:
+                for el_cart in carts:
                     flowers = el_cart.flowers
                     flowers.quantity -= el_cart.quantity
                     el_cart.status = 'Оформлен'
@@ -59,10 +69,11 @@ class AddOrderView(View):
                         'payment': form.cleaned_data['payment'],
                         'quantity': new_order.quantity
                     }
-                    payment = create_payment(new_order.summa, metadata)
-                    return redirect(payment.confirmation.confirmation_url)
-                except IntegrityError:
-                    return redirect(request.META['HTTP_REFERER'])
+                except (TypeError, ValueError):
+                    return Http404('Ошибка при создании данных для оплаты')
+
+                payment = create_payment(new_order.summa, metadata)
+                return redirect(payment.confirmation.confirmation_url)
 
             return HttpResponseRedirect(reverse_lazy('order:order-profile'))   # !!!!!!!!!!
 
@@ -76,27 +87,47 @@ class OrderProfileView(LoginRequiredMixin, ListView):
     context_object_name = 'orders'
     paginate_by = 4
 
-    def get_queryset(self):
+    def get_queryset(self, **kwargs):
         try:
+            status = self.request.GET.get('status')
+        except (UnboundLocalError, TypeError, ValueError):
+            return Http404('Не найден статус заказа')
+
+        if status == 'progress':
+            order = Order.objects.filter(
+                Q(user=self.request.user) &
+                (Q(status_order='В обработке') | Q(status_order='Создан') | Q(status_order='Готов'))
+            ).order_by('-create_order')
+
+        elif status == 'completed':
+            order = Order.objects.filter(user=self.request.user, status_order='Выполнен').order_by('-create_order')
+        elif status == 'cancel':
+            order = Order.objects.filter(user=self.request.user, status_order='Отменен').order_by('-create_order')
+        else:
             order = Order.objects.filter(user=self.request.user).exclude(status_order__in=['Выполнен', 'Отменен']).order_by('-create_order')
-            return order
-        except (ValueError, TypeError):
-            return HttpResponseRedirect(reverse_lazy('order:order-profile'))
+
+        return order
+    # def get_queryset(self):
+    #     try:
+    #         order = Order.objects.filter(user=self.request.user).exclude(status_order__in=['Выполнен', 'Отменен']).order_by('-create_order')
+    #         return order
+    #     except (ValueError, TypeError):
+    #         return HttpResponseRedirect(reverse_lazy('order:order-profile'))
 
     def get_context_data(self, **kwargs):
-        try:
-            context = super().get_context_data(**kwargs)
-            form = AddFeedbackForm
-            context['form'] = form
-            return context
-        except (ValueError, TypeError):
-            return HttpResponseRedirect(reverse_lazy('order:order-profile'))
+        context = super().get_context_data(**kwargs)
+        form = AddFeedbackForm
+        context['form'] = form
+        return context
 
 
 class CancelOrderView(ListView):
     def get(self, request, order_id):
         user = self.request.user
-        order = Order.objects.get(id=order_id)
+        try:
+            order = Order.objects.get(id=order_id)
+        except Order.DoesNotExist:
+            return Http404('Заказ не найден')
 
         if order.payment == 'При получении':
             order.status_order = 'Отменен'
@@ -111,33 +142,35 @@ class CancelOrderView(ListView):
 
         elif order.payment == 'Онлайн':
             """ Возврат оплаты """
-            try:
-                refund_payment(order)
-            except IntegrityError:
-                return Http404()
+            refund_payment(order)
+
+        else:
+            messages.add_message(request, messages.SUCCESS, 'Произошла ошибка, попробуйте позднее.')
+            return HttpResponseRedirect(reverse_lazy('order:order-profile'))
 
         messages.add_message(request, messages.SUCCESS, 'Ваш заказ успешно отменен.')
         return HttpResponseRedirect(reverse_lazy('order:order-profile'))
 
 
-class OrderFilter(OrderProfileView):
-    def get_queryset(self, **kwargs):
-        try:
-            status = self.request.GET.get('status')
-        except (UnboundLocalError, TypeError, ValueError):
-            return HttpResponseRedirect(reverse_lazy('order:order-profile'))
-
-        if status == 'progress':
-            order = Order.objects.filter(Q(user=self.request.user) &
-                                         (Q(status_order='В обработке') | Q(status_order='Создан') | Q(status_order='Готов')))
-        elif status == 'completed':
-            order = Order.objects.filter(user=self.request.user, status_order='Выполнен')
-        elif status == 'cancel':
-            order = Order.objects.filter(user=self.request.user, status_order='Отменен')
-        elif status == 'feedback':
-            order = Order.objects.filter(user=self.request.user, status_order='Выполнен')
-        else:
-            return redirect('order:order-profile')
-
-        return order
+# class OrderFilter(OrderProfileView):
+    # def get_queryset(self, **kwargs):
+    #     try:
+    #         status = self.request.GET.get('status')
+    #     except (UnboundLocalError, TypeError, ValueError):
+    #         return HttpResponseRedirect(reverse_lazy('order:order-profile'))
+    #
+    #     if status == 'progress':
+    #         order = Order.objects.filter(
+    #             Q(user=self.request.user) &
+    #             (Q(status_order='В обработке') | Q(status_order='Создан') | Q(status_order='Готов'))
+    #         ).order_by('-create_order')
+    #
+    #     elif status == 'completed':
+    #         order = Order.objects.filter(user=self.request.user, status_order='Выполнен').order_by('-create_order')
+    #     elif status == 'cancel':
+    #         order = Order.objects.filter(user=self.request.user, status_order='Отменен').order_by('-create_order')
+    #     else:
+    #         return redirect('order:order-profile')
+    #
+    #     return order
 

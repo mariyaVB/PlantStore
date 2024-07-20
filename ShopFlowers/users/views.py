@@ -22,12 +22,9 @@ class LogoutUser(LogoutView):
 
 
 class RegisterUser(CreateView):
-    try:
-        form_class = RegisterUserForm
-        template_name = 'register.html'
-        extra_context = {'title': 'Регистрация', 'form_register': form_class}
-    except:
-        raise Http404('Not Found')
+    form_class = RegisterUserForm
+    template_name = 'register.html'
+    extra_context = {'title': 'Регистрация', 'form_register': form_class}
 
     def get_success_url(self):
         return reverse_lazy('user:login')

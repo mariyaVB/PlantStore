@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="астроены вебхуки на оплату и возврат">
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Отправка сообщений теперь выполняется функцией">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/email_cancel_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/email_cancel_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/payment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/payment/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -406,7 +412,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721231293322</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Отправка сообщений теперь выполняется функцией">
+      <option name="closed" value="true" />
+      <created>1721233303398</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1721233303398</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -421,7 +435,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Авторизация сделана." />
     <MESSAGE value="Авторизация и выход готовы." />
     <MESSAGE value="Готова регистрация и добавлен вход по логину и E-mail." />
     <MESSAGE value="Оформлен профиль пользователя." />
@@ -446,6 +459,21 @@
     <MESSAGE value="Дизайн главной страницы готов. Осталось карусель." />
     <MESSAGE value="Переделана главная страница, создана новая БД" />
     <MESSAGE value="астроены вебхуки на оплату и возврат" />
-    <option name="LAST_COMMIT_MESSAGE" value="астроены вебхуки на оплату и возврат" />
+    <MESSAGE value="Отправка сообщений теперь выполняется функцией" />
+    <option name="LAST_COMMIT_MESSAGE" value="Отправка сообщений теперь выполняется функцией" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ShopFlowers/feedback/views.py</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ShopFlowers/order/views.py</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

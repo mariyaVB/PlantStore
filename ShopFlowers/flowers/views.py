@@ -1,4 +1,5 @@
 import random
+from django.http import Http404
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
@@ -98,11 +99,15 @@ class FlowerDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        flower = Flowers.objects.get(slug=self.kwargs['slug'])
+        try:
+            flower = Flowers.objects.get(slug=self.kwargs['slug'])
+            category = Category.objects.get(title=flower.category)
+            feedbacks = Feedback.objects.filter(flowers=flower.id)
+        except (Feedback.DoesNotExist, Category.DoesNotExist, Flowers.DoesNotExist):
+            return Http404('Объект Цветов, Категории или отзывов не найден')
+
         assortments = Flowers.objects.all()
         random_assortments = random.sample(list(assortments), len(assortments))
-        category = Category.objects.get(title=flower.category)
-        feedbacks = Feedback.objects.filter(flowers=flower.id)
         context['category'] = category
         context['flower'] = flower
         context['assortments'] = random_assortments

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.views.generic import ListView,  UpdateView
@@ -27,8 +28,12 @@ class AddFeedbackView(LoginRequiredMixin, View):
     def post(self, request, product_id):
         form = AddFeedbackForm(request.POST, request.FILES)
         user = self.request.user
-        product = Flowers.objects.get(id=product_id)
-        cart = Cart.objects.get(user=user, flowers=product)
+        try:
+            product = Flowers.objects.get(id=product_id)
+            cart = Cart.objects.get(user=user, flowers=product)
+        except (Flowers.DoesNotExist, Cart.DoesNotExist):
+            return Http404('Не найдены продукт или корзина доступная для отзыва')
+
         if form.is_valid():
             feedback = form.save(commit=False)
             feedback.user = user
@@ -58,7 +63,10 @@ class EditFeedbackView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        feedback = Feedback.objects.get(id=self.kwargs['feedback_id'])
+        try:
+            feedback = Feedback.objects.get(id=self.kwargs['feedback_id'])
+        except Feedback.DoesNotExist:
+            return Http404('Не найден отзыв для редактирования')
         context['feedback'] = feedback
 
         return context
@@ -67,15 +75,18 @@ class EditFeedbackView(LoginRequiredMixin, UpdateView):
 class RemoveFeedbackView(LoginRequiredMixin, View):
     def get(self, request, feedback_id):
         user = self.request.user
-        feedback = Feedback.objects.get(id=feedback_id)
-        product = feedback.flowers
-        cart = Cart.objects.get(user=user, flowers=product)
         try:
+            feedback = Feedback.objects.get(id=feedback_id)
+            product = feedback.flowers
+            cart = Cart.objects.get(user=user, flowers=product)
             feedback.delete()
             cart.is_feedback = False
             cart.save()
-            messages.add_message(request, messages.SUCCESS, 'Отзыв успешно удален. Вы можете оставить новый отзыв.')
-
-            return redirect(request.META['HTTP_REFERER'])
-        except feedback.DoesNotExist:
+        except (Feedback.DoesNotExist, Cart.DoesNotExist):
             messages.add_message(request, messages.SUCCESS, 'Ошибка удаления отзыва. Попробуйте снова.')
+            Http404('Не найден отзыв для удаления')
+
+        messages.add_message(request, messages.SUCCESS, 'Отзыв успешно удален. Вы можете оставить новый отзыв.')
+        return redirect(request.META['HTTP_REFERER'])
+
+
