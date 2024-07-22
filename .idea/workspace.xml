@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Отправка сообщений теперь выполняется функцией">
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Добавить шаблоны об успешной оплате и возврате. Добавить номер телефона в модель пользователя. Регистрация по телефону. Добавить хендлер404">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/cart/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/payment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/payment/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/images/start.png" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/images/start.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/6d803402008fb4a1cc532f876bd54e1e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/oliva_evropeiskaya.png" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/oliva_evropeiskaya.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/palma_ukka.png" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/palma_ukka.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -420,7 +416,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721233303398</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Добавлена обработка исключений в представления">
+      <option name="closed" value="true" />
+      <created>1721457323728</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1721457323728</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,7 +439,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Авторизация и выход готовы." />
     <MESSAGE value="Готова регистрация и добавлен вход по логину и E-mail." />
     <MESSAGE value="Оформлен профиль пользователя." />
     <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail." />
@@ -460,7 +463,8 @@
     <MESSAGE value="Переделана главная страница, создана новая БД" />
     <MESSAGE value="астроены вебхуки на оплату и возврат" />
     <MESSAGE value="Отправка сообщений теперь выполняется функцией" />
-    <option name="LAST_COMMIT_MESSAGE" value="Отправка сообщений теперь выполняется функцией" />
+    <MESSAGE value="Добавлена обработка исключений в представления" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлена обработка исключений в представления" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
