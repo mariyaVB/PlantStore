@@ -98,11 +98,11 @@
                 <p class="p-text">{{ care.title }}</p>
                 {% if care.is_discount %}
                     <div class="flower-price">
-                        <p class="p-price-discount">от {{ care.calculate_the_price }}₽</p>
+                        <p class="p-price-discount">{{ care.calculate_the_price }}₽</p>
                         <p class="p-price">{{ care.price }}₽</p>
                     </div>
                 {% else %}
-                    <p class="p-text">от {{ care.calculate_the_price }}₽</p>
+                    <p class="p-text">{{ care.calculate_the_price }}₽</p>
                 {% endif %}
 
                 {% if care.quantity > 0 %}

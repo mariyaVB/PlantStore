@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'myFontMirra';
+    src: url('../fonts/Mirra.otf');
+}   
+
+body {
+    background-image: url(../images/payment.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.payment {
+    padding: 100px 50px 100px 50px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(209, 216, 184, 1);
+    text-align: center;
+    background: rgba(119, 126, 92, 0.8);
+    color: rgba(209, 216, 184, 1);
+    .p {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-size: 14pt;
+    }
+    a {
+        color: rgba(40, 49, 6, 1);
+    }
+    a:hover {
+        color: rgba(209, 216, 184, 1);
+    }
+}
+
+.payment-h1 {
+    font-family: 'myFontMirra';
+    font-size: 20pt;
+}

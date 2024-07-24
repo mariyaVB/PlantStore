@@ -65,6 +65,7 @@
 }
 
 .form-grid {
+    margin-top: 80px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     height: 350px;
@@ -143,21 +144,21 @@
     color: rgba(40, 49, 6, 1);
 }
 
-li {
+.profile-ul li {
     padding: 10px;
 }
 
-li:nth-child(1)::marker {
+.profile-ul li:nth-child(1)::marker {
     content: url(../icons/icon-profile-setting.png);
 }
 
-li:nth-child(2)::marker {
+.profile-ul li:nth-child(2)::marker {
     width: 20px;
     height: 20px;
     content: url(../icons/icon-others.png);
 }
 
-li:nth-child(3)::marker {
+.profile-ul li:nth-child(3)::marker {
     width: 20px;
     height: 20px;
     content: url(../icons/icon-feedback.png);

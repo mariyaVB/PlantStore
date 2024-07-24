@@ -4,15 +4,203 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Добавить шаблоны об успешной оплате и возврате. Добавить номер телефона в модель пользователя. Регистрация по телефону. Добавить хендлер404">
+    <list default="true" id="8ceb6bfe-1bc0-4678-a43d-6fe3be5cab9f" name="Changes" comment="Добавлен хендлер404, создана коллекция static файлов, настроены настройки STATIC_ROOT иSTATICFILES_DIRS">
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/payment/templates/payment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/autocomplete.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/changelists.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/dark_mode.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/nav_sidebar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/responsive.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/responsive_rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/vendor/select2/LICENSE-SELECT2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/vendor/select2/select2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/vendor/select2/select2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/css/widgets.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/README.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/calendar-icons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/gis/move_vertex_off.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/gis/move_vertex_on.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-addlink.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-alert.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-calendar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-changelink.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-clock.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-deletelink.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-no.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-unknown-alt.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-unknown.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-viewlink.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/icon-yes.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/inline-delete.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/search.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/selector-icons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/sorting-icons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/tooltag-add.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/img/tooltag-arrowright.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/SelectBox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/SelectFilter2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/admin/DateTimeShortcuts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/admin/RelatedObjectLookups.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/autocomplete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/calendar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/cancel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/change_form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/collapse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/filters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/inlines.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/jquery.init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/nav_sidebar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/popup_response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/prepopulate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/prepopulate_init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/theme.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/urlify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/jquery/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/jquery/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/af.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/az.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/bg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/bn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/bs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ca.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/cs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/da.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/de.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/dsb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/el.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/en.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/et.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/eu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/fa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/fi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/fr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/gl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/he.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/hi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/hr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/hsb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/hu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/hy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/is.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ja.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ka.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/km.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ko.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/lt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/lv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/mk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/nb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ne.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/nl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/pl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ps.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/pt-BR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/pt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ro.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/ru.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/sk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/sl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/sq.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/sr-Cyrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/sr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/sv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/th.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/tk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/tr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/uk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/vi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/zh-CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/i18n/zh-TW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/select2.full.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/select2/select2.full.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/xregexp/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/xregexp/xregexp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/admin/js/vendor/xregexp/xregexp.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/404.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/about_us.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/base_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/cart_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/feedback_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/flower_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/flowers_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/login-register_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/main_page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/order_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/password_change_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/css/profile_style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/fonts/Mirra.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icon-cart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icon-delete.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icon-favorite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icon-feedback.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icon-others.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icon-password.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icon-profile-setting.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icon-user-login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icons_cart.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icons_find.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icons_instagram.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icons_telegram.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/icons/icons_user.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/about_one.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/about_three.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/about_two.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/auth_reg_page.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/error.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/fon-cart-total.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/fon-cart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/fon-flowers1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/fon-flowers2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/fon-flowers3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/fon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/fon1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/profile-hat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/social-networks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/images/start.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/js/base.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/js/cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/js/code.jquery.com_jquery-3.7.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/js/feedback.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/js/flowers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopFlowers/staticfiles/js/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/ShopFlowers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/images/start.png" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/images/start.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/6d803402008fb4a1cc532f876bd54e1e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/feedback/templates/profile_feedback.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/feedback/templates/profile_feedback.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/main_page.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/static/css/main_page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/care.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flower.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/flowers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/main_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/templates/pots.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/flowers/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/oliva_evropeiskaya.png" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/oliva_evropeiskaya.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/palma_ukka.png" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/media/flowers_images/palma_ukka.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/static/css/order_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/payment/static/css/payment_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/order/templates/profile_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/static/css/base_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/login-register_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/login-register_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/static/css/profile_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopFlowers/users/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +210,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -424,7 +612,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721457323728</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Добавлен хендлер404, создана коллекция static файлов, настроены настройки STATIC_ROOT иSTATICFILES_DIRS">
+      <option name="closed" value="true" />
+      <created>1721663816759</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1721663816759</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -439,7 +635,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Готова регистрация и добавлен вход по логину и E-mail." />
     <MESSAGE value="Оформлен профиль пользователя." />
     <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail." />
     <MESSAGE value="Добавлены формы на сброс пароля SetPasswordUserForm(SetPasswordForm),PasswordResetUserForm(PasswordResetForm). Оформлена страница настройки пользователя. Готов сброс пароля по E-mail. Добавлены модели FlowersCare, FlowersPots." />
@@ -464,7 +659,8 @@
     <MESSAGE value="астроены вебхуки на оплату и возврат" />
     <MESSAGE value="Отправка сообщений теперь выполняется функцией" />
     <MESSAGE value="Добавлена обработка исключений в представления" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлена обработка исключений в представления" />
+    <MESSAGE value="Добавлен хендлер404, создана коллекция static файлов, настроены настройки STATIC_ROOT иSTATICFILES_DIRS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлен хендлер404, создана коллекция static файлов, настроены настройки STATIC_ROOT иSTATICFILES_DIRS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

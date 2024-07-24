@@ -16,6 +16,30 @@ body {
 	grid-template-rows: repeat(2, 1fr);
 }
 
+.main-h1 {
+	font-family: 'myFontMirra'; 
+	font-size: 45pt; 
+	font-weight: lighter; 
+	color: rgba(40, 49, 6, 1);
+}
+
+.about-us-h3, .main-carousel-h3 {
+	font-family: 'myFontMirra'; 
+	font-size: 25pt; 
+	font-weight: lighter; 
+	color: rgba(40, 49, 6, 1); 
+	text-align: center;
+}
+
+.news-h3 {
+	font-family: 'myFontMirra'; 
+	font-size: 25pt; 
+	font-weight: lighter; 
+	color: rgba(40, 49, 6, 1); 
+	text-align: center; 
+	grid-column: 1 / span 5;
+}
+
 .catalog {
 	justify-self: center;
 	align-self: center;
@@ -192,11 +216,159 @@ body {
 	}
 }
 
-/* 
+
 @media screen and (min-width: 800px) and (max-width: 1175px){
+	.main {
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	
+	.main-carousel {
+		width: 400px;
+	}
+
+	.main-next {
+		right: 100px;
+	}
+	
+	.main-prev {
+		left: 100px;
+	}
+	
+	.about-us {
+		height: 500px;
+	}
+
+	.about-hello img {
+		width: 350px;
+		height: 175px;
+	}
+
+	.about-our-plus img, .about-services img {
+		width: 150px;
+		height: 150px;
+	}
+	    
+	.about-hello p {
+		font-size: 10pt;
+	}
+	  
+	.about-ul {
+		font-size: 10pt;
+	}
+
+	.news-list {
+		gap: 10px;
+	}
+
+	.news-list img{
+		width: 150px;
+		height: 150px;
+	}
+	
 }
 
 @media screen and (max-width: 799px){
+	.main {
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
 
+	.main-h1 {
+		font-size: 20pt;
+	}
+
+	.main-carousel {
+		margin-top: -50px;
+		width: 200px;
+	}
+
+	.main-carousel {
+		width: 200px;
+	}
+
+	.main-next {
+		right: 90px;
+	}
+	
+	.main-prev {
+		left: 50px;
+	}
+	
+	.about-us {
+		height: 700px;
+	}
+
+	.about-us-h3, .news-h3, .main-carousel-h3 {
+		font-size: 14pt;
+	}
+
+	.about {
+		display: inline;
+	}
+	  
+	.about-our-plus {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: center;
+		align-items: center; 
+	}
+	  
+	.about-hello img, .about-our-plus img, .about-services img {
+		align-self: center; 
+	}
+	  
+	.about-our-plus ul, .about-services ul {
+		justify-content: center; 
+	}
+	  
+	.about-hello p {
+		text-align: center; 
+		font-size: 16px;
+		color:  rgba(40, 49, 6, 1);
+	}
+	  
+	.about-ul {
+		list-style-type: '🌿';
+		color: rgba(40, 49, 6, 1);
+	}
+
+	.about-hello img {
+		width: 175px;
+		height: 85px;
+	}
+
+	.about-our-plus img, .about-services img {
+		width: 100px;
+		height: 100px;
+	}
+	    
+	.about-hello p {
+		font-size: 8pt;
+	}
+	  
+	.about-ul {
+		font-size: 8pt;
+	}
+
+
+	.news {
+		display: inline;
+	}
+	
+	.news-list {
+		display: inline;
+	}
+	
+	.news-list img{
+		width: 100px;
+		height: 100px;
+	}
+
+	.new {
+		margin-top: 10px;
+		display: flex;
+		flex-direction: column;
+	}
+	
 } 
-*/

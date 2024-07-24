@@ -9,6 +9,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from .models import Flowers, Category, News
 from feedback.models import Feedback
+from cart.models import Cart
 
 
 class MainPage(TemplateView):
@@ -43,7 +44,7 @@ class MainPage(TemplateView):
     extra_context = {
         'title': 'Галерея зеленых пейзажей Fresh Company',
         'plants_news': News.objects.all(),
-        'favorites': Feedback.objects.filter(Q(rating__gte=4, rating__lte=5)),
+        'favorites': set(Feedback.objects.filter(Q(rating__gte=4, rating__lte=5))),
     }
 
 

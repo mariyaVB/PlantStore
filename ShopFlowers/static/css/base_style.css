@@ -129,7 +129,6 @@ nav .user{
     align-self: center;
 }
 
-
 .dropdown-user {
     position: relative;
     display: inline-block;
@@ -166,7 +165,9 @@ nav .user{
     background-color: rgba(214, 215, 210, 1)
 }
 
-.show {display:block;}
+.show {
+    display:block;
+}
 
 
 @media screen and (min-width: 800px) and (max-width: 1175px){
@@ -217,20 +218,15 @@ nav .user{
         }
     }
 
-    .social-networks-info {
-        background-size: cover;
-        img {
-            width: 30px;
-            height: 30px;
-        }
-        p{
-            font-size: 10pt;
-        }
+    .social-networks {
+        height: 300px;
     }
 
-    .author {
-        font-size: 10pt;
+    .social-networks-img img{
+        height: 300px;
+        width: 310px;
     }
+    
 }
 
 @media screen and (max-width: 799px){
@@ -240,18 +236,6 @@ nav .user{
 
     nav .logo {
         font-size: 14pt;
-    }
-
-    .networks-flowers, 
-    .networks-pots,
-    .networks-care,
-    .networks-about,
-    .networks-services {
-        display: none;
-    }
-
-    .networ-catalog {
-        display: block;
     }
 
     nav .networks {
@@ -284,6 +268,27 @@ nav .user{
 
     .user img {
         padding-right: 0;
+    }
+
+    .social-networks {
+        height: 200px;
+    }
+    
+    .social-networks-info {
+        text-align: center;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    .dropdown-user {
+        position: relative;
+        display: inline-block;
+        z-index: 10;
+    }
+
+    .social-networks-img img{
+        height: 200px;
+        width: 200px;
     }
 
     .logo_basement img{

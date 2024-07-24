@@ -44,11 +44,11 @@
 
         {% if flower.is_discount %}
             <div class="flower-price">
-                <p class="p-price-discount">от {{ flower.calculate_the_price }}₽</p>
+                <p class="p-price-discount">{{ flower.calculate_the_price }}₽</p>
                 <p class="p-price">{{ flower.price }}₽</p>
             </div>
         {% else %}
-            <p class="p-text">от {{ flower.calculate_the_price }}₽</p>
+            <p class="p-text">{{ flower.calculate_the_price }}₽</p>
         {% endif %}
 
         {% if flower.quantity > 0 %}

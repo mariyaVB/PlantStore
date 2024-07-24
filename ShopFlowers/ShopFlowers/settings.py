@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'order.apps.OrderConfig',
     'feedback.apps.FeedbackConfig',
     'payment.apps.PaymentConfig',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +114,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 if DEBUG:
     STATICFILES_DIRS = [
@@ -120,11 +122,9 @@ if DEBUG:
         os.path.join(BASE_DIR, './users/static'),
         os.path.join(BASE_DIR, './cart/static'),
         os.path.join(BASE_DIR, './feedback/static'),
-        os.path.join(BASE_DIR, './order/static'),
+        os.path.join(BASE_DIR, './payment/static'),
         os.path.join(BASE_DIR, './static'),
     ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -161,3 +161,5 @@ YOOKASSA_SHOP_ID = os.getenv('DJANGO_YOOKASSA_SHOP_ID')
 YOOKASSA_SECRET_KEY = os.getenv('DJANGO_YOOKASSA_SECRET_KEY')
 CART_SESSION_ID = 'cart'
 
+PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'RU'

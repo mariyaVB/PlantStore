@@ -11,12 +11,12 @@
 <section class="home">
     <div class="main">
         <div class="catalog">
-            <h1 style="font-family: 'myFontMirra'; font-size: 45pt; font-weight: lighter; color: rgba(40, 49, 6, 1);">Галерея зеленых пейзажей</h1>
+            <h1 class="main-h1">Галерея зеленых пейзажей</h1>
             <button class="catalog-button"><a href="{% url 'flowers:flowers' %}" class="networks-flowers">Открыть каталог</a></button>
         </div>
 
         <div class="main-carousel">
-            <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center;">Хиты продаж</h3>
+            <h3 class="main-carousel-h3">Хиты продаж</h3>
 
             <div class="main-carousel-assortment">
                 {% for favorite in favorites %}
@@ -35,7 +35,7 @@
     </div>
 
     <div class="about-us">
-        <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center;">Мы про...</h3>
+        <h3 class="about-us-h3">Мы про...</h3>
         <div class="about">
             <div class="about-hello">
                 <p>Fresh Company - это больше, чем просто магазин комнатных растений. Мы - команда страстных любителей природы, которые хотят поделиться своей любовью к зелени с вами. Мы верим, что растения способны не только украсить ваш дом, но и создать уютную атмосферу, улучшить настроение и даже повысить продуктивность.</p>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="news">
-        <h3 style="font-family: 'myFontMirra'; font-size: 25pt; font-weight: lighter; color: rgba(40, 49, 6, 1); text-align: center; grid-column: 1 / span 5;">Советы по озеленению</h3>
+        <h3 class="news-h3">Советы по озеленению</h3>
 
         <div class="news-list">
             {% for plant in plants_news %}

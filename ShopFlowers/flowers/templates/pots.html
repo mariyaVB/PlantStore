@@ -96,7 +96,7 @@
                     <p class="p-text">{{ pot.title }}</p>
                     {% if pot.is_discount %}
                         <div class="flower-price">
-                            <p class="p-price-discount">от {{ pot.calculate_the_price }}₽</p>
+                            <p class="p-price-discount">{{ pot.calculate_the_price }}₽</p>
                             <p class="p-price">{{ pot.price }}₽</p>
                         </div>
                     {% else %}

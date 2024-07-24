@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm, PasswordResetForm, \
     SetPasswordForm
 from users.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class LoginUserForm(AuthenticationForm):
@@ -25,12 +26,14 @@ class RegisterUserForm(UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2', 'phone']
         labels = {
             'email': 'E-mail',
+            'phone': 'Номер телефона'
         }
         widgets = {
             'email': forms.TextInput(attrs={'class': 'form-input-reg', 'placeholder': 'E-mail'}),
+            'phone': forms.TextInput(attrs={'class': 'form-input-reg', 'placeholder': 'Номер телефона'}),
         }
 
     def clean_email(self):
@@ -50,15 +53,17 @@ class ProfileUserForm(forms.ModelForm):
 
     class Meta:
         model = get_user_model()
-        fields = ['photo', 'username', 'email', 'date_birth', 'first_name', 'last_name']
+        fields = ['photo', 'username', 'email', 'date_birth', 'first_name', 'last_name', 'phone']
         labels = {
             'first_name': 'Имя',
             'last_name': 'Фамилия',
+            'phone': 'Номер телефона'
         }
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-input-profile'}),
             'last_name': forms.TextInput(attrs={'class': 'form-input-profile'}),
-            'photo': forms.ClearableFileInput(attrs={'class': 'form-profile-photo'})
+            'photo': forms.ClearableFileInput(attrs={'class': 'form-profile-photo'}),
+            'phone': forms.TextInput(attrs={'class': 'form-input-profile'}),
         }
 
 
