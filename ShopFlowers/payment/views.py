@@ -2,9 +2,9 @@ import os
 import uuid
 import json
 import datetime
+from django.views.generic import TemplateView
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import transaction, IntegrityError
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, Http404
 from django.views.decorators.csrf import csrf_exempt
 from dotenv import load_dotenv
@@ -25,18 +25,21 @@ Configuration.secret_key = os.getenv('DJANGO_YOOKASSA_SECRET_KEY')
 logger = logging.getLogger(__name__)
 
 
+class PaymentCompletedView(TemplateView):
+    template_name = 'payment.html'
+
+
 def email_client(user, order):
     data = {
         'user': user,
         'order': order,
     }
-    order = get_object_or_404(Order, id=order.id)
-    # try:
-    #     order = Order.objects.get(id=order.id)
-    # except (ObjectDoesNotExist, TypeError):
-    #     raise 'Письмо не отправлено'
+    try:
+        order = Order.objects.get(id=order.id)
+    except (ObjectDoesNotExist, TypeError):
+        return Http404('Нет заказа')
 
-    if order.status_order == 'Оформлен':
+    if order.status_order == 'Создан':
         email_html = render_to_string('email_order.html', data)
         msg = EmailMultiAlternatives(subject='Уведомление о заказе на сайте FreshCompany', to=[user.email])
         msg.attach_alternative(email_html, 'text/html')
@@ -62,7 +65,7 @@ def create_payment(summa, metadata):
             },
             "confirmation": {
                 "type": "redirect",
-                "return_url": "https://adf2-37-150-198-50.ngrok-free.app/order/order_profile/"
+                "return_url": "https://1752-37-150-198-50.ngrok-free.app/payment/payment_completed/"
             },
             "capture": True,
             "description": "Оплата на сайте FreshCompany",
@@ -95,7 +98,6 @@ def refund_payment(order):
         return Http404('Ошибка при создании возврата')
 
 
-@transaction.atomic
 @csrf_exempt
 def payment_webhook(request):
     if request.method == 'POST':

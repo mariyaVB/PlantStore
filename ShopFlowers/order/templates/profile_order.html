@@ -119,20 +119,10 @@
                     
                     <div class="order-bt">
                         {% if order.status_order == 'Выполнен'%}
-                            {% for cart in order.cart.all %}
-                                {% if not cart.is_feedback %}
-                                    <button class="bt-rating"><a>Оценить товары</a></button><br>
-                                {% else %}
-                                    <span style="color: rgba(88, 88, 88, 1);">Отзыв добавлен</span>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-
-                        {% if order.status_order != 'Выполнен' and order.status_order != 'Отменен' %}
+                            <button class="bt-rating"><a>Оценить товары</a></button><br>
+                        {% elif order.status_order != 'Выполнен' and order.status_order != 'Отменен' %}
                             <button class="bt-cancel"><a href="{% url 'order:cancel-order' order.id %}">Отменить заказ</a></button>
                         {% endif %}
-
-
                     </div>
                 </div>
             {% endfor %}           
@@ -167,7 +157,7 @@
                     </div>
 
                     <div class="feedback-forma">
-                        <form action="{% url 'feedback:add-feedback' cart.flowers.id %}" method="post">
+                        <form action="{% url 'feedback:add-feedback' cart.id %}" method="post">
                             {% csrf_token %}
                             {% if form.errors %}
                                 <div class="errors">

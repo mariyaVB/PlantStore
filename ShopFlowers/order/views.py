@@ -1,7 +1,6 @@
 import datetime
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.http import HttpResponseRedirect, Http404
 from django.db import transaction, IntegrityError
@@ -45,8 +44,8 @@ class AddOrderView(View):
             new_order.summa = form.cleaned_data['summa']
 
             if new_order.payment == 'При получении':
-                new_order.save()
                 new_order.status_payment = 'Не оплачен'
+                new_order.save()
                 new_order.cart.add(*carts)
                 new_order.save()
 
@@ -75,7 +74,7 @@ class AddOrderView(View):
                 payment = create_payment(new_order.summa, metadata)
                 return redirect(payment.confirmation.confirmation_url)
 
-            return HttpResponseRedirect(reverse_lazy('order:order-profile'))   # !!!!!!!!!!
+            return HttpResponseRedirect(reverse_lazy('payment_completed'))
 
         messages.add_message(request, messages.SUCCESS, 'Ваша корзина пуста или адрес заполнен неправильно.')
         return HttpResponseRedirect(reverse_lazy('cart:cart'))
@@ -107,12 +106,6 @@ class OrderProfileView(LoginRequiredMixin, ListView):
             order = Order.objects.filter(user=self.request.user).exclude(status_order__in=['Выполнен', 'Отменен']).order_by('-create_order')
 
         return order
-    # def get_queryset(self):
-    #     try:
-    #         order = Order.objects.filter(user=self.request.user).exclude(status_order__in=['Выполнен', 'Отменен']).order_by('-create_order')
-    #         return order
-    #     except (ValueError, TypeError):
-    #         return HttpResponseRedirect(reverse_lazy('order:order-profile'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

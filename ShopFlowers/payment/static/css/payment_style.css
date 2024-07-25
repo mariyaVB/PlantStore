@@ -3,7 +3,7 @@
     src: url('../fonts/Mirra.otf');
 }   
 
-body {
+.body-payment {
     background-image: url(../images/payment.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;

@@ -25,19 +25,19 @@ class FeedbackProfileView(ListView):
 
 class AddFeedbackView(LoginRequiredMixin, View):
     @transaction.atomic
-    def post(self, request, product_id):
+    def post(self, request, cart_id):
         form = AddFeedbackForm(request.POST, request.FILES)
         user = self.request.user
         try:
-            product = Flowers.objects.get(id=product_id)
-            cart = Cart.objects.get(user=user, flowers=product)
-        except (Flowers.DoesNotExist, Cart.DoesNotExist):
-            return Http404('Не найдены продукт или корзина доступная для отзыва')
+            cart = Cart.objects.get(user=user, id=cart_id)
+            flower = cart.flowers
+        except Cart.DoesNotExist:
+            return Http404('Не найдена корзина доступная для отзыва')
 
         if form.is_valid():
             feedback = form.save(commit=False)
             feedback.user = user
-            feedback.flowers = product
+            feedback.flowers = flower
             feedback.rating = form.cleaned_data['rating']
             feedback.text = form.cleaned_data['text']
             feedback.image1 = form.cleaned_data['image1']
@@ -78,7 +78,7 @@ class RemoveFeedbackView(LoginRequiredMixin, View):
         try:
             feedback = Feedback.objects.get(id=feedback_id)
             product = feedback.flowers
-            cart = Cart.objects.get(user=user, flowers=product)
+            cart = Cart.objects.get(user=user, flowers=product, is_feedback=True)
             feedback.delete()
             cart.is_feedback = False
             cart.save()
