@@ -19,9 +19,10 @@ import logging
 
 
 load_dotenv()
-Configuration.account_id = os.getenv('DJANGO_YOOKASSA_SHOP_ID')
-Configuration.secret_key = os.getenv('DJANGO_YOOKASSA_SECRET_KEY')
-
+# Configuration.account_id = os.getenv('DJANGO_YOOKASSA_SHOP_ID')
+# Configuration.secret_key = os.getenv('DJANGO_YOOKASSA_SECRET_KEY')
+Configuration.account_id = '413562'
+Configuration.secret_key = 'test_4TVpEYQ4Ebr9Xsa8CR1VO-uacIRXAEMNv2Cw-_SVRMA'
 logger = logging.getLogger(__name__)
 
 
@@ -65,7 +66,7 @@ def create_payment(summa, metadata):
             },
             "confirmation": {
                 "type": "redirect",
-                "return_url": "https://1752-37-150-198-50.ngrok-free.app/payment/payment_completed/"
+                "return_url": "https://mariyaVB.pythonanywhere.com/payment/payment_completed/"
             },
             "capture": True,
             "description": "Оплата на сайте FreshCompany",
