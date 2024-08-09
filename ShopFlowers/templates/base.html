@@ -19,6 +19,16 @@
             <a href="{% url 'flowers:main' %}"><img src="{% static 'images/logo.png' %}" style="background-size: contain;"></a>
         </div>
 
+        <div class="catalog">
+            <p class="catalog-main-title"><a class="catalog-main-link" href="{% url 'flowers:main' %}">FRESH COMPANY</a></p>
+
+            <div class="catalog-list">
+                <span class="catalog-list-title"><a class="catalog-list-link" href="{% url 'flowers:flowers' %}">Комнатные растения</a></span>
+                <span class="catalog-list-title"><a class="catalog-list-link" href="{% url 'flowers:pots' %}">Горшки и кашпо</a></span>
+                <span class="catalog-list-title"><a class="catalog-list-link"  href="{% url 'flowers:care' %}">Уход за растениями</a></span>
+            </div>
+        </div>
+
         <div class="find">
             <form method="get" action="{% url 'flowers:search' %}">
                 <input type="search" name="search" placeholder=" Введите название..." class="find-input">
