@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm, PasswordResetForm, \
     SetPasswordForm
 from users.models import User
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class LoginUserForm(AuthenticationForm):

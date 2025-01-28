@@ -9,7 +9,6 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from .models import Flowers, Category, News
 from feedback.models import Feedback
-from cart.models import Cart
 
 
 class MainPage(TemplateView):

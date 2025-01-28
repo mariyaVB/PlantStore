@@ -178,7 +178,6 @@ def payment_webhook(request):
                 return HttpResponse(status=200)
 
         else:
-            print('Прыгнули сюда')
             return HttpResponse(status=200)
 
     else:

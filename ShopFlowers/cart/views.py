@@ -24,8 +24,9 @@ class CartShow(LoginRequiredMixin, ListView):
             if cart.flowers.quantity <= 0:
                 cart.delete()
 
+        new_carts = Cart.objects.filter(user=self.request.user).filter_status_cart()
         form = OrderForm
-        context['carts'] = carts
+        context['carts'] = new_carts
         context['form'] = form
 
         return context

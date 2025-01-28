@@ -72,11 +72,37 @@ WSGI_APPLICATION = 'ShopFlowers.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DJANGO_POSTGRES_NAME'),
+        'USER': os.getenv('DJANGO_POSTGRES_USER'),
+        'PASSWORD': os.getenv('DJANGO_POSTGRES_PASSWORD'),
+        'HOST': os.getenv('DJANGO_POSTGRES_DB'),  # как в docker-compose.yml
+        'PORT': '5432',
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+            # 'default_transaction_isolation': 'read committed',
+        }
     }
 }
+# print(os.getenv('DJANGO_POSTGRES_NAME'), os.getenv('DJANGO_POSTGRES_USER'), os.getenv('DJANGO_POSTGRES_PASSWORD'), os.getenv('DJANGO_POSTGRES_DB'))
+# import psycopg2
+#
+# try:
+#     connection = psycopg2.connect(
+#         dbname=os.getenv('DJANGO_POSTGRES_NAME'),
+#         user=os.getenv('DJANGO_POSTGRES_USER'),
+#         password=os.getenv('DJANGO_POSTGRES_PASSWORD'),
+#         host=os.getenv('DJANGO_POSTGRES_DB'),
+#         port="5432"
+#     )
+#     print("Соединение установлено!")
+# except Exception as e:
+#     print(f"Ошибка подключения: {e}")
 
 
 # Password validation

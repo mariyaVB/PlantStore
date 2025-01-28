@@ -1,7 +1,15 @@
 body {
     margin: 0;
 }
+.catalog {
+    text-align: center;
+    display: grid;
+}
 
+.catalog-list-link, .catalog-main-link {
+text-decoration: none;
+color: black;
+}
 @font-face {
     font-family: 'myFontMirra';
     src: url('../fonts/Mirra.otf');

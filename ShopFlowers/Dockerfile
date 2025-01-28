@@ -1,10 +1,10 @@
-FROM python:3.11.9-slim as dependencies
+FROM python:3.11.9-slim AS dependencies
 
 WORKDIR /dependencies
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 FROM python:3.11.9-slim
 
@@ -16,4 +16,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/
 
-CMD ["python", "manage.py", "runserver", "127.0.0.1:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
